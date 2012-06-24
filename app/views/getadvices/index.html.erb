@@ -1,0 +1,46 @@
+
+
+<div id="container">
+		<div id="user_nav" class="hero-unit">
+<h1>Get Advice</h1>
+
+<p>
+<strong>Get Advice from Experts</strong><br />
+<h4>-Gain advice, expertise and inspiration from somebody who has been where you want to go</h4><br />
+<h4>-Learn from experts in your field of interest</h4><br />
+<h4>-Privately message advisors</h4><br />
+</p>
+
+
+
+
+<%= render 'adviceposts/advicepostssearch' %>
+
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @getadvices.each do |getadvice| %>
+  <tr>
+    <td><%= link_to 'Show', getadvice %></td>
+    <td><%= link_to 'Edit', edit_getadvice_path(getadvice) %></td>
+    <td><%= link_to 'Destroy', getadvice, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+</div>
+</div>
+
+
+<%= link_to "Get Advice", adviceposts_path, class: "btn btn-large btn-success" %>  
+
+
+

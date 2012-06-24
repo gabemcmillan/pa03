@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Price:</b>
+  <%= @advicepost_price.price %>
+</p>
+
+
+<p>
+  <b>Price Label:</b>
+  <%= @advicepost_price.pricelabel %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_advicepost_price_path(@advicepost_price) %> |
+<%= link_to 'Back', advicepost_prices_path %>

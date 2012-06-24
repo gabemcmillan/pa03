@@ -1,0 +1,45 @@
+
+
+
+
+
+<h2>Advisor Detail Information</h2>
+
+
+<%= form_for(@advicepost) do |f| %>
+
+
+<p>
+  <b>User Name:</b><br />
+  <%= @advicepost.user.name %>
+</p>
+
+
+<p>
+  <b>Category Name:</b><br />
+  <%= @advicepost.category.categoryname %>
+</p>
+
+
+<p>
+  <b>Mini-Resume: </b>
+<span class="help-block">This is a brief summary of the Advisor's credentials.</span>
+
+  <%= @advicepost.miniresume %>
+</p>
+
+<p>
+  <b>Price per message:</b>
+	<span class="help-block">This is the price per message for this Advisor.</span>
+	
+  $<%= @advicepost.price %>
+</p>
+
+<%= link_to 'Back', giveadvices_path, :class => 'btn' %>
+<%= link_to 'Back to search results', giveadvices_path, :class => 'btn' %>
+<%= link_to 'Message This Advisor!', giveadvices_path, :class => 'btn', class: "btn btn-success btn-large"  %>
+
+
+
+<% end %>
+

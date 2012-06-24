@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= link_to 'Edit', edit_giveadvice_path(@giveadvice) %> |
+<%= link_to 'Back', giveadvices_path %>
+
+
+
+<% if current_user.adviceposts.any? %>
+      <h3>AdvicePosts (<%= current_user.adviceposts.count %>)</h3>
+      <ol class="adviceposts">
+        <%= render 'adviceposts/advicepostsbyuser' %>
+
+      </ol>
+      <%= will_paginate @adviceposts %>
+<% end %>
+

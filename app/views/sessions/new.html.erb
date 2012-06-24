@@ -1,0 +1,24 @@
+	
+<div id="container">
+		<div id="user_nav" class="hero-unit">
+
+
+		<strong>Log in</strong><br /><br />
+		<strong><%= link_to "Sign in with Facebook", "/auth/facebook" %></strong><br />
+		<strong>Or</strong>
+		<%= link_to "Create an account", new_identity_path %> or login below
+		</p>
+		<%= form_tag "/auth/identity/callback" do %>
+		<div class="field">
+     	<%= label_tag :auth_key, "Email" %>
+  		<%= text_field_tag :auth_key %>
+ 		</div>
+ 		<div class="field">
+  		<%= label_tag :password %>
+  		<%= password_field_tag :password %>
+ 		</div>
+ 		<div class="actions"><%= submit_tag "Login" %></div>
+		<% end %>		
+		</div>			
+</div>
+	

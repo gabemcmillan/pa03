@@ -1,0 +1,23 @@
+<h1>Listing advicepost_prices</h1>
+
+<table>
+  <tr>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @advicepost_prices.each do |advicepost_price| %>
+  <tr>
+    <td><%= advicepost_price.price %></td>
+    <td><%= link_to 'Show', advicepost_price %></td>
+    <td><%= link_to 'Edit', edit_advicepost_price_path(advicepost_price) %></td>
+    <td><%= link_to 'Destroy', advicepost_price, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Advicepost price', new_advicepost_price_path %>

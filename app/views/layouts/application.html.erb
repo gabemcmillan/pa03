@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PathAdvisor</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    
+</head>
+<body>
+
+
+	
+	<div class="container-fluid">
+    <div id="user_nav" class="hero-unit">
+	<%= render 'layouts/header' %>
+			
+			<!-- Shows any notice messages -->
+			<% flash.each do |name, msg| %>
+    		<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+			<%= msg  %>
+			</div>
+  			<% end %>
+
+
+			<%= yield %>
+			
+			
+			</div>
+		<%= render 'layouts/footer' %>
+
+	</div>
+</body>	
+</html>
