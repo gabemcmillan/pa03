@@ -1,5 +1,7 @@
 Pa02::Application.routes.draw do
 
+  resources :messages
+
   resources :advicepost_prices
 
   devise_for :users

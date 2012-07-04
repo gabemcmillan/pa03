@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 
+  advisor_id: 
+  advicepost_id: 
+  thread: 
+  messageq: MyString
+  messager: MyString
+
+two:
+  user_id: 
+  advisor_id: 
+  advicepost_id: 
+  thread: 
+  messageq: MyString
+  messager: MyString

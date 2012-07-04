@@ -4,6 +4,8 @@ class Advicepost < ActiveRecord::Base
   belongs_to :user
   belongs_to :category  
   belongs_to :advicepost_price
+  has_many :messages
+
   
   
   

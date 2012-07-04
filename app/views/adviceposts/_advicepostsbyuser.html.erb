@@ -27,7 +27,7 @@
   	<td><%= advicepost.category.categoryname %></td>
   	
     <td><%= advicepost.miniresume %></td>
-    <td><%= advicepost.price %></td>
+    <td>$<%= advicepost.price %></td>
     <td><%= link_to 'View Listing', advicepost %></td>
     <td><%= link_to 'Edit', edit_advicepost_path(advicepost) %></td>
     <td><%= link_to 'Remove Listing', advicepost, confirm: 'Are you sure?', method: :delete %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624163210) do
+ActiveRecord::Schema.define(:version => 20120626014223) do
 
   create_table "advicepost_prices", :force => true do |t|
     t.integer  "price"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(:version => 20120624163210) do
     t.string   "timezone"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "advisor_id"
+    t.integer  "advicepost_id"
+    t.integer  "thread"
+    t.string   "messageq"
+    t.string   "messager"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|

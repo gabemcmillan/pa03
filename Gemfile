@@ -14,16 +14,13 @@ gem 'omniauth-facebook'
 gem 'omniauth-identity'
 gem 'devise'
 
-#forms
-gem 'simple_form'
+
+
 
 #full text search
 gem 'thinking-sphinx', '2.0.10'
 
-#sunspot search
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-gem 'progress_bar'
+
 
 
 

@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
 
   has_many :adviceposts, dependent: :destroy
+  has_many :messages
+  
+  
+  
     
 
   def self.create_with_omniauth(auth)
