@@ -29,10 +29,9 @@ class MessagesController < ApplicationController
     #set user id attribute
     @message.user_id = current_user.id
     
-    #@message.advicepost_id = @advicepost.id
     @advicepost = Advicepost.find(params[:advicepost])
-    #@message = @advicepost.messages.build
     @message.advicepost_id = @advicepost.id
+    @message.advisor_id = @advicepost.user_id
     
     
     respond_to do |format|
@@ -43,6 +42,11 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/edit
   def edit
+    @message = Message.find(params[:id])
+  end
+  
+  # GET /messages/1/messager
+  def messager
     @message = Message.find(params[:id])
   end
 

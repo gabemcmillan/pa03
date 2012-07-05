@@ -1,6 +1,37 @@
-<h1>Editing message</h1>
+<h1>Update message</h1>
 
-<%= render 'form' %>
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Show', @message %> |
-<%= link_to 'Back', messages_path %>
+  <div class="field">
+    <%= f.hidden_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :advicepost_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :advisor_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Message' %><br />
+    <%= f.text_area :messageq %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Update Message', :class => 'btn btn-primary' %>
+	<%= link_to 'Cancel', giveadvices_path, :class => 'btn' %>
+	
+  </div>
+
+<% end %>

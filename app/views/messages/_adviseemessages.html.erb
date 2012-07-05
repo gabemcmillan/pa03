@@ -1,27 +1,32 @@
-<h1>Your Messages</h1>
+
+
+<h2>Your Advisee Messages</h2>
 
 <table>
   <tr>
+	<th></th>
+    <th></th>
     <th>User</th>
     <th>Advisor</th>
     <th>Advicepost</th>
     <th>Message</th>
     <th>Response</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Created On</th>
+
+
   </tr>
 
 <% @messages.each do |message| %>
   <tr>
+	<td><%= link_to 'Respond', messages_messager_path(message) %></td>
+	<td><%= link_to 'View', message %></td>
+	<td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= message.user_id %></td>
     <td><%= message.advisor_id %></td>
     <td><%= message.advicepost_id %></td>
     <td><%= message.messageq %></td>
     <td><%= message.messager %></td>
-    <td><%= link_to 'View', message %></td>
-
-
+	<td><%= message.created_at %></td>
 
 
   </tr>
@@ -29,5 +34,7 @@
 </table>
 
 <br />
+
+
 
 

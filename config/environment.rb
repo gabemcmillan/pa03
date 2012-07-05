@@ -5,3 +5,4 @@ require File.expand_path('../application', __FILE__)
 Pa02::Application.initialize!
 
 
+Date::DATE_FORMATS[:default] = "%Y-%m-%d %H:%M"

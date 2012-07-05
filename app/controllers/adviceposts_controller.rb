@@ -12,7 +12,6 @@ class AdvicepostsController < ApplicationController
     
     #limits to show only current users adviceposts! - works
     #@adviceposts = current_user.adviceposts
-
     
     respond_to do |format|
       format.html # index.html.erb
@@ -70,7 +69,6 @@ class AdvicepostsController < ApplicationController
   def edit
     @advicepost = Advicepost.find(params[:id])
     
-    
   end
 
   # POST /adviceposts
@@ -78,7 +76,8 @@ class AdvicepostsController < ApplicationController
   def create
 
     @advicepost = current_user.adviceposts.build(params[:advicepost])
-
+    
+    
     respond_to do |format|
 
       if @advicepost.save

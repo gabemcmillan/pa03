@@ -15,10 +15,9 @@ gem 'omniauth-identity'
 gem 'devise'
 
 
-
-
 #full text search
 gem 'thinking-sphinx', '2.0.10'
+
 
 
 

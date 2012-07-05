@@ -9,25 +9,27 @@
       </ul>
     </div>
   <% end %>
+
   <div class="field">
-    <%= f.label "UserID" %><br />
-    <%= f.text_field :user_id %>
+    <%= f.hidden_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label 'AdvicepostID' %><br />
-    <%= f.text_field :advicepost_id %>
+    <%= f.hidden_field :advicepost_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :advisor_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Message' %><br />
+    <%= f.text_area :messageq %>
   </div>
 
 
-  <div class="field">
-    <%= f.label :messageq %><br />
-    <%= f.text_field :messageq %>
-  </div>
-  <div class="field">
-    <%= f.label :messager %><br />
-    <%= f.text_field :messager %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Send Message', :class => 'btn btn-primary' %>
+	<%= link_to 'Cancel', getadvices_path, :class => 'btn' %>
+	
   </div>
+
 <% end %>

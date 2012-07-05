@@ -8,6 +8,9 @@ class GetadvicesController < ApplicationController
     #return all advicesposts after search 
     @adviceposts = Advicepost.all
 
+    #limits to show only current users adviceposts! - works
+    @messages = current_user.messages
+
 
     respond_to do |format|
       format.html # index.html.erb

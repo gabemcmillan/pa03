@@ -1,41 +1,34 @@
 Pa02::Application.routes.draw do
 
-  resources :messages
-
-  resources :advicepost_prices
-
-  devise_for :users
-
-
-  resources :categories
-
-  resources :adviceposts
-
-  get "dashboard/index"
-  
-  get "adviceposts/searchresult"
-
-
-  get "home/index"
 
   root :to=> "home#index"
-  
+
+  resources :messages
+  resources :advicepost_prices
+  devise_for :users
+  resources :categories
+  resources :adviceposts
   resources :getadvices
   resources :giveadvices
   resources :identities
   resources :sessions
+
+
+  get "dashboard/index"
+  get "adviceposts/searchresult"
+  get "messages/messager"
+  get "home/index"
+
+
   
-  
+
     
   match '/auth/:provider/callback' => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
   
+  
 
-
-
-
-
-     
+   
   
   
   # The priority is based upon order of creation:
