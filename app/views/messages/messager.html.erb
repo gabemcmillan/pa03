@@ -1,4 +1,5 @@
-<h1>Respond to Message</h1>
+<h1>Respond to Message</h1><br />
+
 
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
@@ -22,14 +23,24 @@
     <%= f.hidden_field :advisor_id %>
   </div>
 
+
+<p>
+  <b>Advisee Message:</b><br />
+  <%= @message.messageq %>
+</p>
+
+<br />
+
+<p>
+<b>Your Response</b><br />
   <div class="field">
-    <%= f.label 'Message' %><br />
-    <%= f.text_area :messageq %>
+    <%= f.text_area :messager %>
   </div>
+</p>
 
 
   <div class="actions">
-    <%= f.submit 'Update Message', :class => 'btn btn-primary' %>
+    <%= f.submit 'Send Response!', :class => 'btn btn-primary' %>
 	<%= link_to 'Cancel', giveadvices_path, :class => 'btn' %>
 	
   </div>

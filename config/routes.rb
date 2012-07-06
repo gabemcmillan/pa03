@@ -14,14 +14,16 @@ Pa02::Application.routes.draw do
   resources :sessions
 
 
+  get "home/index"
   get "dashboard/index"
   get "adviceposts/searchresult"
-  get "messages/messager"
-  get "home/index"
+  
+  #new route for message response form
+  match 'messages/:id/messager', to: 'messages#messager', :as => :messager
+  
 
 
   
-
     
   match '/auth/:provider/callback' => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
