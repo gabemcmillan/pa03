@@ -6,7 +6,6 @@
   <tr>
 	
     <th></th>
-    <th></th>
     <th>User</th>
     <th>Advisor</th>
     <th>Advicepost</th>
@@ -21,13 +20,14 @@
   <tr>
 	
 	<td><%= link_to 'View', message %></td>
-	<td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= message.user_id %></td>
     <td><%= message.advisor_id %></td>
     <td><%= message.advicepost_id %></td>
     <td><%= message.messageq %></td>
     <td><%= message.messager %></td>
 	<td><%= message.created_at %></td>
+    <td><%= link_to 'Delete Message', message, confirm: 'Are you sure?', method: :delete %></td>
+    
 
   </tr>
 <% end %>

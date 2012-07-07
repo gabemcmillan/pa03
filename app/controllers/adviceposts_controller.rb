@@ -8,7 +8,7 @@ class AdvicepostsController < ApplicationController
 
     #thinking_sphinx 
     @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 20)
-  
+    
     
     #limits to show only current users adviceposts! - works
     #@adviceposts = current_user.adviceposts
@@ -19,8 +19,8 @@ class AdvicepostsController < ApplicationController
     end
   end
 
-  # GET /advicepostssearch
-  # GET /advicepostssearch.json
+  # GET /adviceposts/search
+  # GET /adviceposts/search.json
   def search
     #@adviceposts = Advicepost.all
 
@@ -37,7 +37,6 @@ class AdvicepostsController < ApplicationController
   end
   
   
-
   # GET /adviceposts/1
   # GET /adviceposts/1.json
   def show
@@ -76,6 +75,9 @@ class AdvicepostsController < ApplicationController
   def create
 
     @advicepost = current_user.adviceposts.build(params[:advicepost])
+    
+    #save categoryname in the advicepost listing - worked!
+    @advicepost.categoryname = @advicepost.category.categoryname
     
     
     respond_to do |format|

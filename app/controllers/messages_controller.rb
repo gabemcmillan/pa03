@@ -64,7 +64,7 @@ class MessagesController < ApplicationController
     
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to getadvices_path, notice: 'Awesome! You have written your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }

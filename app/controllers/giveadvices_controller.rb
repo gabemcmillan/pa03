@@ -11,9 +11,12 @@ class GiveadvicesController < ApplicationController
     #limits to show only current users adviceposts! - works
     @adviceposts = current_user.adviceposts
     
-    #limits to show only current users adviceposts! - works
+    #limits to show only current users messages! - works
     @messages = current_user.messages
     
+    #object which returns the messager responses - 
+    #@messagers = current_user.messages.messager
+
 
     respond_to do |format|
       format.html # index.html.erb

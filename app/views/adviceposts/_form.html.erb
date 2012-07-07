@@ -7,6 +7,7 @@
     <%= f.hidden_field :user_id %>
   </div>
 
+
   <div class="field">
     <strong><%= f.label :category_id %></strong>
     <%= f.select :category_id, Category.all.collect {|category| [ category.categoryname,category.id ]}, :include_blank => 'Please select a category...' %>
@@ -17,17 +18,18 @@
     <span class="help-block">Summarize your experience and accomplishments. Be specific. Show off. Add any relevant links as well.</span>
     <%= f.text_area :miniresume %>
   </div>
+
   <div class="field">
     <strong><%= f.label :price %></strong> 
 	<span class="help-block">This is the price per response from someone seeking your advice.  You must respond within 48 hours of a connection.</span>
-
 <%= f.select :price, AdvicepostPrice.all.collect {|advicepost_price| [ advicepost_price.pricelabel,advicepost_price.price ]}, :include_blank => 'Please select a price…' %>
-
   </div>
+
+
   <br />
 
   <div class="actions">
-    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    <%= f.submit 'Submit', :class => 'btn', class: "btn btn-success" %>
     <%= link_to 'Cancel', giveadvices_path, :class => 'btn' %>
   </div>
   

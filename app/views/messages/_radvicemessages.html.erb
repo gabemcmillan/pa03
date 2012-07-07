@@ -2,10 +2,10 @@
 
 <h2>Responded To Advice Messages</h2>
 
+
 <table class="table table-striped">
   <tr>
 	
-    <th></th>
     <th></th>
     <th>User</th>
     <th>Advisor</th>
@@ -14,8 +14,8 @@
     <th>Response</th>
     <th>Created On</th>
     <th></th>
-
   </tr>
+
 
 <% @messages.each do |message| %>
   <tr>
@@ -27,7 +27,6 @@
     <td><%= message.messageq %></td>
     <td><%= message.messager %></td>
 	<td><%= message.created_at %></td>
-    <td><%= link_to 'Send New Message', messages_messager_path(message) %></td>
 
   </tr>
 <% end %>

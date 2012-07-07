@@ -10,34 +10,31 @@
 
 
 <p>
-  <b>User Name:</b><br />
+  <b>Advisor Name:</b><br />
   <%= @advicepost.user.name %>
 </p>
 
 
 <p>
-  <b>Category Name:</b><br />
+  <b>Category:</b><br />
   <%= @advicepost.category.categoryname %>
 </p>
 
 
 <p>
-  <b>Mini-Resume: </b>
-<span class="help-block">This is a brief summary of the Advisor's credentials.</span>
-
+  <b>Mini-Resume:</b><br />
   <%= @advicepost.miniresume %>
 </p>
 
 <p>
   <b>Price per message:</b>
-	<span class="help-block">This is the price per message for this Advisor.</span>
-	
   $<%= @advicepost.price %>
 </p>
 
-<%= link_to 'Back', giveadvices_path, :class => 'btn' %>
-<%= link_to 'Back to search results', giveadvices_path, :class => 'btn' %>
-<%= link_to 'Message This Advisor!', new_message_path(:advicepost => @advicepost.id), :class => 'btn', class: "btn btn-success btn-large"  %>
+<br /><br />
+
+<%= link_to 'Back', getadvices_path, :class => 'btn' %>
+<%= link_to 'Message This Advisor!', new_message_path(:advicepost => @advicepost.id), :class => 'btn', class: "btn btn-success"  %>
 
 
 

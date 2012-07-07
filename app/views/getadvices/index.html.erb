@@ -12,13 +12,15 @@
 
 
 
-
 <%= render 'adviceposts/advicepostssearch' %>
 
 
 
+<% if @messages.count >= 1 %>
 <%= render 'messages/advicemessages' %>
+<% else %>
+<% end %>
+
 
 
 <%= render 'messages/radvicemessages' %>
-

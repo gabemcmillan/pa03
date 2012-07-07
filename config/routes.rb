@@ -2,34 +2,36 @@ Pa02::Application.routes.draw do
 
 
   root :to=> "home#index"
+  get "home/index"
+  get "dashboard/index"
+  
 
   resources :messages
+  
+  #new route for message response form
+  match 'messages/:id/messager', to: 'messages#messager', :as => :messager
+  
+  
   resources :advicepost_prices
   devise_for :users
   resources :categories
   resources :adviceposts
+  
+  #route for adviceposts search view
+  match 'adviceposts/search', to: "adviceposts#search", :as => :apsearch
+  
+  
   resources :getadvices
   resources :giveadvices
   resources :identities
   resources :sessions
 
 
-  get "home/index"
-  get "dashboard/index"
-  get "adviceposts/searchresult"
   
-  #new route for message response form
-  match 'messages/:id/messager', to: 'messages#messager', :as => :messager
-  
-
-
-  
-    
+  #routes for authentication  
   match '/auth/:provider/callback' => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
   
-  
-
    
   
   
