@@ -14,6 +14,9 @@ class GiveadvicesController < ApplicationController
     #limits to show only current users messages! - works
     @messages = current_user.messages
     
+
+    
+    
     #object which returns the messager responses - 
     #@messagers = current_user.messages.messager
 

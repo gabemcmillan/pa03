@@ -24,6 +24,8 @@ Pa02::Application.routes.draw do
   #route for adviceposts search view
   match 'adviceposts/search', to: "adviceposts#search", :as => :apsearch
   
+  #congrats page for new advice listing
+  match 'adviceposts/apnew', to: "adviceposts#apnew", :as => :apnew
   
   resources :getadvices
   resources :giveadvices

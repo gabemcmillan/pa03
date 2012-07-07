@@ -37,6 +37,18 @@ class AdvicepostsController < ApplicationController
   end
   
   
+  # GET /adviceposts/apnew/1
+  # GET /adviceposts/apnew/1.json
+  def apnew
+    @advicepost = Advicepost.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @advicepost }
+    end
+  end
+  
+  
   # GET /adviceposts/1
   # GET /adviceposts/1.json
   def show
@@ -74,16 +86,16 @@ class AdvicepostsController < ApplicationController
   # POST /adviceposts.json
   def create
 
+
     @advicepost = current_user.adviceposts.build(params[:advicepost])
     
     #save categoryname in the advicepost listing - worked!
     @advicepost.categoryname = @advicepost.category.categoryname
     
-    
     respond_to do |format|
 
       if @advicepost.save
-        format.html { redirect_to giveadvices_path, notice: 'Congratulations! Your new advice listing was successfully posted!' }
+        format.html { redirect_to @advicepost, notice: 'Congratulations! Your new advice listing was successfully posted! You are advancing human knowledge sharing.' }
         format.json { render json: @advicepost, status: :created, location: @advicepost }
       else
         format.html { render action: "new" }
@@ -115,7 +127,7 @@ class AdvicepostsController < ApplicationController
     @advicepost.destroy
 
     respond_to do |format|
-      format.html { redirect_to adviceposts_url }
+      format.html { redirect_to giveadvices_path }
       format.json { head :no_content }
     end
   end

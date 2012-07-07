@@ -10,6 +10,11 @@
     </div>
   <% end %>
 
+
+<br /><br />
+<span class="help-block">Now enter your message to this advisor and you will be all set!</span>
+
+
   <div class="field">
     <%= f.hidden_field :user_id %>
   </div>
@@ -21,15 +26,17 @@
   </div>
 
   <div class="field">
-    <%= f.label 'Message' %><br />
+    <strong><%= f.label 'Message' %></strong>
+
+    <span class="help-block">Enter your message to this advisor.  Ask any detailed questions you want them to answer or if you just want their opinion that is great also.</span>
     <%= f.text_area :messageq %>
   </div>
 
 
   <div class="actions">
-    <%= f.submit 'Send Message', :class => 'btn btn-success' %>
-	<%= link_to 'Cancel', getadvices_path, :class => 'btn' %>
-	
+	<%= link_to 'Back', :back, :class => 'btn' %>
+    <%= f.submit 'Send Your Message!', :class => 'btn btn-success' %>
+
   </div>
 
 <% end %>

@@ -15,7 +15,7 @@
   </div>
   <div class="field">
     <strong><%= f.label 'Mini-Resume' %></strong>
-    <span class="help-block">Summarize your experience and accomplishments. Be specific. Show off. Add any relevant links as well.</span>
+    <span class="help-block">(2000 character max.) Summarize your experience and accomplishments. Be specific. Show off. Add any relevant links as well.</span>
     <%= f.text_area :miniresume %>
   </div>
 
@@ -29,8 +29,9 @@
   <br />
 
   <div class="actions">
-    <%= f.submit 'Submit', :class => 'btn', class: "btn btn-success" %>
-    <%= link_to 'Cancel', giveadvices_path, :class => 'btn' %>
+	<%= link_to 'Back', :back, :class => 'btn' %>
+    <%= f.submit 'Create Listing!', :class => 'btn', class: "btn btn-success" %>
+
   </div>
   
 <% end %>

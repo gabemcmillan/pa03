@@ -20,7 +20,7 @@ class Advicepost < ActiveRecord::Base
   
   
   validates :user_id, presence: true
-  validates :miniresume, :length => { :maximum => 160 }
+
   
   default_scope order: 'adviceposts.created_at DESC'
   
