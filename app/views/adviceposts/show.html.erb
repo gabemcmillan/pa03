@@ -3,16 +3,10 @@
 
 
 
-<h2>Advisor Detail Information</h2>
+<h2>Advice Listing Details</h2>
 
 
 <%= form_for(@advicepost) do |f| %>
-
-
-<p>
-  <b>Advisor Name:</b><br />
-  <%= @advicepost.user.name %>
-</p>
 
 
 <p>
@@ -20,6 +14,10 @@
   <%= @advicepost.category.categoryname %>
 </p>
 
+<p>
+  <b>Advisor Name:</b><br />
+  <%= @advicepost.user.name %>
+</p>
 
 <p>
   <b>Mini-Resume:</b><br />

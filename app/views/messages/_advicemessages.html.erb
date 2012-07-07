@@ -1,33 +1,22 @@
 
 
-<h2>Queued Advice Messages</h2>
+<h2>Your Advice Messages</h2>
 
 <table class="table table-striped">
   <tr>
-	
-    <th></th>
-    <th>User</th>
-    <th>Advisor</th>
-    <th>Advicepost</th>
-    <th>Message</th>
-    <th>Response</th>
+
+    <th>Category Name</th>
+	<th>Advisor Name</th>
     <th>Created On</th>
-    <th></th>
 
   </tr>
 
 <% @messages.each do |message| %>
   <tr>
-	
-	<td><%= link_to 'View', message %></td>
-    <td><%= message.user_id %></td>
-    <td><%= message.advisor_id %></td>
-    <td><%= message.advicepost_id %></td>
-    <td><%= message.messageq %></td>
-    <td><%= message.messager %></td>
+
+    <td><%= link_to message.advicepost.categoryname, message %></td>
+    <td><%= message.advicepost.user.name %></td>
 	<td><%= message.created_at %></td>
-    <td><%= link_to 'Delete Message', message, confirm: 'Are you sure?', method: :delete %></td>
-    
 
   </tr>
 <% end %>

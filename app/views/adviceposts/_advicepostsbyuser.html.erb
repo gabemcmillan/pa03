@@ -15,15 +15,13 @@
     <th>Price</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
-  	<td><%= advicepost.category.categoryname %></td>
+  	<td><%= link_to advicepost.category.categoryname, advicepost %></td>
     <td><%= advicepost.miniresume %></td>
     <td>$<%= advicepost.price %></td>
-    <td><%= link_to 'View Listing', advicepost %></td>
     <td><%= link_to 'Edit', edit_advicepost_path(advicepost) %></td>
     <td><%= link_to 'Remove Listing', advicepost, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
