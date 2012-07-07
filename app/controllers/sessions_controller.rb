@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
  
-    redirect_to dashboard_index_path, :notice => "Signed In!"
+    redirect_to dashboard_index_path, :notice => "Welcome to PathAdvisor!" 
   end
     
 
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   
   def destroy 
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Signed Out!"
+    redirect_to root_url, :notice => "Come back soon!"
   end  
 
   

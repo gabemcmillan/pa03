@@ -19,7 +19,8 @@ gem 'devise'
 gem 'thinking-sphinx', '2.0.10'
 
 
-
+#administration
+gem 'activeadmin'
 
 
 

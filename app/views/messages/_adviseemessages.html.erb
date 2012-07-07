@@ -1,14 +1,10 @@
 
 
-<h2>Active Advisee Messages</h2>
+<h2>New Advisee Messages</h2>
 
 <table class="table table-striped">
   <tr>
 	<th></th>
-    <th></th>
-    <th>UserID</th>
-    <th>AdvisorID</th>
-    <th>AdvicepostID</th>
     <th>Category Name</th>
 	<th>Advisor Name</th>
     <th>Created On</th>
@@ -19,10 +15,6 @@
 <% @messages.each do |message| %>
   <tr>
 	<td><%= link_to 'Respond!', messager_path(message), class: "btn btn-success" %></td>
-	<td><%= link_to 'View', message %></td>
-    <td><%= message.user_id %></td>
-    <td><%= message.advisor_id %></td>
-    <td><%= message.advicepost_id %></td>
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.user.name %></td>
 	<td><%= message.created_at %></td>
