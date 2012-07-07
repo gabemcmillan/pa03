@@ -9,6 +9,8 @@
     <th>UserID</th>
     <th>AdvisorID</th>
     <th>AdvicepostID</th>
+    <th>Category Name</th>
+	<th>Advisor Name</th>
     <th>Message</th>
     <th>Response</th>
     <th>Created On</th>
@@ -23,6 +25,8 @@
     <td><%= message.user_id %></td>
     <td><%= message.advisor_id %></td>
     <td><%= message.advicepost_id %></td>
+    <td><%= message.advicepost.categoryname %></td>
+    <td><%= message.advicepost.user.name %></td>
     <td><%= message.messageq %></td>
     <td><%= message.messager %></td>
 	<td><%= message.created_at %></td>
