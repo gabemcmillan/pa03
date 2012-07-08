@@ -19,13 +19,22 @@ Pa02::Application.routes.draw do
   resources :advicepost_prices
   devise_for :users
   resources :categories
-  resources :adviceposts
+  
   
   #route for adviceposts search view
   match 'adviceposts/search', to: "adviceposts#search", :as => :apsearch
   
   #congrats page for new advice listing
-  match 'adviceposts/apnew', to: "adviceposts#apnew", :as => :apnew
+  match 'adviceposts/:id/apnew', :controller => 'adviceposts', :action => 'apnew', :as => :apnew
+    
+  resources :adviceposts do
+    member do  
+      get 'apnew'
+    end
+  end
+  
+  
+
   
   resources :getadvices
   resources :giveadvices
@@ -38,7 +47,6 @@ Pa02::Application.routes.draw do
   match '/auth/:provider/callback' => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
   
-   
   
   
   # The priority is based upon order of creation:

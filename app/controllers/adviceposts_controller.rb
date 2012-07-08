@@ -43,7 +43,7 @@ class AdvicepostsController < ApplicationController
     @advicepost = Advicepost.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # apnew.html.erb
       format.json { render json: @advicepost }
     end
   end
