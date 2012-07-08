@@ -95,7 +95,7 @@ class AdvicepostsController < ApplicationController
     respond_to do |format|
 
       if @advicepost.save
-        format.html { redirect_to @advicepost, notice: 'Congratulations! Your new advice listing was successfully posted! You are advancing human knowledge sharing.' }
+        format.html { redirect_to apnew_path(@advicepost), notice: 'Congratulations! Your new advice listing was successfully posted! You are advancing human knowledge sharing.' }
         format.json { render json: @advicepost, status: :created, location: @advicepost }
       else
         format.html { render action: "new" }
