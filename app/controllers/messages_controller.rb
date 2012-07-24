@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
 
     #set user id attribute
     @message.user_id = current_user.id
+    @message.status = "N"
     
     @advicepost = Advicepost.find(params[:advicepost])
     @message.advicepost_id = @advicepost.id
@@ -48,6 +49,7 @@ class MessagesController < ApplicationController
   # GET /messages/1/messager
   def messager
     @message = Message.find(params[:id])
+    
   end
 
   # POST /messages
@@ -64,8 +66,16 @@ class MessagesController < ApplicationController
     
     respond_to do |format|
       if @message.save
+        #send email to advisor that advisee has written a new messge
+        
+        
+        #Send email that advisee has sent message to advisor
+        UserMailer.message_sent(current_user).deliver
+        
+        
         format.html { redirect_to getadvices_path, notice: 'Awesome! You have written your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
+        
       else
         format.html { render action: "new" }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -77,10 +87,19 @@ class MessagesController < ApplicationController
   # PUT /messages/1.json
   def update
     @message = Message.find(params[:id])
-
+        
+    
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        
+        #send if messager is not null
+        if @message.messager.blank?
+        else
+        #Send email that advisee has sent message to advisor
+        UserMailer.advisor_response(current_user).deliver
+        end
+        
+        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. You are a person of honor!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

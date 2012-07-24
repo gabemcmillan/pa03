@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707213104) do
+ActiveRecord::Schema.define(:version => 20120720011502) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(:version => 20120707213104) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "categoryname"
-    t.string   "miniresume"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "miniresume",   :limit => 2000
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "price"
   end
 
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20120707213104) do
     t.string   "messager"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "status"
   end
 
   create_table "users", :force => true do |t|

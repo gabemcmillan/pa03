@@ -29,8 +29,9 @@ class User < ActiveRecord::Base
       else 
         user.email = auth["info"]["email"] 
       end
-      #Send email
+      #Send email for signup confirmation
       UserMailer.signup_confirmation(user).deliver
+      
     end
   end  
     

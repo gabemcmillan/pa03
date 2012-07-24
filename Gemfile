@@ -23,6 +23,9 @@ gem 'thinking-sphinx', '2.0.10'
 gem 'activeadmin'
 
 
+#payments marketplace
+gem 'balanced'
+
 
 
 # Gems used only for assets and not required

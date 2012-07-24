@@ -24,10 +24,13 @@
   <div class="field">
     <%= f.hidden_field :advisor_id %>
   </div>
+  <div class="field">
+    <%= f.hidden_field :status %>
+  </div>
+
 
   <div class="field">
     <strong><%= f.label 'Message' %></strong>
-
     <span class="help-block">Enter your message to this advisor.  Ask any detailed questions you want them to answer or if you just want their opinion that is great also.</span>
     <%= f.text_area :messageq %>
   </div>
