@@ -9,7 +9,7 @@ class GetadvicesController < ApplicationController
     @adviceposts = Advicepost.all
 
     #limits to show only current users adviceposts! - works
-    @messages = current_user.messages
+    @messages = current_user.messages.page(params[:page]).per_page(4).order('created_at DESC')
 
 
     respond_to do |format|

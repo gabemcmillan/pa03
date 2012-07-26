@@ -1,6 +1,6 @@
 
 
-$linkColor: #0066FF;
+$linkColor: #32CD32;
 $linkColorHover: #0066FF;
 $textColor: #6E6E6E;
 
@@ -24,13 +24,10 @@ section {
 
 textarea {
   width: 700px;
-  height: 500px;
+  height: 300px;
 }
 
-textarea1 {
-  width: 600px;
-  height: 120px;
-}
+
 
 .center {
   text-align: center;
@@ -190,10 +187,51 @@ footer ul {
   float: right;
   list-style: none;
 }
-
 footer ul li {
   float: left;
   margin-left: 10px;
+}
+
+.pagination {
+  cursor: default;
+  height: 22px;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  .disabled {
+    display: none;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #32CD32;
+    color: white;
+    border: 1px solid #32CD32;
+  }
+  a {
+    text-decoration: none;
+    color: #32CD32;
+    border: 1px solid #32CD32;
+    &:hover, &:focus {
+      color: #0066ff;
+      border-color: #32CD32;
+    }
+  }
+  .page_info {
+    background: #32CD32;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #32CD32;
+      background: #32CD32 + 60;
+      padding: 0.1em 0.25em;
+    }
+  }
 }
 
 

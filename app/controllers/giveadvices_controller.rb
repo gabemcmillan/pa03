@@ -12,7 +12,7 @@ class GiveadvicesController < ApplicationController
     @adviceposts = current_user.adviceposts
     
     #limits to show only current users messages! - works
-    @messages = current_user.messages
+    @messages = current_user.messages.page(params[:page]).per_page(4).order('created_at DESC')
     
 
     

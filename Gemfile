@@ -26,6 +26,9 @@ gem 'activeadmin'
 #payments marketplace
 gem 'balanced'
 
+#pagination
+gem 'will_paginate', '> 3.0'
+
 
 
 # Gems used only for assets and not required

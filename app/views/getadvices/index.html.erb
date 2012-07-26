@@ -3,12 +3,10 @@
 			
 			
 <h1>Get Advice</h1>
-<p>
-<strong>Get Advice from Experts</strong><br />
-<h4>-Gain advice, expertise and inspiration from somebody who has been where you want to go</h4><br />
-<h4>-Learn from experts in your field of interest</h4><br />
-<h4>-Privately message advisors</h4><br />
-</p>
+
+
+
+
 
 
 
@@ -19,6 +17,14 @@
 <% if @messages.count >= 1 %>
 <%= render 'messages/advicemessages' %>
 <% else %>
+
+<p>
+<strong>Get Advice from Experts</strong><br />
+<h4>-Gain advice, expertise and inspiration from somebody who has been where you want to go</h4><br />
+<h4>-Learn from experts in your field of interest</h4><br />
+<h4>-Privately message advisors</h4><br />
+</p>
+
 <% end %>
 
 

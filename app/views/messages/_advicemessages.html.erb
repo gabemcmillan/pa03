@@ -1,26 +1,34 @@
 
 
-<h2>Your Advice Messages</h2>
+<h2>Advice Messages</h2>
+
+
+
+
+
+
 
 <table class="table table-striped">
+  	
   <tr>
-
     <th>Category Name</th>
 	<th>Advisor Name</th>
     <th>Created On</th>
-
   </tr>
 
 <% @messages.each do |message| %>
   <tr>
-
     <td><%= link_to message.advicepost.categoryname, message %></td>
     <td><%= message.advicepost.user.name %></td>
 	<td><%= message.created_at %></td>
-
   </tr>
 <% end %>
 </table>
+
+
+
+<%= will_paginate @messages %>
+
 
 
 <br />

@@ -7,7 +7,7 @@ class AdvicepostsController < ApplicationController
     #@adviceposts = Advicepost.all
 
     #thinking_sphinx 
-    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 20)
+    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10).page(params[:page]).per_page(2).order('created_at DESC')
     
     
     #limits to show only current users adviceposts! - works
@@ -25,7 +25,7 @@ class AdvicepostsController < ApplicationController
     #@adviceposts = Advicepost.all
 
     #thinking_sphinx 
-    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 20)
+    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10)
     
     #limits to show only current users adviceposts! - works
     #@adviceposts = current_user.adviceposts
