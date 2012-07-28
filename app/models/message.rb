@@ -4,6 +4,7 @@ class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :advicepost
   
+  belongs_to :advisor
   
   
   

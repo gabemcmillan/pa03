@@ -3,6 +3,12 @@ Pa02::Application.routes.draw do
   #Authentication Routes - 
   
   devise_for :advisors
+  
+  namespace :advisor do
+  root :to => "giveadvises#index"
+  end
+  
+  
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

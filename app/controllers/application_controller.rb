@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 
 
+  #redirects devise user to dashboard index path - need to redirect based on user or advisor
   def after_sign_in_path_for(resource)
     #current_user_path
     dashboard_index_path
@@ -12,6 +13,8 @@ class ApplicationController < ActionController::Base
   end
   
   
+
+
     
   
   

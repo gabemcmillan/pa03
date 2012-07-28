@@ -3,7 +3,7 @@ class Advisor < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -11,6 +11,11 @@ class Advisor < ActiveRecord::Base
   :firstname, :lastname, :address, :address2, :city, :state, :zip, :birthday, :gender, :username, 
   :phone, :cellphone
   # attr_accessible :title, :body
+  
+  
+  has_many :adviceposts, dependent: :destroy
+  
+  has_many :messages
   
   
   

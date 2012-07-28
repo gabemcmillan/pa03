@@ -2,6 +2,10 @@ class Advicepost < ActiveRecord::Base
   attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price
   
   belongs_to :user
+  
+  belongs_to :advisor
+  
+  
   belongs_to :category  
   belongs_to :advicepost_price
   has_many :messages

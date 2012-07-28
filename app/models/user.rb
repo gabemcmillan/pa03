@@ -8,13 +8,14 @@ class User < ActiveRecord::Base
   
     
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :name       
+  attr_accessible :email, :password, :password_confirmation, :name, :firstname, :lastname, :username, :zip       
 
   #for devise
-  validates_presence_of :email, :password
+  #validates_presence_of :email, :password
   
 
   has_many :adviceposts, dependent: :destroy
+  
   has_many :messages
   
   
