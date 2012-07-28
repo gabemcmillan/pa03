@@ -1,4 +1,7 @@
 class GetadvicesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index,:show]
+  
+  
   # GET /getadvices
   # GET /getadvices.json
   def index

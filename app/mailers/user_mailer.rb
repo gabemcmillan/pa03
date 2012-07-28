@@ -7,6 +7,8 @@ class UserMailer < ActionMailer::Base
   #   en.user_mailer.signup_confirmation.subject
   #
   
+  
+  
   #send when user registers
   def signup_confirmation(user)
     @user = user

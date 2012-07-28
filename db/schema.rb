@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720011502) do
+ActiveRecord::Schema.define(:version => 20120728035940) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,6 +63,39 @@ ActiveRecord::Schema.define(:version => 20120720011502) do
     t.integer  "price"
   end
 
+  create_table "advisors", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.date     "birthday"
+    t.string   "gender"
+    t.string   "username"
+    t.string   "phone"
+    t.string   "cellphone"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "advisors", ["email"], :name => "index_advisors_on_email", :unique => true
+  add_index "advisors", ["reset_password_token"], :name => "index_advisors_on_reset_password_token", :unique => true
+
   create_table "categories", :force => true do |t|
     t.string   "categoryname"
     t.string   "categorydesc"
@@ -78,17 +111,6 @@ ActiveRecord::Schema.define(:version => 20120720011502) do
   create_table "giveadvices", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "identities", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "gender"
-    t.string   "location"
-    t.string   "timezone"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
   end
 
   create_table "messages", :force => true do |t|

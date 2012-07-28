@@ -1,12 +1,22 @@
 Pa02::Application.routes.draw do
 
-
+  #Authentication Routes - 
+  
+  devise_for :advisors
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
+  namespace :user do
+  root :to => "dashboard#index"
+  end
+  
+  
+  #Pages routes - 
   root :to=> "home#index"
   get "home/index"
+  
   get "dashboard/index"
   
 
@@ -17,7 +27,6 @@ Pa02::Application.routes.draw do
   
   
   resources :advicepost_prices
-  devise_for :users
   resources :categories
   
   
@@ -38,14 +47,9 @@ Pa02::Application.routes.draw do
   
   resources :getadvices
   resources :giveadvices
-  resources :identities
-  resources :sessions
 
 
-  
-  #routes for authentication  
-  match '/auth/:provider/callback' => 'sessions#create'
-  match '/signout' => 'sessions#destroy', :as => :signout
+
   
   
   
