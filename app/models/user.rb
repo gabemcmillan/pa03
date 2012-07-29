@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
   #validates_presence_of :email, :password
   
 
-  has_many :adviceposts, dependent: :destroy
+  #has_many :adviceposts, dependent: :destroy
+  
+  
   
   has_many :messages
   

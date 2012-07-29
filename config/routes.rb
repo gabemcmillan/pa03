@@ -2,26 +2,31 @@ Pa02::Application.routes.draw do
 
   #Authentication Routes - 
   
-  devise_for :advisors
-  
-  namespace :advisor do
-  root :to => "giveadvises#index"
-  end
-  
-  
+  #Admin authentication
   ActiveAdmin.routes(self)
-
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  
+  
+  #Advisee authentication
 
-  namespace :user do
-  root :to => "dashboard#index"
+  devise_for :users do
+   get 'getadvices', :to => 'getadvices#index', :as => :user_root # Rails 3
   end
   
   
-  #Pages routes - 
+  #Advisor authentication
+  devise_for :advisors do
+   get 'giveadvices', :to => 'giveadvices#index', :as => :advisor_root # Rails 3
+  end
+  
+
+  
+    
+  
+  #Homepage routes - 
   root :to=> "home#index"
   get "home/index"
+  
   
   get "dashboard/index"
   

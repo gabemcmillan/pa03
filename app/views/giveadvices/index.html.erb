@@ -2,12 +2,8 @@
 <h1>Give Advice</h1>
 
 
-
-
-
-
 <% if @adviceposts.count >= 1 %>
-<%= link_to 'Create New Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
+
 <%= render 'adviceposts/advicepostsbyuser' %>
 <% else %>
 <p>
@@ -16,7 +12,7 @@
 <h4>-Privately message advisee's on a per message basis</h4> 	<br />
 <h4>-Share your knowledge to let others make better decisions</h4><br />
 </p>
-<%= link_to 'Create New Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
+<%= link_to 'Create an Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
 <% end %>
 
 
@@ -24,6 +20,7 @@
 <% if @messages.count >= 1 %>
 <%= render 'messages/adviseemessages' %>
 <% else %>
+
 <% end %>
 
 

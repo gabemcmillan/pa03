@@ -17,6 +17,8 @@
 	<div class="container-fluid">
     <div id="user_nav" class="hero-unit">
 	<%= render 'layouts/header' %>
+
+			
 			
 			<!-- Shows any notice messages -->
 			<% flash.each do |name, msg| %>
@@ -24,6 +26,16 @@
 			<%= msg  %>
 			</div>
   			<% end %>
+
+
+			<div id="user_nav">
+			  <% if user_signed_in? %>
+			    Signed in as <%= current_user.email %>
+			  <% else %>
+
+			  <% end %>
+			</div>
+			</br></br>
 
 
 			<%= yield %>

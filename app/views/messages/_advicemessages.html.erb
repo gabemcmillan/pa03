@@ -5,9 +5,6 @@
 
 
 
-
-
-
 <table class="table table-striped">
   	
   <tr>
@@ -19,7 +16,7 @@
 <% @messages.each do |message| %>
   <tr>
     <td><%= link_to message.advicepost.categoryname, message %></td>
-    <td><%= message.advicepost.user.name %></td>
+    <td><%= message.advicepost.advisor.firstname %></td>
 	<td><%= message.created_at %></td>
   </tr>
 <% end %>

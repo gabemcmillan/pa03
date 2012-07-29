@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index,:show]
-  
+
   
   
   # GET /messages
@@ -35,11 +34,9 @@ class MessagesController < ApplicationController
     #set user id attribute
     @message.user_id = current_user.id
     @message.status = "N"
-    
     @advicepost = Advicepost.find(params[:advicepost])
     @message.advicepost_id = @advicepost.id
-    @message.advisor_id = @advicepost.user_id
-    
+    @message.advisor_id = @advicepost.advisor_id
     
     respond_to do |format|
       format.html # new.html.erb
@@ -55,16 +52,17 @@ class MessagesController < ApplicationController
   # GET /messages/1/messager
   def messager
     @message = Message.find(params[:id])
-    
+    @message.status = "R"
   end
 
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+    #@message = Message.new(params[:message])
+    @message = current_user.messages.build(params[:message])
     
-    #pull in the user_id for the message
-    #@message = current_user.messages.build(params[:message])
+    #set advisor id attribute
+    #@message.advisor_id = current_advisor.id
     
     
     #example for adviceposts
@@ -78,8 +76,7 @@ class MessagesController < ApplicationController
         #Send email that advisee has sent message to advisor
         UserMailer.message_sent(current_user).deliver
         
-        
-        format.html { redirect_to getadvices_path, notice: 'Awesome! You have written your advisor! They should respond soon!' }
+        format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
         
       else
@@ -102,10 +99,10 @@ class MessagesController < ApplicationController
         if @message.messager.blank?
         else
         #Send email that advisee has sent message to advisor
-        UserMailer.advisor_response(current_user).deliver
+        UserMailer.advisor_response(current_advisor).deliver
         end
         
-        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. You are a person of honor!' }
+        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. They are on their way to a smarter path thanks to you!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

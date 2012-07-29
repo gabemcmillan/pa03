@@ -1,6 +1,5 @@
 class GetadvicesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index,:show]
-  
+
   
   # GET /getadvices
   # GET /getadvices.json
@@ -10,6 +9,7 @@ class GetadvicesController < ApplicationController
 
     #return all advicesposts after search 
     @adviceposts = Advicepost.all
+
 
     #limits to show only current users adviceposts! - works
     @messages = current_user.messages.page(params[:page]).per_page(4).order('created_at DESC')

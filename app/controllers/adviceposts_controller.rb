@@ -1,6 +1,5 @@
 class AdvicepostsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index,:show]
-  
+
   
   # GET /adviceposts
   # GET /adviceposts.json
@@ -8,11 +7,10 @@ class AdvicepostsController < ApplicationController
     #@adviceposts = Advicepost.all
 
     #thinking_sphinx 
-    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10).page(params[:page]).per_page(2).order('created_at DESC')
-    
-    
+    #@adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10).page(params[:page]).per_page(2).order('created_at DESC')
+        
     #limits to show only current users adviceposts! - works
-    #@adviceposts = current_user.adviceposts
+    @adviceposts = current_advisor.adviceposts
     
     respond_to do |format|
       format.html # index.html.erb
@@ -29,7 +27,7 @@ class AdvicepostsController < ApplicationController
     @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10)
     
     #limits to show only current users adviceposts! - works
-    #@adviceposts = current_user.adviceposts
+    #@adviceposts = current_advisor.adviceposts
     
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +40,7 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/apnew/1.json
   def apnew
     @advicepost = Advicepost.find(params[:id])
+
 
     respond_to do |format|
       format.html # apnew.html.erb
@@ -68,7 +67,7 @@ class AdvicepostsController < ApplicationController
     @advicepost = Advicepost.new
 
     #set user id attribute
-    @advicepost.user_id = current_user.id
+    @advicepost.advisor_id = current_advisor.id
     
 
     respond_to do |format|
@@ -86,9 +85,10 @@ class AdvicepostsController < ApplicationController
   # POST /adviceposts
   # POST /adviceposts.json
   def create
-
-
-    @advicepost = current_user.adviceposts.build(params[:advicepost])
+    @advicepost = Advicepost.new(params[:advicepost])
+    
+    #set advisor id attribute
+    @advicepost.advisor_id = current_advisor.id
     
     #save categoryname in the advicepost listing - worked!
     @advicepost.categoryname = @advicepost.category.categoryname
@@ -112,7 +112,7 @@ class AdvicepostsController < ApplicationController
 
     respond_to do |format|
       if @advicepost.update_attributes(params[:advicepost])
-        format.html { redirect_to @advicepost, notice: 'Advicepost was successfully updated.' }
+        format.html { redirect_to apnew_path(@advicepost), notice: 'Advicepost was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

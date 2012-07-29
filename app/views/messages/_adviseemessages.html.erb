@@ -16,7 +16,7 @@
   <tr>
 	<td><%= link_to 'Respond!', messager_path(message), class: "btn btn-success" %></td>
     <td><%= message.advicepost.categoryname %></td>
-    <td><%= message.advicepost.user.name %></td>
+    <td><%= message.advicepost.advisor.firstname %></td>
 	<td><%= message.created_at %></td>
 
   </tr>

@@ -1,5 +1,4 @@
 class GiveadvicesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index,:show]  
 
 
   # GET /giveadvices
@@ -9,11 +8,12 @@ class GiveadvicesController < ApplicationController
     #this will work - 051412
     #@adviceposts = Advicepost.all
 
-    #limits to show only current users adviceposts! - works
-    @adviceposts = current_user.adviceposts
+    #limits to show only current users adviceposts! - works - does it work if its null?  -it should return a nil 
+    @adviceposts = current_advisor.adviceposts
     
-    #limits to show only current users messages! - works
-    @messages = current_user.messages.page(params[:page]).per_page(4).order('created_at DESC')
+    
+    #limits to show only current users messages! - works - 
+    @messages = current_advisor.messages.page(params[:page]).per_page(4).order('created_at DESC')
     
 
     
