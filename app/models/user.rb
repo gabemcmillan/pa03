@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  after_create :send_welcome_email 
+
+
   
 
   # Include default devise modules. Others available are:
@@ -22,7 +25,12 @@ class User < ActiveRecord::Base
   
   
   
-    
+  private
+
+      def send_welcome_email
+        UserMailer.signup_confirmation(self).deliver
+      end
+  
 
 
   
