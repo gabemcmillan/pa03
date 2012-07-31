@@ -11,8 +11,8 @@
   <div class="field">
     <strong><%= f.label :category_id %></strong>
     <%= f.select :category_id, Category.all.collect {|category| [ category.categoryname,category.id ]}, :include_blank => 'Please select a category...' %>
-
   </div>
+
   <div class="field">
     <strong><%= f.label 'Mini-Resume' %></strong>
     <span class="help-block">(2000 character max.) Summarize your experience and accomplishments. Be specific. Show off. Add any relevant links as well.</span>
