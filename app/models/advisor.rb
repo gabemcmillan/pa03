@@ -18,6 +18,18 @@ class Advisor < ActiveRecord::Base
   has_many :messages
   
   
+  after_create :send_welcome_email_advisor 
+  
+  
+  
+  
+  private
+
+      def send_welcome_email_advisor
+        UserMailer.signup_confirmation_advisor(self).deliver
+      end
+      
+      
   
   
 end

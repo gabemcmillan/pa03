@@ -33,6 +33,9 @@ gem 'will_paginate', '> 3.0'
 #forms
 gem 'simple_form'
 
+#email testing
+gem "letter_opener", :group => :development
+
 
 
 # Gems used only for assets and not required

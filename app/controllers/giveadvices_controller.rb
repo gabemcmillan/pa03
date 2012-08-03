@@ -1,5 +1,8 @@
 class GiveadvicesController < ApplicationController
-
+  
+  #devise ensure user is logged in
+  before_filter :authenticate_advisor!
+  
 
   # GET /giveadvices
   # GET /giveadvices.json
