@@ -1,14 +1,13 @@
 class MessagesController < ApplicationController
-
   
   
   # GET /messages
   # GET /messages.json
   def index
     #@messages = Message.all
-    @messages = Message.order("created_at DESC").page(params[:page])
     
-    
+    @messages = Message.page(params[:page]).order("created_at DESC")
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @messages }
@@ -35,9 +34,13 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
     @message.status = "N"
     @advicepost = Advicepost.find(params[:advicepost])
+    
     @message.advicepost_id = @advicepost.id
     @message.advisor_id = @advicepost.advisor_id
+    @advisoremail = @advicepost.advisor.email
     
+    @advisor = Advisor.find(params[:advisor])
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -58,23 +61,16 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    #@message = Message.new(params[:message])
+
     @message = current_user.messages.build(params[:message])
-    
-    #set advisor id attribute
-    #@message.advisor_id = current_advisor.id
-    
-    
-    #example for adviceposts
-    #@advicepost = current_user.adviceposts.build(params[:advicepost])
     
     respond_to do |format|
       if @message.save
-        #send email to advisor that advisee has written a new messge
-        
-        
-        #Send email that advisee has sent message to advisor
-        UserMailer.message_sent(current_user).deliver
+         
+        #Send email to advisee they have sent a new message to advisor
+        UserMailer.new_message_sent_advisee(current_user).deliver
+        #Send email to advisor to notify they have a new Advisee message
+        UserMailer.new_message_sent_advisor(@advisor).deliver
         
         format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
@@ -90,7 +86,6 @@ class MessagesController < ApplicationController
   # PUT /messages/1.json
   def update
     @message = Message.find(params[:id])
-        
     
     respond_to do |format|
       if @message.update_attributes(params[:message])

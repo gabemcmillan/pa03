@@ -4,8 +4,7 @@ class Advicepost < ActiveRecord::Base
   
 
   belongs_to :advisor
-  
-  
+    
   belongs_to :category
     
   belongs_to :advicepost_price

@@ -11,24 +11,20 @@ class UserMailer < ActionMailer::Base
   #send when user registers
   def signup_confirmation(user)
     @user = user
-
     mail to: @user.email, subject: "PathAdvisor user registration"
   end
     
   #send to advisee when he has sent a new message to an advisor
-  def message_sent(user)
+  def new_message_sent_advisee(user)
     @user = user
-
-    mail to: @user.email, subject: "New message to your Advisor"
+    mail to: @user.email, subject: "New message sent to your Advisor"
   end
   
   #send to advisor when advisee sends message to advisor
   def advisee_message(user)
     @user = user
-
     mail to: @user.email, subject: "You have a new message from PathAdvisor"
   end
-  
 
 
 #Advisor Emails
@@ -36,27 +32,28 @@ class UserMailer < ActionMailer::Base
   #send when advisor registers
   def signup_confirmation_advisor(advisor)
     @advisor = advisor
-
     mail to: @advisor.email, subject: "PathAdvisor Advisor account new registration"
   end
 
-  #send to advisee when he has sent a new message to an advisor
-  def advisor_response(user)
-    @user = user
-
-    mail to: @user.email, subject: "New message from your advisor"
+  #send to advisor when he has sent a new message to an advisor
+  def new_message_sent_advisor(advisor)
+    @advisor = advisor
+    mail to: @advisor.email, subject: "You have received a new message from an Advisee"
+  end
+  
+  #send to advisor when he has responded to a new message to an advisor
+  def response_advisor(advisor)
+    @advisor = advisor
+    mail to: @advisor.email, subject: "New message from your advisor"
   end
   
   #send to advisor when he has not responded to advisee message after period of time
-  def message_reminder(user)
-    @user = user
-
-    mail to: @user.email, subject: "You haven't responded to your Advisee yet"
+  def message_reminder_advisor(advisor)
+    @advisor = advisor
+    mail to: @advisor.email, subject: "You haven't responded to your Advisee yet"
   end
 
-  
-  
-  
+
   
   
 end
