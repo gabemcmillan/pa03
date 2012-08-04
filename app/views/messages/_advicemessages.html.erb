@@ -1,8 +1,6 @@
 
 
-<h2>Messages</h2>
-
-
+<h2>Active Advice Messages</h2>
 
 
 <table class="table table-striped">
@@ -10,6 +8,7 @@
   <tr>
     <th>Category Name</th>
 	<th>Advisor Name</th>
+	<th>Status</th>
     <th>Created On</th>
   </tr>
 
@@ -17,15 +16,14 @@
   <tr>
     <td><%= link_to message.advicepost.categoryname, message %></td>
     <td><%= message.advicepost.advisor.firstname %></td>
+    <td><%= message.status %></td>
 	<td><%= message.created_at %></td>
   </tr>
 <% end %>
 </table>
 
 
-
 <%= will_paginate @messages %>
-
 
 
 <br />

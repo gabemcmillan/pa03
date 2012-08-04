@@ -93,6 +93,10 @@ class AdvicepostsController < ApplicationController
     #save categoryname in the advicepost listing - worked!
     @advicepost.categoryname = @advicepost.category.categoryname
     
+    #Send email to advisee they have sent a new message to advisor
+    UserMailer.new_advicepost_advisor(current_advisor).deliver
+    
+    
     respond_to do |format|
 
       if @advicepost.save

@@ -8,15 +8,20 @@ class GetadvicesController < ApplicationController
   def index
     @getadvices = Getadvice.all
 
-
     #return all advicesposts after search 
     @adviceposts = Advicepost.all
 
-
     #limits to show only current users adviceposts! - works
     #@messages = current_user.messages.page(params[:page]).per_page(10).order('created_at DESC')
-    @messages = current_user.messages.page(params[:page]).order('created_at DESC')
     
+    #active advice messages
+    @messages = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ?", 'New')
+    #past advice messages
+    @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ?", 'Responded',  'Cancelled')
+        
+    #example -show past messages with current user where status is Responded or Cancelled
+    #@messagesp = current_advisor.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ?", 'Responded',  'Cancelled')
+        
 
     respond_to do |format|
       format.html # index.html.erb

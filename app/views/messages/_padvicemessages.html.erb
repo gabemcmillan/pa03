@@ -1,38 +1,30 @@
 
 
-<h2>Active Advice Messages</h2>
+<h2>Past Advice Messages</h2>
+
 
 <table class="table table-striped">
+  	
   <tr>
-	<th></th>
-    <th>Category</th>
-	<th>Advisee Name</th>
+    <th>Category Name</th>
+	<th>Advisor Name</th>
 	<th>Status</th>
     <th>Created On</th>
-    <th></th>
-
   </tr>
 
-<% @messages.each do |message| %>
+<% @messagesp.each do |message| %>
   <tr>
-	<td><%= link_to 'Respond!', messager_path(message), class: "btn btn-success" %></td>
-    <td><%= message.advicepost.categoryname %></td>
+    <td><%= link_to message.advicepost.categoryname, message %></td>
     <td><%= message.advicepost.advisor.firstname %></td>
     <td><%= message.status %></td>
 	<td><%= message.created_at %></td>
-
   </tr>
 <% end %>
 </table>
 
 
-
 <%= will_paginate @messages %>
 
 
-
 <br />
-
-
-
 

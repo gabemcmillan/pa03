@@ -1,6 +1,6 @@
 
 
-<h2>Active Advice Messages</h2>
+<h2>Past Advice Messages</h2>
 
 <table class="table table-striped">
   <tr>
@@ -13,9 +13,9 @@
 
   </tr>
 
-<% @messages.each do |message| %>
+<% @messagesp.each do |message| %>
   <tr>
-	<td><%= link_to 'Respond!', messager_path(message), class: "btn btn-success" %></td>
+    <td><%= link_to message.advicepost.categoryname, message %></td>
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.firstname %></td>
     <td><%= message.status %></td>

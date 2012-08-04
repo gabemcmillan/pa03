@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     
     @messages = Message.page(params[:page]).order("created_at DESC")
 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @messages }
@@ -32,14 +33,14 @@ class MessagesController < ApplicationController
 
     #set user id attribute
     @message.user_id = current_user.id
-    @message.status = "N"
+    @message.status = "New"
     @advicepost = Advicepost.find(params[:advicepost])
     
     @message.advicepost_id = @advicepost.id
     @message.advisor_id = @advicepost.advisor_id
     @advisoremail = @advicepost.advisor.email
     
-    @advisor = Advisor.find(params[:advisor])
+    #@advisor = Advisor.find(params[:advisor])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,9 +56,16 @@ class MessagesController < ApplicationController
   # GET /messages/1/messager
   def messager
     @message = Message.find(params[:id])
-    @message.status = "R"
+    @message.status = "Responded"
+    
   end
 
+  # GET /messages/1/messager
+  def messagec
+    @message = Message.find(params[:id])
+    @message.status = "Cancelled"
+  end
+  
   # POST /messages
   # POST /messages.json
   def create
@@ -70,7 +78,7 @@ class MessagesController < ApplicationController
         #Send email to advisee they have sent a new message to advisor
         UserMailer.new_message_sent_advisee(current_user).deliver
         #Send email to advisor to notify they have a new Advisee message
-        UserMailer.new_message_sent_advisor(@advisor).deliver
+        #UserMailer.new_message_sent_advisor(@advisor).deliver
         
         format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
@@ -93,8 +101,11 @@ class MessagesController < ApplicationController
         #send if messager is not null
         if @message.messager.blank?
         else
-        #Send email that advisee has sent message to advisor
-        UserMailer.advisor_response(current_advisor).deliver
+        #Send email to advisor they have responded
+        UserMailer.response_advisor(current_advisor).deliver
+        #Send email to advisee their advisor has responded
+        
+        
         end
         
         format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. They are on their way to a smarter path thanks to you!' }

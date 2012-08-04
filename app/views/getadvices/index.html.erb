@@ -10,7 +10,9 @@
 
 
 <% if @messages.count >= 1 %>
+
 <%= render 'messages/advicemessages' %>
+
 
 <% else %>
 
@@ -24,4 +26,8 @@
 <% end %>
 
 
+<% if @messagesp.count >= 1 %>
 
+<%= render 'messages/padvicemessages' %>
+
+<% end %>

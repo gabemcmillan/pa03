@@ -41,10 +41,10 @@ class UserMailer < ActionMailer::Base
     mail to: @advisor.email, subject: "You have received a new message from an Advisee"
   end
   
-  #send to advisor when he has responded to a new message to an advisor
+  #send to advisor when he has responded to a new message from an advisee
   def response_advisor(advisor)
     @advisor = advisor
-    mail to: @advisor.email, subject: "New message from your advisor"
+    mail to: @advisor.email, subject: "You have responded to your advisee's message"
   end
   
   #send to advisor when he has not responded to advisee message after period of time
@@ -53,6 +53,19 @@ class UserMailer < ActionMailer::Base
     mail to: @advisor.email, subject: "You haven't responded to your Advisee yet"
   end
 
+  #send to advisor when he has not responded to advisee message after period of time
+  def new_advicepost_advisor(advisor)
+    @advisor = advisor
+    mail to: @advisor.email, subject: "New advice listing submitted"
+  end
+  
+  #send to advisor when he has not responded to advisee message after period of time
+  def new_advicepost_accepted_advisor(advisor)
+    @advisor = advisor
+    mail to: @advisor.email, subject: "New advice listing accepted"
+  end
+  
+  
 
   
   
