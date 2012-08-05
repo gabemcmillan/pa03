@@ -43,7 +43,7 @@ end
 
 #tasks to execute every 1 day 
 every 2.minutes do
-  rake "ts:reindex"
+
   
 end
 
