@@ -21,10 +21,24 @@
 
   <div class="field">
     <strong><%= f.label :price %></strong> 
-	<span class="help-block">This is the price per response from someone seeking your advice.  You must respond within 48 hours of a connection.</span>
+	<span class="help-block">This is the price per response from someone seeking your advice.</span>
 <%= f.select :price, AdvicepostPrice.all.collect {|advicepost_price| [ advicepost_price.pricelabel,advicepost_price.price ]}, :include_blank => 'Please select a price…' %>
   </div>
 
+  <div class="field">
+	<strong><%= f.label "Website" %></strong>
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+	<strong><%= f.label "Twitter" %></strong>
+    <%= f.text_field :twitter %>
+  </div>
+
+  <div class="field">
+	<strong><%= f.label "LinkedIn" %></strong>
+    <%= f.text_field :linkedin %>
+  </div>
 
   <br />
 

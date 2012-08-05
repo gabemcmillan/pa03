@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
         getadvices_path
   	elsif current_advisor
         giveadvices_path    
-    else 
+    elsif current_admin_user
+        admin_dashboard_path
   	end
   end
   

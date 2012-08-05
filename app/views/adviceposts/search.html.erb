@@ -1,13 +1,12 @@
 
 
+
+<% if @adviceposts.count >= 1 %>
+
 <h1>Advice Listing Results</h1><br />
-
-
-
 
 <table class="table table-striped">
   <tr>
-	
     <th></th>
     <th>Category Name</th>
     <th>Advisor Name</th>  
@@ -15,23 +14,30 @@
     <th>Price</th>
     <th></th>
     <th></th>
-
   </tr>
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
-
     <td><%= link_to 'View Details', advicepost, :class => 'btn', class: "btn btn-success" %></td>
     <td><%= advicepost.category.categoryname %></td>  
 	<td><%= advicepost.advisor.firstname %></td>  
     <td><%= advicepost.miniresume %></td>
     <td>$<%= advicepost.price %></td>
-  
   </tr>
 <% end %>
 </table>
-
 <br /></br></br>
 
 <%= link_to 'Back', getadvices_path, :class => 'btn' %>
 
+
+<% else %>
+
+
+Sorry no listings for this search.  Please try another search.<br /><br />
+
+<%= link_to 'Back', getadvices_path, :class => 'btn' %>
+
+
+
+<% end %>

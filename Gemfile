@@ -36,6 +36,8 @@ gem 'simple_form'
 #email testing
 gem "letter_opener", :group => :development
 
+#scheduling - cron jobs
+gem 'whenever', require: false
 
 
 # Gems used only for assets and not required

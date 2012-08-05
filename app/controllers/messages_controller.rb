@@ -40,11 +40,35 @@ class MessagesController < ApplicationController
     @message.advisor_id = @advicepost.advisor_id
     @advisoremail = @advicepost.advisor.email
     
-    #@advisor = Advisor.find(params[:advisor])
+    @advisor = Advisor.find(:first,:conditions=>["id = ?", @advicepost.advisor_id])
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
+    end
+  end
+  
+  # POST /messages
+  # POST /messages.json
+  def create
+
+    @message = current_user.messages.build(params[:message])
+    
+    respond_to do |format|
+      if @message.save
+         
+        #Send email to advisee they have sent a new message to advisor
+        UserMailer.new_message_sent_advisee(current_user).deliver
+        #Send email to advisor to notify they have a new Advisee message
+        #UserMailer.new_message_sent_advisor(@advisor)
+        
+        format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
+        format.json { render json: @message, status: :created, location: @message }
+        
+      else
+        format.html { render action: "new" }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -66,30 +90,6 @@ class MessagesController < ApplicationController
     @message.status = "Cancelled"
   end
   
-  # POST /messages
-  # POST /messages.json
-  def create
-
-    @message = current_user.messages.build(params[:message])
-    
-    respond_to do |format|
-      if @message.save
-         
-        #Send email to advisee they have sent a new message to advisor
-        UserMailer.new_message_sent_advisee(current_user).deliver
-        #Send email to advisor to notify they have a new Advisee message
-        #UserMailer.new_message_sent_advisor(@advisor).deliver
-        
-        format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
-        format.json { render json: @message, status: :created, location: @message }
-        
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PUT /messages/1
   # PUT /messages/1.json
   def update
