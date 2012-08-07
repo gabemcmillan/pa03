@@ -32,7 +32,7 @@ Pa02::Application.configure do
   :enable_starttls_auto => true  }
   
   #specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'http://serene-bayou-1827.herokuapp.com' }
   
   
   # Defaults to Rails.root.join("public/assets")

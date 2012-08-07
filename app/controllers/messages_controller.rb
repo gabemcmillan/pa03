@@ -38,10 +38,10 @@ class MessagesController < ApplicationController
     
     @message.advicepost_id = @advicepost.id
     @message.advisor_id = @advicepost.advisor_id
-    @advisoremail = @advicepost.advisor.email
     
-    @advisor = Advisor.find(:first,:conditions=>["id = ?", @advicepost.advisor_id])
-
+    @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
+    
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -53,14 +53,15 @@ class MessagesController < ApplicationController
   def create
 
     @message = current_user.messages.build(params[:message])
-    
+    @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
+  
     respond_to do |format|
       if @message.save
          
         #Send email to advisee they have sent a new message to advisor
         UserMailer.new_message_sent_advisee(current_user).deliver
         #Send email to advisor to notify they have a new Advisee message
-        #UserMailer.new_message_sent_advisor(@advisor)
+        UserMailer.new_message_sent_advisor(@advisor).deliver
         
         format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
