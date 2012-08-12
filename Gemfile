@@ -8,6 +8,12 @@ gem 'rails', '3.2.3'
 #database
 gem 'mysql2'
 
+group :production do
+  gem 'pg'
+end
+
+
+
 gem 'nifty-generators'
 
 
