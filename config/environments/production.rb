@@ -21,6 +21,10 @@ Pa02::Application.configure do
   config.assets.digest = true
 
 
+  #Email settings - 
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
@@ -33,6 +37,8 @@ Pa02::Application.configure do
   
   #specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { :host => 'http://serene-bayou-1827.herokuapp.com' }
+  
+  config.action_mailer.delivery_method = :letter_opener
   
   
   # Defaults to Rails.root.join("public/assets")
