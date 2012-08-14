@@ -20,10 +20,11 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "New message sent to your Advisor"
   end
   
-  #send to advisor when advisee sends message to advisor
-  def advisee_message(user)
+  #send to advisee when advisor responds to message
+  def response_sent_advisee(user, message)
     @user = user
-    mail to: @user.email, subject: "You have a new message from PathAdvisor"
+    @message = message
+    mail to: @user.email, subject: "New response message from your Advisor"
   end
 
 
@@ -36,18 +37,13 @@ class UserMailer < ActionMailer::Base
   end
 
   #send to advisor when he has sent a new message to an advisor
-  def new_message_sent_advisor(advisor)
+  def new_message_sent_advisor(advisor, message)
     @advisor = advisor
-    mail to: @advisor.email, subject: "You have received a new message from an Advisee"
+    @message = message
+    mail to: @advisor.email, subject: "You have a new message from an Advisee"
   end
   
-  #send to advisor when he has sent a new message to an advisor
-  def message_sent_advisor(advisor)
-    @advisor = advisor
-         mail to: @advisor.email, subject: "You have received a new message from an Advisee"
-  end
-  
-  #send to advisor when he has responded to a new message from an advisee
+  #send to advisor when he has responded to a message from an advisee
   def response_advisor(advisor)
     @advisor = advisor
     mail to: @advisor.email, subject: "You have responded to your advisee's message"

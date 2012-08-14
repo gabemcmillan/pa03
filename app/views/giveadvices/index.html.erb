@@ -18,12 +18,16 @@
 
 
 
-<% if @messages.count >= 1 %>
+<% if @messages.blank? %>
 <%= render 'messages/adviseemessages' %>
+
 
 <%= render 'messages/padviseemessages' %>
 
+
 <% else %>
+
+
 
 <% end %>
 

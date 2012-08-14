@@ -19,7 +19,7 @@ Pa02::Application.routes.draw do
    get 'giveadvices', :to => 'giveadvices#index', :as => :advisor_root # Rails 3
   end
   
-
+   
   
     
   

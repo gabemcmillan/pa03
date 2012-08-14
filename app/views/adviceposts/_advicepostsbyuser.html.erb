@@ -10,7 +10,6 @@
     <th>Price</th>
     <th>View</th>
     <th>Edit</th>
-    <th>Remove</th>
   </tr>
 
 <% @adviceposts.each do |advicepost| %>
@@ -20,7 +19,6 @@
     <td>$<%= advicepost.price %></td>
     <td><%= link_to 'View Your Listing', apnew_path(advicepost) %></td>
     <td><%= link_to 'Edit', edit_advicepost_path(advicepost) %></td>
-    <td><%= link_to 'Remove Listing', advicepost, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -9,12 +9,7 @@
 
 
 
-<% if @messages.count >= 1 %>
-
-<%= render 'messages/advicemessages' %>
-
-
-<% else %>
+<% if @messages.blank? %>
 
 <p>
 <strong>Get Advice from Experts</strong><br />
@@ -23,11 +18,13 @@
 <h4>-Privately message advisors</h4><br />
 </p>
 
+<% else %>
+<%= render 'messages/advicemessages' %>
 <% end %>
 
 
-<% if @messagesp.count >= 1 %>
+<% if @messagesp.blank? %>
 
-<%= render 'messages/padvicemessages' %>
-
+<% else %>
+	<%= render 'messages/padvicemessages' %>
 <% end %>

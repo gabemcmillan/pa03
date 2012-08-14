@@ -9,7 +9,7 @@ class Advicepost < ActiveRecord::Base
     
   belongs_to :advicepost_price
   
-  has_many :messages
+  has_many :messages, :dependent => :destroy
 
   
   

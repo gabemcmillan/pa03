@@ -15,19 +15,7 @@ Pa02::Application.configure do
   config.whiny_nils = true
 
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  :domain               => 'gmail.com',
-  :user_name            => 'gabemcmillan',
-  :password             => '53Gorest',
-  :authentication       => 'plain',
-  :enable_starttls_auto => true  }
-  
-  #specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  
+
   
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
