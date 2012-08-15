@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   
   #devise ensure user is logged in
   before_filter :authenticate_advisor!, only: :messager
+  before_filter :authenticate_user!, only: :showadvisee
   
   
   # GET /messages
