@@ -4,7 +4,7 @@
 
 <table class="table table-striped">
   <tr>
-	<th></th>
+	<th>View</th>
     <th>Category</th>
 	<th>Advisee Name</th>
 	<th>Status</th>
@@ -15,7 +15,7 @@
 
 <% @messagesp.each do |message| %>
   <tr>
-    <td><%= link_to message.advicepost.categoryname, message %></td>
+    <td><%= link_to "View", message %></td>
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.firstname %></td>
     <td><%= message.status %></td>

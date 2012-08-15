@@ -1,37 +1,40 @@
 
 <h1>Give Advice</h1>
 
-
-<% if @adviceposts.count >= 1 %>
-
-<%= render 'adviceposts/advicepostsbyuser' %>
-
-<% else %>
 <p>
 <strong>Are you an Expert in something? Give Advice!</strong><br />
 <h4>-Make money by sharing your expertise and advice privately with others<h4><br />
 <h4>-Privately message advisee's on a per message basis</h4> 	<br />
 <h4>-Share your knowledge to let others make better decisions</h4><br />
 </p>
+
+<% if @adviceposts.count >= 1 %>
+
+<%= render 'adviceposts/advicepostsbyuser' %>
+
+<% else %>
+
 <%= link_to 'Create an Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
 <% end %>
 
 
 
 <% if @messages.blank? %>
-<%= render 'messages/adviseemessages' %>
-
-
-<%= render 'messages/padviseemessages' %>
-
+   
+<h2>Active Advice Messages</h2>
+<strong>Currently no active messages.</strong><br /><br /><br />
 
 <% else %>
-
-
-
+     <%= render 'messages/adviseemessages' %>
 <% end %>
 
 
+
+<% if @messagesp.blank? %>
+   
+<% else %>
+     <%= render 'messages/padviseemessages' %>
+<% end %>
 
 
 

@@ -8,16 +8,15 @@
     <th>Category</th>
     <th>Mini-Resume</th>
     <th>Price</th>
-    <th>View</th>
     <th>Edit</th>
   </tr>
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
   	<td><%= link_to advicepost.category.categoryname, advicepost %></td>
-    <td><%= advicepost.miniresume %></td>
+    <td><%= truncate(advicepost.miniresume,:length=>100,:omission=>"...") %></td>
     <td>$<%= advicepost.price %></td>
-    <td><%= link_to 'View Your Listing', apnew_path(advicepost) %></td>
+
     <td><%= link_to 'Edit', edit_advicepost_path(advicepost) %></td>
   </tr>
 <% end %>

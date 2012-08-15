@@ -6,6 +6,7 @@
 <table class="table table-striped">
   	
   <tr>
+	<th>View</th>
     <th>Category Name</th>
 	<th>Advisor Name</th>
 	<th>Status</th>
@@ -14,7 +15,8 @@
 
 <% @messagesp.each do |message| %>
   <tr>
-    <td><%= link_to message.advicepost.categoryname, message %></td>
+	<td><%= link_to "View", showadvisee_path(message) %></td>
+    <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.firstname %></td>
     <td><%= message.status %></td>
 	<td><%= message.created_at %></td>

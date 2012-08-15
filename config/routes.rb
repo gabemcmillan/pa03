@@ -19,9 +19,7 @@ Pa02::Application.routes.draw do
    get 'giveadvices', :to => 'giveadvices#index', :as => :advisor_root # Rails 3
   end
   
-   
-  
-    
+      
   
   #Homepage routes - 
   root :to=> "home#index"
@@ -35,6 +33,10 @@ Pa02::Application.routes.draw do
   
   #new route for message response form
   match 'messages/:id/messager', to: 'messages#messager', :as => :messager
+  
+  #new route for show advisee message 
+  match 'messages/:id/showadvisee', to: 'messages#showadvisee', :as => :showadvisee
+  
   
   
   resources :advicepost_prices

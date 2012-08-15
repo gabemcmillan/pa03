@@ -4,6 +4,12 @@
 			
 <h1>Get Advice</h1>
 
+<p>
+<strong>Get Advice from Experts</strong><br />
+<h4>-Gain advice, expertise and inspiration from somebody who has been where you want to go</h4><br />
+<h4>-Learn from experts in your field of interest</h4><br />
+<h4>-Privately message advisors</h4><br />
+</p>
 
 <%= render 'adviceposts/advicepostssearch' %>
 
@@ -11,12 +17,8 @@
 
 <% if @messages.blank? %>
 
-<p>
-<strong>Get Advice from Experts</strong><br />
-<h4>-Gain advice, expertise and inspiration from somebody who has been where you want to go</h4><br />
-<h4>-Learn from experts in your field of interest</h4><br />
-<h4>-Privately message advisors</h4><br />
-</p>
+<h2>Active Advice Messages</h2>
+<strong>Currently no active messages</strong><br /><br /><br />
 
 <% else %>
 <%= render 'messages/advicemessages' %>

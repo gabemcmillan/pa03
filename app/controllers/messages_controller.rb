@@ -29,6 +29,17 @@ class MessagesController < ApplicationController
     end
   end
 
+  # GET /messages/1
+  # GET /messages/1.json
+  def showadvisee
+    @message = Message.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @message }
+    end
+  end
+  
   # GET /messages/new
   # GET /messages/new.json
   def new

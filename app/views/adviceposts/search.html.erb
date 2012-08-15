@@ -3,11 +3,10 @@
 
 <% if @adviceposts.count >= 1 %>
 
-<h1>Advice Listing Results</h1><br />
+<h1>Advice Listing Search Results</h1><br />
 
 <table class="table table-striped">
   <tr>
-    <th></th>
     <th>Category Name</th>
     <th>Advisor Name</th>  
     <th>Miniresume</th>
@@ -18,10 +17,9 @@
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
-    <td><%= link_to 'View Details', advicepost, :class => 'btn', class: "btn btn-success" %></td>
-    <td><%= advicepost.category.categoryname %></td>  
+    <td><%= link_to advicepost.category.categoryname, advicepost %></td>  
 	<td><%= advicepost.advisor.firstname %></td>  
-    <td><%= advicepost.miniresume %></td>
+    <td><%= truncate(advicepost.miniresume,:length=>230,:omission=>"...") %></td>
     <td>$<%= advicepost.price %></td>
   </tr>
 <% end %>

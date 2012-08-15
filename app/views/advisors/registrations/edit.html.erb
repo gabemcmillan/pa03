@@ -11,7 +11,7 @@
 	<%= f.input :city, :required => true, :autofocus => true %>
 	<%= f.input :state, :required => true, :autofocus => true %>
 	<%= f.input :zip, :required => true, :autofocus => true %>
-	<%= f.input :birthday, :required => true, :autofocus => true, :as => :date, :start_year => Date.today.year - 90, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
+	<%= f.input :birthday, :required => true, :autofocus => true, :as => :date, :start_year => Date.today.year - 75, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
 	<%= f.input :gender, :required => false, :autofocus => true, collection: ['Male', 'Female'] %>	
 	
 	
