@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
+  FIELDS = [:first_name, :last_name, :phone, :credit_cards, :custom_fields]
+  
+  
   after_create :send_welcome_email 
-
 
   
 
@@ -11,18 +13,38 @@ class User < ActiveRecord::Base
   
     
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :name, :firstname, :lastname, :username, :zip       
+  attr_accessor *FIELDS
+  attr_accessible :email, :password, :password_confirmation, :name, :first_name, :last_name, :username, :zip, :braintree_customer_id       
 
   #for devise
   #validates_presence_of :email, :password
-  
 
   after_create :send_welcome_email 
-
-  
   
   has_many :messages
+
+
+  def has_payment_info?
+    !!braintree_customer_id
+  end
+
+  def with_braintree_data!
+    return self unless has_payment_info?
+    braintree_data = Braintree::Customer.find(braintree_customer_id)
+
+    FIELDS.each do |field|
+      send(:"#{field}=", braintree_data.send(field))
+    end
+    self
+  end
+
+  def default_credit_card
+    return unless has_payment_info?
+
+    credit_cards.find { |cc| cc.default? }
+  end
   
+    
   
   
   private

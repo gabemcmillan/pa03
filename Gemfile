@@ -9,7 +9,8 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 
 
-
+#credit card payments
+gem 'braintree'
 
 
 gem 'nifty-generators'

@@ -4,8 +4,8 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-	<%= f.input :firstname, :required => true, :autofocus => true, label: "First Name" %>
-	<%= f.input :lastname, :required => true, :autofocus => true, label: "Last Name" %>
+	<%= f.input :first_name, :required => true, :autofocus => true, label: "First Name" %>
+	<%= f.input :last_name, :required => true, :autofocus => true, label: "Last Name" %>
 
 	<%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :zip, :required => true, :autofocus => true %>
@@ -13,6 +13,9 @@
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
   </div>
+
+
+
 
   <div class="actions">
 	<%= link_to 'Back', :back, :class => 'btn' %>

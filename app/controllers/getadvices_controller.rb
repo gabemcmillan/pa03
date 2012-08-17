@@ -19,7 +19,13 @@ class GetadvicesController < ApplicationController
     #past advice messages
     @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ?", 'Responded',  'Cancelled')
         
-    
+    if current_user && current_user.has_payment_info?
+      current_user.with_braintree_data!
+      @transactions = Braintree::Transaction.search do |search|
+        search.customer_id.is current_user.braintree_customer_id
+      end
+    end
+    @products = Product.all
     
 
     respond_to do |format|

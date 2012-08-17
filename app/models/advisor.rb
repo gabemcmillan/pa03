@@ -8,7 +8,7 @@ class Advisor < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :firstname, :lastname, :address, :address2, :city, :state, :zip, :birthday, :gender, :username, 
+  :first_name, :last_name, :address, :address2, :city, :state, :zip, :birthday, :gender, :username, 
   :phone, :cellphone
   # attr_accessible :title, :body
   

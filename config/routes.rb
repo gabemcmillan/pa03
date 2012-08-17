@@ -6,28 +6,34 @@ Pa02::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   
-  
   #Advisee authentication
-
   devise_for :users do
    get 'getadvices', :to => 'getadvices#index', :as => :user_root # Rails 3
   end
-  
   
   #Advisor authentication
   devise_for :advisors do
    get 'giveadvices', :to => 'giveadvices#index', :as => :advisor_root # Rails 3
   end
   
-      
-  
   #Homepage routes - 
   root :to=> "home#index"
   get "home/index"
-  
+
   
   get "dashboard/index"
   
+  
+  #braintree credit card payments for user devise
+  resources :customer, :only => [:new, :edit]
+  resources :credit_card_info, :only => [:edit]
+  match 'customer/confirm' => 'customer#confirm', :as => :confirm_customer
+  match 'credit_card_info/confirm' => 'credit_card_info#confirm', :as => :confirm_credit_card_info
+  match 'transactions/:product_id/new' => 'transactions#new', :as => :new_transaction
+  match 'transactions/confirm/:product_id' => 'transactions#confirm', :as => :confirm_transaction
+  
+  get "welcome/index"
+    
 
   resources :messages
   

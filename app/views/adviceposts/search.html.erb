@@ -18,7 +18,7 @@
 <% @adviceposts.each do |advicepost| %>
   <tr>
     <td><%= link_to advicepost.category.categoryname, advicepost %></td>  
-	<td><%= advicepost.advisor.firstname %></td>  
+	<td><%= advicepost.advisor.first_name %></td>  
     <td><%= truncate(advicepost.miniresume,:length=>230,:omission=>"...") %></td>
     <td>$<%= advicepost.price %></td>
   </tr>
