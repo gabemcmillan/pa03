@@ -10,14 +10,14 @@ class Advisor < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
   :first_name, :last_name, :address, :address2, :city, :state, :zip, :birthday, :gender, :username, 
   :phone, :cellphone
-  # attr_accessible :title, :body
+
   
   
   has_many :adviceposts, dependent: :destroy
   
   has_many :messages
   
-  
+    
   after_create :send_welcome_email_advisor 
   
   

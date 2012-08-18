@@ -8,12 +8,15 @@ class UserMailer < ActionMailer::Base
   # 
 
 #Advisee Emails
-  #send when user registers
-  def signup_confirmation(user)
+
+  #send when user signs up
+  def signup_confirmation_advisee(user)
     @user = user
-    mail to: @user.email, subject: "PathAdvisor user registration"
+    mail to: @user.email, subject: "PathAdvisor Advisee new registration"
   end
     
+  
+  
   #send to advisee when he has sent a new message to an advisor
   def new_message_sent_advisee(user)
     @user = user
