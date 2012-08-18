@@ -20,6 +20,7 @@
       <dd><%= f.text_field :cvv %></dd>
     </dl>
   <% end %>
+<%= link_to 'Cancel', getadvices_path, class: "btn" %>
   <%= hidden_field_tag :tr_data, @tr_data %>
-  <%= f.submit 'Save Payment Info' %>
+  <%= f.submit 'Save Payment Info', class: "btn btn-success" %>
 <% end %>

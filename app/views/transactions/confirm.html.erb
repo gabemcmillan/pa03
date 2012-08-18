@@ -7,4 +7,10 @@
   <dd>$<%= @result.transaction.amount %></dd>
   <dt>Credit Card Charged</dt>
   <dd><%= @result.transaction.credit_card_details.masked_number %></dd>
+
 </dl>
+
+
+<%= link_to 'Message This Advisor!', new_message_path(:advicepost => @advicepost.id), :class => 'btn', class: "btn btn-success"  %>
+
+

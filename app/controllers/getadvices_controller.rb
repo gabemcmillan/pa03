@@ -20,19 +20,52 @@ class GetadvicesController < ApplicationController
     @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ?", 'Responded',  'Cancelled')
         
     if current_user && current_user.has_payment_info?
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @getadvices }
+      end
+    elsif
+      redirect_to new_customer_path
+    end
+    
+    @products = Product.all
+    
+
+
+    
+  end
+
+  # GET /payments/1
+  # GET /payments/1.json
+  def payments
+     @getadvices = Getadvice.all
+
+      #return all advicesposts after search 
+      @adviceposts = Advicepost.all
+
+      #limits to show only current users adviceposts! - works
+      #@messages = current_user.messages.page(params[:page]).per_page(10).order('created_at DESC')
+
+      #active advice messages
+      @messages = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ?", 'New')
+      #past advice messages
+      @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ?", 'Responded',  'Cancelled')
+
+    if current_user && current_user.has_payment_info?
       current_user.with_braintree_data!
       @transactions = Braintree::Transaction.search do |search|
         search.customer_id.is current_user.braintree_customer_id
       end
     end
+    
     @products = Product.all
     
-
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @getadvices }
+      format.html # show.html.erb
+      format.json { render json: @getadvice }
     end
   end
+  
 
   # GET /getadvices/1
   # GET /getadvices/1.json

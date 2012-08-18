@@ -41,7 +41,6 @@ class AdvicepostsController < ApplicationController
   def apnew
     @advicepost = Advicepost.find(params[:id])
 
-
     respond_to do |format|
       format.html # apnew.html.erb
       format.json { render json: @advicepost }
@@ -53,6 +52,8 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/1.json
   def show
     @advicepost = Advicepost.find(params[:id])
+
+    @products = Product.all
 
     respond_to do |format|
       format.html # show.html.erb

@@ -12,12 +12,7 @@
       :errors => @result && @result.errors.for(:customer) do |f| %>
   <%= field_set_tag "Customer" do %>
     <dl>
-      <dt><%= f.label :first_name, 'First Name' %></dt>
-      <dd><%= f.text_field :first_name %></dd>
-      <dt><%= f.label :last_name, 'Last Name' %></dt>
-      <dd><%= f.text_field :last_name %></dd>
-      <dt><%= f.label :phone, 'Phone' %></dt>
-      <dd><%= f.text_field :phone %></dd>
+
     </dl>
   <% end %>
   <% if @credit_card %>

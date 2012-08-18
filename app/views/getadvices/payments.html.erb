@@ -1,0 +1,37 @@
+
+
+
+
+
+
+<dl>
+<h1>Payment Details</h1>	<br /><br />
+	<span class="help-block">You must have an active credit card on file to send messages to advisors.</span>
+  <% if current_user.has_payment_info? -%>
+     
+      <dt>Credit Card</dt>
+      <dd><%= current_user.credit_cards.first.masked_number%></dd>
+      <dt><%= link_to "Edit Your Payment Info", edit_customer_path(current_user.id) %></dt>
+  <% else -%>
+    <dt><%= link_to "Setup Your Payment Info", new_customer_path  %></dt>
+  <% end %>
+    <dt>Last Logged In</dt>
+    <dd><%= current_user.last_sign_in_at %></dd>
+</dl>
+
+
+<% if @transactions %>
+  <h1>Paid Messages</h1>
+  <table id="transactions">
+    <%= @transactions.each do |t| -%>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.amount %></td>
+        <td><%= t.status.capitalize %></td>
+      </tr>
+    <% end -%>
+  </table>
+<% end %>
+
+
+
