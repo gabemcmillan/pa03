@@ -21,39 +21,49 @@
 
 set :output, "#{path}/log/cron.log"
 
+development:
+    every :reboot do
+      development:
+       script/delayed_job start
+       rake "ts:start"
+       rake "ts:index"
+      production:
+       script/delayed_job start
+       heroku run rake fs:start
+       heroku run rake fs:index
+         
+    end
 
-every :reboot do
-  rake "ts:start"
-  rake "ts:index"
-  development:
-   rake jobs:work
-  production:
-   script/delayed_job start
-   
-end
+    #tasks to execute every 1 hour
+    every 1.hours do 
+      development:
+        rake "ts:reindex"
+      production:
+        heroku run rake fs:reindex
+    end
 
-#tasks to execute every 1 hour
-every 1.hours do 
-  rake "ts:reindex"
+    #tasks to execute every 1 day 
+    every 1.day, :at => '10:30 pm' do
+      development:
 
-end
+      production:
+      
+    end
+
+    #tasks to execute every 1 day 
+    every 2.minutes do
+      development:
+
+      production:
+      
+    end
+
+    every :sunday, at: "4:28 AM" do
+      development:
+
+      production:
+      
+    end
 
 
-#tasks to execute every 1 day 
-every 1.day, :at => '10:30 pm' do
-
-  
-end
-
-
-#tasks to execute every 1 day 
-every 2.minutes do
-
-  
-end
-
-
-every :sunday, at: "4:28 AM" do
-
-end
 
