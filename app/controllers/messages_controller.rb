@@ -66,7 +66,6 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-
     @message = current_user.messages.build(params[:message])
     @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
     
@@ -74,9 +73,9 @@ class MessagesController < ApplicationController
       if @message.save
          
         #Send email to advisee they have sent a new message to advisor
-        UserMailer.new_message_sent_advisee(current_user).deliver
+        UserMailer.delay(queue: "email_new_message").new_message_sent_advisee(current_user)
         #Send email to advisor to notify they have a new Advisee message
-        UserMailer.new_message_sent_advisor(@advisor, @message).deliver
+        UserMailer.delay(queue: "email_new_message").new_message_sent_advisor(@advisor, @message)
         
         format.html { redirect_to getadvices_path, notice: 'Your message has been sent to your advisor! They should respond soon!' }
         format.json { render json: @message, status: :created, location: @message }
@@ -119,9 +118,9 @@ class MessagesController < ApplicationController
         if @message.messager.blank?
         else
         #Send email to advisor they have responded
-        UserMailer.response_advisor(current_advisor).deliver
+        UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
         #Send email to advisee their advisor has responded
-        UserMailer.response_sent_advisee(@user, @message).deliver
+        UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
         
         end
         

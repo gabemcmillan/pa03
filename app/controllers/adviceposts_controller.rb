@@ -87,17 +87,14 @@ class AdvicepostsController < ApplicationController
   # POST /adviceposts.json
   def create
     @advicepost = Advicepost.new(params[:advicepost])
-    
     #set advisor id attribute
     @advicepost.advisor_id = current_advisor.id
-    
     #save categoryname in the advicepost listing - worked!
     @advicepost.categoryname = @advicepost.category.categoryname
     
     #Send email to advisee they have sent a new message to advisor
-    UserMailer.new_advicepost_advisor(current_advisor).deliver
-    
-    
+    UserMailer.delay(queue: "email_new_advicepost").new_advicepost_advisor(current_advisor)
+  
     respond_to do |format|
 
       if @advicepost.save

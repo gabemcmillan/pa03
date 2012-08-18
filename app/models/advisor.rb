@@ -26,7 +26,7 @@ class Advisor < ActiveRecord::Base
   private
 
       def send_welcome_email_advisor
-        UserMailer.signup_confirmation_advisor(self).deliver
+        UserMailer.delay(queue: "email_registration").signup_confirmation_advisor(self)
       end
       
       

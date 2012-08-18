@@ -47,7 +47,7 @@ class UserMailer < ActionMailer::Base
   end
   
   #send to advisor when he has responded to a message from an advisee
-  def response_advisor(advisor)
+  def response_sent_advisor(advisor)
     @advisor = advisor
     mail to: @advisor.email, subject: "You have responded to your advisee's message"
   end
