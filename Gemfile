@@ -9,11 +9,9 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 
 
+
 #credit card payments
 gem 'braintree'
-
-
-gem 'nifty-generators'
 
 
 #authentication
@@ -34,12 +32,19 @@ gem 'will_paginate', '> 3.0'
 
 #forms
 gem 'simple_form'
+gem 'nifty-generators'
+
 
 #email testing
 gem "letter_opener", :group => :development
 
 #scheduling - cron jobs
 gem 'whenever', require: false
+
+#background processes
+gem 'daemons'
+gem 'delayed_job_active_record'
+
 
 
 # Gems used only for assets and not required

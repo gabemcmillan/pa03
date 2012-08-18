@@ -30,6 +30,7 @@ Pa02::Application.configure do
   #specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
+  #enable email to open in browser windows instead of sending it.
   config.action_mailer.delivery_method = :letter_opener
   
   

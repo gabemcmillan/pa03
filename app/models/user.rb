@@ -49,9 +49,9 @@ class User < ActiveRecord::Base
   
   private
 
-      def send_welcome_email
-        UserMailer.signup_confirmation(self).deliver
-      end
+  def send_welcome_email
+    UserMailer.delay.signup_confirmation(self).deliver
+  end
   
 
 

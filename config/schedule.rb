@@ -25,6 +25,11 @@ set :output, "#{path}/log/cron.log"
 every :reboot do
   rake "ts:start"
   rake "ts:index"
+  development:
+   rake jobs:work
+  production:
+   script/delayed_job start
+   
 end
 
 #tasks to execute every 1 hour
