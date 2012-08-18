@@ -110,7 +110,7 @@ class MessagesController < ApplicationController
   # PUT /messages/1.json
   def update
     @message = Message.find(params[:id])
-    @user = Advisor.find(:first, :conditions => { :id => @message.user_id})
+    @user = User.find(:first, :conditions => { :id => @message.user_id})
     
     respond_to do |format|
       if @message.update_attributes(params[:message])
