@@ -17,6 +17,9 @@
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+
+	<%= f.input :paypal_email, :required => true, :hint => "Currently we only allow Advisor payments through PayPal." %>
+
   </div>
 
   <div class="form-actions">
