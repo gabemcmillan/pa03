@@ -11,6 +11,8 @@
 </dl>
 
 
-<%= link_to 'Message This Advisor!', new_message_path(:advicepost => @advicepost.id), :class => 'btn', class: "btn btn-success"  %>
+<%= link_to 'Message This Advisor!', new_message_path(:advicepost => @advicepost.id, :transaction_id => @result.transaction.id), :class => 'btn', class: "btn btn-success"  %>
+
+
 
 

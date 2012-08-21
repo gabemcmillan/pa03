@@ -13,7 +13,7 @@
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
-  	<td><%= link_to advicepost.category.categoryname, advicepost %></td>
+  	<td><%= link_to advicepost.category.try(:categoryname), advicepost %></td>
     <td><%= truncate(advicepost.miniresume,:length=>100,:omission=>"...") %></td>
     <td>$<%= advicepost.price %></td>
 

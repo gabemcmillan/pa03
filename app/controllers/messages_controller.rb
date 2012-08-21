@@ -13,6 +13,8 @@ class MessagesController < ApplicationController
     @messages = Message.page(params[:page]).order("created_at DESC")
 
 
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @messages }
@@ -45,7 +47,10 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
-
+    
+    #braintree transaction_id 
+    @message.transaction_id = params[:transaction_id]
+    
     #set user id attribute
     @message.user_id = current_user.id
     @message.status = "New"
@@ -92,6 +97,12 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
   
+  # GET /messages/1/messageq
+  def messageq
+    @message = Message.find(params[:id])
+  end
+
+  
   # GET /messages/1/messager
   def messager
     @message = Message.find(params[:id])
@@ -99,7 +110,7 @@ class MessagesController < ApplicationController
     
   end
 
-  # GET /messages/1/messager
+  # GET /messages/1/messagec
   def messagec
     @message = Message.find(params[:id])
     @message.status = "Cancelled"
@@ -117,11 +128,20 @@ class MessagesController < ApplicationController
         #send if messager is not null
         if @message.messager.blank?
         else
-        #Send email to advisor they have responded
-        UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
-        #Send email to advisee their advisor has responded
-        UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
+        #Braintree Submit for settlement - should charge advisee price they payed for message since Advisor responded.  
+        result = Braintree::Transaction.submit_for_settlement(@message.transaction_id)
         
+        if result.success?
+          # transaction successfully submitted for settlement
+            #Send email to advisor they have responded
+            UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
+            #Send email to advisee their advisor has responded
+            UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
+        else
+          p result.errors
+        end
+        
+                
         end
         
         format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. They are on their way to a smarter path thanks to you!' }

@@ -8,11 +8,12 @@ class TransactionsController < ApplicationController
       @credit_card = current_user.default_credit_card
       @advicepost = Advicepost.find(params[:advicepost_id])
       @tr_data = Braintree::TransparentRedirect.transaction_data(:redirect_url => confirm_transaction_url(:advicepost_id => @advicepost.id),
-                                                                 :transaction => {
-                                                                   :amount => @advicepost.price,
-                                                                   :type => "sale",
-                                                                   :customer_id => current_user.braintree_customer_id
-                                                                  })
+                                                                      :transaction => {
+                                                                        :amount => @advicepost.price,
+                                                                        :type => "sale",
+                                                                        :customer_id => current_user.braintree_customer_id
+                                                                       })
+                                                                       
     else
       redirect_to new_customer_path
     end
@@ -25,6 +26,8 @@ class TransactionsController < ApplicationController
     
     if @result.success?
       render :confirm
+      
+      
     else
       @advicepost = Advicepost.find(params[:advicepost_id])
       current_user.with_braintree_data!

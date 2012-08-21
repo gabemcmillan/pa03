@@ -1,3 +1,7 @@
+
+
+
+
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -26,7 +30,9 @@
   <div class="field">
     <%= f.hidden_field :status %>
   </div>
-
+	<div class="field">
+    <%= f.hidden_field :transaction_id %>
+  </div>
 
   <div class="field">
     <strong><%= f.label 'Message' %></strong>
@@ -34,13 +40,22 @@
     <%= f.text_area :messageq %>
   </div>
 
-
   <div class="actions">
-	<%= link_to 'Back', :back, :class => 'btn' %>
-    <%= f.submit 'Send Your Message!', :class => 'btn btn-success' %>
 
+    <%= f.submit 'Send Your Message!', :class => 'btn btn-success' %>
   </div>
 
 
 
+
+
+
 <% end %>
+
+
+
+
+
+
+
+

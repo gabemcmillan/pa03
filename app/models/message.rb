@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
-  attr_accessible :advicepost_id, :advisor_id, :messageq, :messager, :thread, :user_id, :status
+  attr_accessible :advicepost_id, :advisor_id, :messageq, :messager, :thread, :user_id, :status, :transaction_id
+  
   
   belongs_to :user
   

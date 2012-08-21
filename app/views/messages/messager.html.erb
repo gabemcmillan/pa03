@@ -25,16 +25,20 @@
   <div class="field">
     <%= f.hidden_field :status %>
   </div>
+	<div class="field">
+    <%= f.hidden_field :transaction_id %>
+  </div>
 
 <p>
-  <b>Advisee Message:</b><br />
+  <b>Advisee's Message:</b><br />
   <%= @message.messageq %>
 </p>
 
 <br />
 
 <p>
-<b>Your Response</b><br />
+<b>Please write your response message. </b>
+	    <span class="help-block">Enter your message to this advisee.  Please answer their questions fully to the best of your ability.</span> 
 
   <div class="field">
     <%= f.text_area :messager %>
@@ -43,9 +47,16 @@
 
 
   <div class="actions">
+    <%= link_to 'Back', giveadvices_path, :class => 'btn' %>
     <%= f.submit 'Send Response!', :class => 'btn btn-primary' %>
-	<%= link_to 'Cancel', giveadvices_path, :class => 'btn' %>
 	
   </div>
 
 <% end %>
+
+
+
+
+<%= debug @message %>
+
+
