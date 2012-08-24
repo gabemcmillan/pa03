@@ -1,0 +1,13 @@
+
+
+<p>Hi <%= @advisor.first_name %>, </p>
+
+<p>This is just a friendly reminder you have only one day left to respond to your advisee.  Once you have responded you will be credited with a payment for the response.  If the message isn't responded to within 3 days it is cancelled and you don't get paid for it.</p>
+
+
+<p><%= link_to 'Respond to their message here', messager_url(@message.id) %></p><br />
+
+
+
+<p>Team PathAdvisor</p>
+

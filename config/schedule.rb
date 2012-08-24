@@ -21,7 +21,7 @@
 
 set :output, "#{path}/log/cron.log"
 
-development:
+
     every :reboot do
       development:
        script/delayed_job start
@@ -38,8 +38,10 @@ development:
     every 1.hours do 
       development:
         rake "ts:reindex"
+        rails runner "Message.cancel"
       production:
         heroku run rake fs:reindex
+        rails runner "Message.cancel"
     end
 
     #tasks to execute every 1 day 
@@ -50,7 +52,7 @@ development:
       
     end
 
-    #tasks to execute every 1 day 
+    #tasks to execute every 2 minutes
     every 2.minutes do
       development:
 

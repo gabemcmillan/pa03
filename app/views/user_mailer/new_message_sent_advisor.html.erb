@@ -2,12 +2,15 @@
 
 <p>Hi <%= @advisor.first_name %>, </p>
 
-<p>You have a new message from an advisee!  You have seven days to respond.  Once you have responded you will be credited with a payment for the response.  </p>
+<p>You have a new message from an advisee!  You have three days to respond so the advisee will get a response in a timely manner.  Once you have responded you will be credited with a payment for the response.  </p>
 
 
 <p><%= link_to 'Respond to their message here', messager_url(@message.id) %></p><br />
 
 
-<p>Sincerely, <br />Team PathAdvisor</p>
+
+
+<p>Team PathAdvisor</p>
+
 
 

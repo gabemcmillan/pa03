@@ -70,8 +70,18 @@ class UserMailer < ActionMailer::Base
     mail to: @advisor.email, subject: "New advice listing accepted"
   end
   
+  #send to advisor when he has sent a new message to an advisor
+  def reminder_message_advisor(advisor, message)
+    @advisor = advisor
+    @message = message
+    mail to: @advisor.email, subject: "You have a new message from an Advisee"
+  end
   
-
+  def canceled_message_advisor(advisor, message)
+    @advisor = advisor
+    @message = message
+    mail to: @advisor.email, subject: "Advice message canceled."
+  end  
   
   
 end

@@ -5,15 +5,15 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!, only: :showadvisee
   
   
+  
+
+  
   # GET /messages
   # GET /messages.json
   def index
     #@messages = Message.all
     
     @messages = Message.page(params[:page]).order("created_at DESC")
-
-
-
 
     respond_to do |format|
       format.html # index.html.erb
@@ -55,12 +55,9 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
     @message.status = "New"
     @advicepost = Advicepost.find(params[:advicepost])
-    
     @message.advicepost_id = @advicepost.id
     @message.advisor_id = @advicepost.advisor_id
-    
     @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
-    
     
     respond_to do |format|
       format.html # new.html.erb
