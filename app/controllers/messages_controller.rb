@@ -127,9 +127,9 @@ class MessagesController < ApplicationController
         
         if result.success?
           # transaction successfully submitted for settlement
-            #Send email to advisor they have responded
+            #Send email to advisor they have responded - not working somehow
             UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
-            #Send email to advisee their advisor has responded
+            #Send email to advisee their advisor has responded - works
             UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
         else
           p result.errors
