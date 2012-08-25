@@ -11,6 +11,7 @@
 	<th>Advisor Name</th>
 	<th>Status</th>
     <th>Created On</th>
+    <th>Message Advisor Again</th>
   </tr>
 
 <% @messagesp.each do |message| %>
@@ -20,6 +21,7 @@
     <td><%= message.advicepost.advisor.first_name %></td>
     <td><%= message.status %></td>
 	<td><%= message.created_at %></td>
+	<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
   </tr>
 <% end %>
 </table>

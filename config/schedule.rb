@@ -25,8 +25,7 @@ set :output, "#{path}/log/cron.log"
       when 'development'
         every :reboot do
            command "script/delayed_job start"
-           rake "ts:start"
-           rake "ts:index"
+           rake "ts:rebuild"
         end
         #tasks to execute every 1 hour
         every 1.hours do 
@@ -37,8 +36,7 @@ set :output, "#{path}/log/cron.log"
       when 'production'
         every :reboot do
            command "script/delayed_job start"
-           rake "ts:start"
-           rake "ts:index"
+           rake "ts:rebuild"
         end
         #tasks to execute every 1 hour
         every 1.hours do 

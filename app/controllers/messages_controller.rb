@@ -5,9 +5,7 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!, only: :showadvisee
   
   
-  
-
-  
+    
   # GET /messages
   # GET /messages.json
   def index
@@ -121,7 +119,6 @@ class MessagesController < ApplicationController
     
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        
         #send if messager is not null
         if @message.messager.blank?
         else
@@ -137,9 +134,7 @@ class MessagesController < ApplicationController
         else
           p result.errors
         end
-        
-                
-        end
+      end
         
         format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. They are on their way to a smarter path thanks to you!' }
         format.json { head :no_content }

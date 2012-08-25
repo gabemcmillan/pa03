@@ -31,7 +31,7 @@ Pa02::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
   #enable email to open in browser windows instead of sending it.
-  config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.delivery_method = :letter_opener
   
   
   # Print deprecation notices to the Rails logger

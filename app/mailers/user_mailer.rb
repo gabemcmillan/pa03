@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@pathadvisor.com"
+  default from: "notifications@pathadvisor.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -7,15 +7,13 @@ class UserMailer < ActionMailer::Base
   #   en.user_mailer.signup_confirmation.subject
   # 
 
-#Advisee Emails
+
 
   #send when user signs up
   def signup_confirmation_advisee(user)
     @user = user
     mail to: @user.email, subject: "PathAdvisor Advisee new registration"
   end
-    
-  
   
   #send to advisee when he has sent a new message to an advisor
   def new_message_sent_advisee(user)
@@ -30,8 +28,12 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "New response message from your Advisor"
   end
 
-
-#Advisor Emails
+  #send to advisor when he has responded to a message from an advisee
+  def response_sent_advisor(advisor)
+    @advisor = advisor
+    mail to: @advisor.email, subject: "You have responded to your advisee's message"
+  end
+  
 
   #send when advisor registers
   def signup_confirmation_advisor(advisor)
@@ -46,12 +48,7 @@ class UserMailer < ActionMailer::Base
     mail to: @advisor.email, subject: "You have a new message from an Advisee"
   end
   
-  #send to advisor when he has responded to a message from an advisee
-  def response_sent_advisor(advisor)
-    @advisor = advisor
-    mail to: @advisor.email, subject: "You have responded to your advisee's message"
-  end
-  
+    
   #send to advisor when he has not responded to advisee message after period of time
   def message_reminder_advisor(advisor)
     @advisor = advisor
