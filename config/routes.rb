@@ -1,5 +1,7 @@
 Pa02::Application.routes.draw do
 
+  get "ratings/index"
+
   #Authentication Routes - 
   
   #Admin authentication
@@ -41,6 +43,8 @@ Pa02::Application.routes.draw do
     
 
   resources :messages
+  resources :ratings
+  
   
   #new route for message response form
   match 'messages/:id/messager', to: 'messages#messager', :as => :messager

@@ -1,7 +1,5 @@
 
 
-
-
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -44,10 +42,6 @@
 
     <%= f.submit 'Send Your Message!', :class => 'btn btn-success' %>
   </div>
-
-
-
-
 
 
 <% end %>
