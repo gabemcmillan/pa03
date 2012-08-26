@@ -84,7 +84,10 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/1/rating
   def rating
    @advicepost = Advicepost.find(params[:id])
+   #do logic if the upvote or downvote 
+   @advicepost.score = @advicepost.score + 5
    @message = Message.find(params[:m_id])
+   @message.status = "Rated"
    
    respond_to do |format|
      format.html # rating.html.erb
@@ -99,10 +102,11 @@ class AdvicepostsController < ApplicationController
         
     respond_to do |format|
         if current_user
-          @message = Message.find(params['16'])
+          #@message = Message.find(params[:m_id])
           if @advicepost.update_attributes(params[:advicepost])
-            @message.status = "Rated"
-            @message.update_attributes(params[:message])
+            
+            #@message.status = "Rated"
+            #@message.update_attributes(params[:message])
             format.html { redirect_to getadvices_path, notice: 'Thanks for rating your advisors message!' }
             format.json { head :no_content }
           else

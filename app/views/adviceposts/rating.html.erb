@@ -3,33 +3,44 @@
 <h1>Rate Advisor's Message</h1><br />
 
 
+<h2>Rate Advisor's Message</h2><br />
+
 
 <%= form_for(@advicepost) do |f| %>
-
   	
   <div class="field">
     <%= f.hidden_field :advisor_id %>
   </div>
-
-
 
   <div class="field">
 	<strong><%= f.label "Score" %></strong>
     <%= f.text_field :score %>
   </div>
 
-<h2>Rate Advisor's Message</h2><br />
 
+
+
+<h2>Message field</h2>
+
+<%= f.fields_for :messages, @message do |builder| %>
+	<fieldset>
+		<%= builder.label :status, "Status" %>
+		<%= builder.text_field :status %>
+	<fieldset>
+<% end %>
+
+	
 
   <br />
   <div class="actions">
 	<%= link_to 'Back', :back, :class => 'btn' %>
     <%= f.submit 'Rate!', :class => 'btn', class: "btn btn-success" %>
-
   </div>
-  
+ 
 <% end %>
 
+
+<br /><br />
 <%= debug @advicepost %>
 <%= debug @message %>
 

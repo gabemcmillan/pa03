@@ -37,7 +37,7 @@ module Pa02
     config.assets.initialize_on_precompile = false
     
     #Set global amount of links per page
-    WillPaginate.per_page = 5
+    WillPaginate.per_page = 20
     
 
     # Configure the default encoding used in templates for Ruby 1.9.
