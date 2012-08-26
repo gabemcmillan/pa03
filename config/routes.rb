@@ -51,8 +51,7 @@ Pa02::Application.routes.draw do
   
   #new route for show advisee message 
   match 'messages/:id/showadvisee', to: 'messages#showadvisee', :as => :showadvisee
-  
-  
+    
   
   resources :advicepost_prices
   resources :categories
@@ -63,6 +62,9 @@ Pa02::Application.routes.draw do
   
   #congrats page for new advice listing
   match 'adviceposts/:id/apnew', :controller => 'adviceposts', :action => 'apnew', :as => :apnew
+  #ratings page for advisor message after adviceposts 
+  match 'adviceposts/:id/rating', to: 'adviceposts#rating', :as => :rating
+  
     
   resources :adviceposts do
     member do  
@@ -70,9 +72,7 @@ Pa02::Application.routes.draw do
     end
   end
   
-  
-
-  
+    
   resources :getadvices
   resources :giveadvices
 

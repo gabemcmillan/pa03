@@ -1,5 +1,5 @@
 class Advicepost < ActiveRecord::Base
-  attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price, :advisor_id, :website, :twitter, :linkedin
+  attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price, :advisor_id, :website, :twitter, :linkedin, :score
   
   
   belongs_to :advisor

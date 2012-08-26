@@ -25,5 +25,7 @@
 
 <%= link_to 'Continue', getadvices_path, class: "btn btn-success" %>
 
+<td><%= link_to "Rate this Message!", rating_path(@message.advicepost.id,:m_id=>@message.id), :class => 'btn', class: "btn btn-success" %></td>
+
 
 

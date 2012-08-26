@@ -24,7 +24,7 @@ class AdvicepostsController < ApplicationController
     #@adviceposts = Advicepost.all
 
     #thinking_sphinx 
-    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10)
+    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 15)
     
     #limits to show only current users adviceposts! - works
     #@adviceposts = current_advisor.adviceposts
@@ -69,7 +69,6 @@ class AdvicepostsController < ApplicationController
 
     #set user id attribute
     @advicepost.advisor_id = current_advisor.id
-    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -79,8 +78,47 @@ class AdvicepostsController < ApplicationController
 
   # GET /adviceposts/1/edit
   def edit
+    @advicepost = Advicepost.find(params[:id])    
+  end
+  
+  # GET /adviceposts/1/rating
+  def rating
+   @advicepost = Advicepost.find(params[:id])
+   @message = Message.find(params[:m_id])
+   
+   respond_to do |format|
+     format.html # rating.html.erb
+     format.json { render json: @advicepost }
+   end
+  end
+
+  # PUT /adviceposts/1
+  # PUT /adviceposts/1.json
+  def update
     @advicepost = Advicepost.find(params[:id])
-    
+        
+    respond_to do |format|
+        if current_user
+          @message = Message.find(params['16'])
+          if @advicepost.update_attributes(params[:advicepost])
+            @message.status = "Rated"
+            @message.update_attributes(params[:message])
+            format.html { redirect_to getadvices_path, notice: 'Thanks for rating your advisors message!' }
+            format.json { head :no_content }
+          else
+              format.html { redirect_to getadvices_path }
+              format.json { render json: @advicepost.errors, status: :unprocessable_entity }
+          end
+        elsif current_advisor
+          if @advicepost.update_attributes(params[:advicepost])
+            format.html { redirect_to apnew_path(@advicepost), notice: 'Advice Listing was successfully updated.' }
+            format.json { head :no_content }
+          else
+              format.html { render action: "edit" }
+              format.json { render json: @advicepost.errors, status: :unprocessable_entity }
+          end
+        end
+    end
   end
 
   # POST /adviceposts
@@ -107,21 +145,7 @@ class AdvicepostsController < ApplicationController
     end
   end
 
-  # PUT /adviceposts/1
-  # PUT /adviceposts/1.json
-  def update
-    @advicepost = Advicepost.find(params[:id])
 
-    respond_to do |format|
-      if @advicepost.update_attributes(params[:advicepost])
-        format.html { redirect_to apnew_path(@advicepost), notice: 'Advicepost was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @advicepost.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /adviceposts/1
   # DELETE /adviceposts/1.json

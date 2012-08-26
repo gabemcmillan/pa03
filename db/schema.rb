@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120825193757) do
+ActiveRecord::Schema.define(:version => 20120825234417) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20120825193757) do
     t.string   "twitter"
     t.string   "linkedin"
     t.string   "status"
+    t.integer  "score"
   end
 
   create_table "advisors", :force => true do |t|
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20120825193757) do
     t.string   "headline"
     t.string   "payment_option"
     t.string   "paypal_email"
+    t.integer  "score"
   end
 
   add_index "advisors", ["email"], :name => "index_advisors_on_email", :unique => true
