@@ -19,7 +19,12 @@
 	<td><%= link_to "View", showadvisee_path(message) %></td>
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.first_name %></td>
-    <td><%= message.status %></td>
+    <% if message.status != "Rated" %>
+	<td><%= link_to "Rate this Message!", rating_path(message.advicepost.id,:m_id=>message.id), :class => 'btn', class: "btn btn-success"  %></td>
+	<% else %>
+		<td><%= message.status %></td>
+	<% end %>
+	
 	<td><%= message.created_at %></td>
 	<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
   </tr>

@@ -13,19 +13,20 @@
   </div>
 
   <div class="field">
-	<strong><%= f.label "Score" %></strong>
-    <%= f.text_field :score %>
+    <%= f.hidden_field :score %>
   </div>
 
+<div class="field">
+<%= radio_button_tag(:score_select, "Up") %>
+<%= label_tag(:score_select, "Good, I'm satisfied.") %>
+<%= radio_button_tag(:score_select, "Down")%>
+<%= label_tag(:score_select, "Bad, I'm unsatisfied.")%>
+</div>
 
-
-
-<h2>Message field</h2>
 
 <%= f.fields_for :messages, @message do |builder| %>
 	<fieldset>
-		<%= builder.label :status, "Status" %>
-		<%= builder.text_field :status %>
+		<%= builder.hidden_field :status %>
 	<fieldset>
 <% end %>
 

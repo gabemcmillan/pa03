@@ -27,9 +27,7 @@ class GetadvicesController < ApplicationController
     elsif
       redirect_to new_customer_path
     end
-    
     @products = Product.all
-    
   end
 
 
