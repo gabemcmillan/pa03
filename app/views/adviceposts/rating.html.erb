@@ -17,10 +17,9 @@
   </div>
 
 <div class="field">
-<%= radio_button_tag(:score_select, "Up") %>
-<%= label_tag(:score_select, "Good, I'm satisfied.") %>
-<%= radio_button_tag(:score_select, "Down")%>
-<%= label_tag(:score_select, "Bad, I'm unsatisfied.")%>
+    <%= f.label Rating %><br />
+    <%= f.radio_button(:rating_select, 1) %>Good<br />
+    <%= f.radio_button(:rating_select, 2) %>Not Good<br />
 </div>
 
 

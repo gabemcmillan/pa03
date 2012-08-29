@@ -84,10 +84,10 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/1/rating
   def rating
    @advicepost = Advicepost.find(params[:id])
-
+   #@advicepost.rating_select = "none"
    
    @message = Message.find(params[:m_id])
-   @message.status = "Rated"
+   #@message.status = "Rated"
    
    respond_to do |format|
      format.html # rating.html.erb
@@ -99,16 +99,20 @@ class AdvicepostsController < ApplicationController
   # PUT /adviceposts/1.json
   def update
     @advicepost = Advicepost.find(params[:id])
-        
+    
+    @rating_select = @advicepost.rating_select
+
+    
     respond_to do |format|
         if current_user
-          @score_select = params[:score_select]
+          
           #do logic if the upvote or downvote, do if,else if thumbs up or thumbs down value is selected. 
-          if @score_select == "Up"
-           @advicepost.score = @advicepost.score + 5
-          else 
+          if @rating_select.eql? '1'
+            @advicepost.score += 5
+          elsif @rating_select.eql? '2'
             @advicepost.score -= 5
           end
+          
           #@message = Message.find(params[:m_id])
           if @advicepost.update_attributes(params[:advicepost])
 
