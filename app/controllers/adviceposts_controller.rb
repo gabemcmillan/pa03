@@ -87,7 +87,11 @@ class AdvicepostsController < ApplicationController
    #@advicepost.rating_select = "none"
    
    @message = Message.find(params[:m_id])
-   #@message.status = "Rated"
+   @message.status = "Rated"
+   
+   @rating = Rating.find(:first, :conditions => {:advicepost_id=> @advicepost.id})
+   @rating.rating_select = ""
+
    
    respond_to do |format|
      format.html # rating.html.erb
@@ -100,18 +104,12 @@ class AdvicepostsController < ApplicationController
   def update
     @advicepost = Advicepost.find(params[:id])
     
-    @rating_select = @advicepost.rating_select
+
 
     
     respond_to do |format|
         if current_user
           
-          #do logic if the upvote or downvote, do if,else if thumbs up or thumbs down value is selected. 
-          if @rating_select.eql? '1'
-            @advicepost.score += 5
-          elsif @rating_select.eql? '2'
-            @advicepost.score -= 5
-          end
           
           #@message = Message.find(params[:m_id])
           if @advicepost.update_attributes(params[:advicepost])

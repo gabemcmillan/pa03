@@ -16,10 +16,17 @@
     <%= f.hidden_field :score %>
   </div>
 
+
+
 <div class="field">
-    <%= f.label Rating %><br />
-    <%= f.radio_button(:rating_select, 1) %>Good<br />
-    <%= f.radio_button(:rating_select, 2) %>Not Good<br />
+<%= f.fields_for :rating, @rating do |builder| %>
+	<fieldset>
+<%= builder.radio_button(:rating_select, "Up") %>
+<%= label_tag(:rating_select, "Good, I'm satisfied.") %>
+<%= builder.radio_button(:rating_select, "Down")%>
+<%= label_tag(:rating_select, "Bad, I'm not satisfied.")%>
+	<fieldset>
+<% end %>
 </div>
 
 
@@ -28,7 +35,6 @@
 		<%= builder.hidden_field :status %>
 	<fieldset>
 <% end %>
-
 	
 
   <br />
@@ -41,6 +47,7 @@
 
 
 <br /><br />
+<%= debug @rating %>
 <%= debug @advicepost %>
 <%= debug @message %>
 
