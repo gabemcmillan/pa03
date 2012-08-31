@@ -25,7 +25,7 @@
 		<td><%= message.status %></td>
 	<% end %>
 	
-	<td><%= message.created_at %></td>
+	<td><%= message.created_at.strftime("%m-%d-%Y %H:%M") %></td>
 	<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
   </tr>
 <% end %>

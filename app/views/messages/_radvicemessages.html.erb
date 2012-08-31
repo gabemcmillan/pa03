@@ -26,7 +26,7 @@
     <td><%= message.advicepost_id %></td>
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.user.name %></td>
-	<td><%= message.created_at %></td>
+	<td><%= message.created_at.strftime("%m-%d-%Y %H:%M") %></td>
 
   </tr>
 <% end %>
