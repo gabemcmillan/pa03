@@ -26,21 +26,18 @@ class Advicepost < ActiveRecord::Base
   end
   
   
-  before_save :set_rating
+  before_update :set_rating
     
   def set_rating
-    
-    if self.rating.rating_select=="Up"
-      rating.score += 5
-    elsif self.rating.rating_select=="Down"
-      rating.score -= 5
-    end
-    
+      if self.rating.rating_select=="Up"
+        rating.score += 5
+      elsif self.rating.rating_select=="Down"
+        rating.score -= 5
+      end
   end
+
   
   #validates :advisor_id, presence: true
-
-
   
   default_scope order: 'adviceposts.created_at DESC'
   

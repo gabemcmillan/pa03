@@ -1,12 +1,10 @@
 
 
 <%= form_for(@advicepost) do |f| %>
-
   	
   <div class="field">
     <%= f.hidden_field :advisor_id %>
   </div>
-
 
   <div class="field">
     <strong><%= f.label :category_id %></strong>
@@ -42,6 +40,26 @@
 
   <br />
 
+<div class="field">
+<%= f.fields_for :rating, @rating do |builder| %>
+	<fieldset>
+
+  <div class="field">
+    <%= builder.hidden_field :advisor_id %>
+  </div>
+  <div class="field">
+    <%= builder.hidden_field :score %>
+  </div>
+  <div class="field">
+    <%= builder.hidden_field :advicepost_id %>
+  </div>
+	<fieldset>
+<% end %>
+</div>
+
+
+
+
   <div class="actions">
 	<%= link_to 'Back', :back, :class => 'btn' %>
     <%= f.submit 'Submit', :class => 'btn', class: "btn btn-success" %>
@@ -52,5 +70,8 @@
 
 
 
+<br /><br />
+<%= debug @rating %>
+<%= debug @advicepost %>
 
 

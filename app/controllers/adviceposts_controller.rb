@@ -66,9 +66,13 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/new.json
   def new
     @advicepost = Advicepost.new
-
     #set user id attribute
     @advicepost.advisor_id = current_advisor.id
+    
+    @rating = Rating.new
+    @rating.score = 0
+    @rating.advisor_id = current_advisor.id
+    @rating.rating_select = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -84,7 +88,6 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/1/rating
   def rating
    @advicepost = Advicepost.find(params[:id])
-   #@advicepost.rating_select = "none"
    
    @message = Message.find(params[:m_id])
    @message.status = "Rated"
@@ -104,12 +107,8 @@ class AdvicepostsController < ApplicationController
   def update
     @advicepost = Advicepost.find(params[:id])
     
-
-
-    
     respond_to do |format|
         if current_user
-          
           
           #@message = Message.find(params[:m_id])
           if @advicepost.update_attributes(params[:advicepost])
@@ -138,8 +137,10 @@ class AdvicepostsController < ApplicationController
     @advicepost = Advicepost.new(params[:advicepost])
     #set advisor id attribute
     @advicepost.advisor_id = current_advisor.id
-    #save categoryname in the advicepost listing - worked!
+    #save categoryname in the advicepost listing
     @advicepost.categoryname = @advicepost.category.categoryname
+    @rating = Rating.new(params[:rating])
+    
     
     #Send email to advisee they have sent a new message to advisor
     UserMailer.delay(queue: "email_new_advicepost").new_advicepost_advisor(current_advisor)
