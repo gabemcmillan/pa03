@@ -19,7 +19,7 @@
 
 <% @messages.each do |message| %>
   <tr>
-	
+	<%= @space = " " %>
 	<td><%= link_to 'View', message %></td>
     <td><%= message.user_id %></td>
     <td><%= message.advisor_id %></td>

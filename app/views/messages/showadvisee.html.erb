@@ -4,6 +4,17 @@
 <h2>Message</h2>
 
 
+<%= @space = " " %>
+<p>
+  <b>Advisor Name:</b><br />
+  <%= @message.advicepost.advisor.first_name + @space + @message.advicepost.advisor.last_name %>
+</p>
+
+<p>
+  <b>Category:</b><br />
+  <%= @message.advicepost.categoryname %>
+</p>
+
 
 <p>
   <b>Advisee Message:</b><br />

@@ -7,6 +7,10 @@
   </div>
 
   <div class="field">
+    <%= f.hidden_field :status %>
+  </div>
+
+  <div class="field">
     <strong><%= f.label :category_id %></strong>
     <%= f.select :category_id, Category.order("categoryname").all.collect {|category| [category.categoryname,category.id]}, :include_blank => 'Please select a category...' %>
   </div>
@@ -70,8 +74,6 @@
 
 
 
-<br /><br />
-<%= debug @rating %>
-<%= debug @advicepost %>
+
 
 

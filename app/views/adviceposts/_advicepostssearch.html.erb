@@ -5,14 +5,14 @@
 <h2>Search for Advisors</h2>
 
 <%= form_tag apsearch_path, :method => :get do %>
-  <p>
-    <%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Please select a category...' %>
+<p>
 
+<%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Please select a category...' %>
 
 
 <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
 
-  </p>
+</p>
 
 
 <% end %>

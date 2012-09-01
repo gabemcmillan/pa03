@@ -1,5 +1,5 @@
 class Advicepost < ActiveRecord::Base
-  attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price, :advisor_id, :website, 
+  attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price, :advisor_id, :website, :status,
       :twitter, :linkedin, :score, :rating_select, :messages_attributes, :rating_attributes, 
       :ratings_attributes
   
@@ -19,9 +19,10 @@ class Advicepost < ActiveRecord::Base
   accepts_nested_attributes_for :rating
   
   
-  #thinking_sphinx indexing setup
+  #Sphinx - thinking_sphinx - indexing setup
   define_index do
     indexes miniresume
+    indexes status
     indexes category.categoryname, :as => :category_name
   end
   
@@ -39,7 +40,9 @@ class Advicepost < ActiveRecord::Base
   
   #validates :advisor_id, presence: true
   
+  #order by most recent
   default_scope order: 'adviceposts.created_at DESC'
+  
   
   
   

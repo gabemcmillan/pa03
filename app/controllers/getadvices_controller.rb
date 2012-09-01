@@ -9,7 +9,7 @@ class GetadvicesController < ApplicationController
     @getadvices = Getadvice.all
 
     #return all advicesposts after search 
-    @adviceposts = Advicepost.all
+    @adviceposts = Advicepost.find(:all, :conditions=>{:status=>"Enabled"})
 
     #limits to show only current users adviceposts! - works
     #@messages = current_user.messages.page(params[:page]).per_page(10).order('created_at DESC')

@@ -6,9 +6,7 @@ class AdvicepostsController < ApplicationController
   def index
     #@adviceposts = Advicepost.all
 
-    #thinking_sphinx 
-    #@adviceposts = Advicepost.search(params[:search], page: 1, per_page: 10).page(params[:page]).per_page(2).order('created_at DESC')
-        
+
     #limits to show only current users adviceposts! - works
     @adviceposts = current_advisor.adviceposts
     
@@ -23,11 +21,8 @@ class AdvicepostsController < ApplicationController
   def search
     #@adviceposts = Advicepost.all
 
-    #thinking_sphinx 
-    @adviceposts = Advicepost.search(params[:search], page: 1, per_page: 15)
-    
-    #limits to show only current users adviceposts! - works
-    #@adviceposts = current_advisor.adviceposts
+    #thinking_sphinx conditions - 
+    @adviceposts = Advicepost.search(params[:search], conditions:{status: "E"}, page: 1, per_page: 15)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +63,7 @@ class AdvicepostsController < ApplicationController
     @advicepost = Advicepost.new
     #set user id attribute
     @advicepost.advisor_id = current_advisor.id
+    @advicepost.status = "D"
     
     @rating = Rating.new
     @rating.score = 0
@@ -140,15 +136,17 @@ class AdvicepostsController < ApplicationController
     #save categoryname in the advicepost listing
     @advicepost.categoryname = @advicepost.category.categoryname
     @rating = Rating.new(params[:rating])
-    
-    
+        
     #Send email to advisee they have sent a new message to advisor
-    UserMailer.delay(queue: "email_new_advicepost").new_advicepost_advisor(current_advisor)
-  
+    UserMailer.delay(queue: "email_new_advicepost_advisor").new_advicepost_advisor(current_advisor)
+
+    UserMailer.delay(queue: "email_new_advicepost_admin").new_advicepost_admin
+    
+    
     respond_to do |format|
 
       if @advicepost.save
-        format.html { redirect_to apnew_path(@advicepost), notice: 'Congratulations! Your new advice listing was successfully posted! You are advancing human knowledge sharing.' }
+        format.html { redirect_to apnew_path(@advicepost), notice: 'Your Advice Listing has been submitted! You should hear back soon after we review your listing.' }
         format.json { render json: @advicepost, status: :created, location: @advicepost }
       else
         format.html { render action: "new" }

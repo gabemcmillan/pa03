@@ -7,18 +7,20 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Category Name</th>
-    <th>Advisor Name</th>  
+    <th>Advisor</th>  
+    <th>Category</th>
     <th>Mini-resume</th>
+	<th>Score</th>
     <th>Price</th>
-
   </tr>
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
-    <td><%= link_to advicepost.category.categoryname, advicepost %></td>  
-	<td><%= advicepost.advisor.first_name %></td>  
+	<%= @space = " " %>
+	<td><%= link_to advicepost.advisor.first_name + @space + advicepost.advisor.last_name, advicepost %></td> 
+    <td><%= advicepost.category.categoryname %></td>  
     <td><%= truncate(advicepost.miniresume,:length=>230,:omission=>"...") %></td>
+	<td><%= advicepost.rating.score %>
     <td>$<%= advicepost.price %></td>
   </tr>
 <% end %>

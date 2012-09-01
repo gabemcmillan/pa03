@@ -15,9 +15,10 @@
 
 <% @messages.each do |message| %>
   <tr>
+	<%= @space = " " %>
 	<td><%= link_to 'Respond!', messager_path(message), class: "btn btn-success" %></td>
     <td><%= message.advicepost.categoryname %></td>
-    <td><%= message.advicepost.advisor.first_name %></td>
+    <td><%= message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name %></td>
     <td><%= message.status %></td>
 	<td><%= message.created_at.strftime("%m-%d-%Y %H:%M") %></td>
 

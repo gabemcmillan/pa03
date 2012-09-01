@@ -12,28 +12,43 @@
   <%= @advicepost.category.categoryname %>
 </p>
 
+<%= @space = " " %>
 <p>
   <b>Advisor:</b><br />
-  <%= @advicepost.advisor.first_name %>
+  <%= @advicepost.advisor.first_name + @space + @advicepost.advisor.last_name %>
 </p>
+
 
 <p>
   <b>Mini-Resume:</b><br />
   <%= @advicepost.miniresume %>
 </p>
 
-<p>
-  <b>Website:</b><br />
-  <%= @advicepost.website %>
-</p>
+
+
+<% if @advicepost.website.blank? %>
+<% else %>
+	<p>
+	  <b>Website:</b><br />
+	  <%= @advicepost.website %>
+	</p>	
+<% end %>
+
+<% if @advicepost.twitter.blank? %>
+<% else %>
 <p>
   <b>Twitter:</b><br />
   <%= @advicepost.twitter %>
-</p>
+</p>	
+<% end %>
+
+<% if @advicepost.linkedin.blank? %>
+<% else %>
 <p>
   <b>LinkedIn:</b><br />
   <%= @advicepost.linkedin %>
-</p>
+</p>	
+<% end %>
 
 <p>
   <b>Price per message:</b>

@@ -8,14 +8,20 @@
   <%= @advicepost.category.categoryname %>
 </p>
 
+<%= @space = " " %>
 <p>
   <b>Advisor Name:</b><br />
-  <%= @advicepost.advisor.first_name %>
+  <%= @advicepost.advisor.first_name + @space + @advicepost.advisor.last_name %>
 </p>
 
 <p>
   <b>Mini-Resume:</b><br />
   <%= @advicepost.miniresume %>
+</p>
+
+<p>
+  <b>Score:</b><br />
+  <%= @advicepost.rating.score %>
 </p>
 
 

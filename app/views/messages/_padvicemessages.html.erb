@@ -16,9 +16,10 @@
 
 <% @messagesp.each do |message| %>
   <tr>
+	<%= @space = " " %>
 	<td><%= link_to "View", showadvisee_path(message) %></td>
     <td><%= message.advicepost.categoryname %></td>
-    <td><%= message.advicepost.advisor.first_name %></td>
+    <td><%= message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name %></td>
     <% if message.status != "Rated" %>
 	<td><%= link_to "Rate this Message!", rating_path(message.advicepost.id,:m_id=>message.id), :class => 'btn', class: "btn btn-success"  %></td>
 	<% else %>
