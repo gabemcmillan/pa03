@@ -33,7 +33,8 @@ class Advicepost < ActiveRecord::Base
       if self.rating.rating_select=="Up"
         rating.score += 5
       elsif self.rating.rating_select=="Down"
-        rating.score -= 5
+        #for now, do nothing.
+        #rating.score -= 5
       end
   end
 
