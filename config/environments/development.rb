@@ -20,6 +20,7 @@ Pa02::Application.configure do
   config.action_mailer.delivery_method = :smtp
   
 
+
   
   #specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }

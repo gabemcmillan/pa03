@@ -8,6 +8,8 @@ gem 'rails', '3.2.3'
 #database
 gem 'mysql2'
 
+#prod webserver 
+gem 'thin'
 
 
 #credit card payments
