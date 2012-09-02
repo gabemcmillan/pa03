@@ -11,10 +11,13 @@ class User < ActiveRecord::Base
   #Set attr_accesor to do get and set variables not in the model
   attr_accessor *FIELDS
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :name, :first_name, :last_name, :username, :zip, :braintree_customer_id       
+  attr_accessible :email, :password, :password_confirmation, :name, :first_name, 
+    :last_name, :username, :zip, :braintree_customer_id, :agree_emails       
+
 
   #for devise
   #validates_presence_of :email, :password
+  
   
   has_many :messages
 

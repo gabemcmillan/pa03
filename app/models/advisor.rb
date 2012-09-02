@@ -9,7 +9,7 @@ class Advisor < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
   :first_name, :last_name, :address, :address2, :city, :state, :zip, :birthday, :gender, :username, 
-  :phone, :cellphone, :paypal_email
+  :phone, :cellphone, :paypal_email, :agree_paypal, :agree_emails
 
   
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120901170042) do
+ActiveRecord::Schema.define(:version => 20120902130044) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(:version => 20120901170042) do
   end
 
   create_table "advisors", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
@@ -96,13 +96,15 @@ ActiveRecord::Schema.define(:version => 20120901170042) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.integer  "advisor_id"
     t.string   "headline"
     t.string   "payment_option"
     t.string   "paypal_email"
     t.integer  "score"
+    t.boolean  "agree_paypal",           :default => false
+    t.boolean  "agree_emails",           :default => false
   end
 
   add_index "advisors", ["email"], :name => "index_advisors_on_email", :unique => true
@@ -171,12 +173,12 @@ ActiveRecord::Schema.define(:version => 20120901170042) do
   create_table "users", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "name"
     t.string   "email"
     t.string   "gender"
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -191,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20120901170042) do
     t.string   "zip"
     t.string   "howheard"
     t.text     "braintree_customer_id"
+    t.boolean  "agree_emails",           :default => false
   end
 
 end

@@ -12,6 +12,9 @@
     
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+
+	<%= f.input :agree_emails, :input_html => { :checked => true }, :required => true, label: "Agree to receive email notifications.", :hint => "Email notifications are required to ensure Advisors are notified immediately when a new Advisee message has been send." %>
+	
   </div>
 
 
