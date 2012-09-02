@@ -24,7 +24,6 @@ Pa02::Application.configure do
   #Email settings - 
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.delivery_method = :smtp
 
 
   
