@@ -136,7 +136,7 @@ class MessagesController < ApplicationController
         end
       end
         
-        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. They are on their way to a smarter path thanks to you!' }
+        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. Your account has been credited with the message payment. They are on their way to a smarter path thanks to you!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

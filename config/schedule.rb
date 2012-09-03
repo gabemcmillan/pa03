@@ -33,17 +33,7 @@ set :output, "#{path}/log/cron.log"
             runner "Message.cancel" 
             runner "Message.reminder1"
         end
-      when 'production'
-        every :reboot do
-           command "script/delayed_job start"
-           rake "ts:rebuild"
-        end
-        #tasks to execute every 1 hour
-        every 1.hours do 
-            rake "ts:reindex"
-            runner "Message.cancel" 
-            runner "Message.reminder1"
-        end
+      
       end   
       
       
