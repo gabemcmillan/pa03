@@ -23,7 +23,7 @@ gem 'devise'
 #full text search - 
 gem 'thinking-sphinx', '2.0.10'
 #sphinx for heroku - wrapper - 
-gem 'flying-sphinx',   '0.7.0'
+gem 'flying-sphinx',   '0.8.0'
 
 
 #administration

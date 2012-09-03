@@ -29,9 +29,10 @@ set :output, "#{path}/log/cron.log"
         end
         #tasks to execute every 1 hour
         every 1.hours do 
-            rake "ts:reindex"
-            runner "Message.cancel" 
+            rake "ts:index"
             runner "Message.reminder1"
+            runner "Message.cancel" 
+            
         end
       
       end   
