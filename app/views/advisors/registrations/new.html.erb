@@ -21,15 +21,18 @@
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
 
-	<%= f.input :agree_paypal, :input_html => { :checked => true }, :required => true, label: "Agree to use PayPal for Payments.", :hint => "This is required to receive payments from PathAdvisor." %>
-	<%= f.input :agree_emails, :input_html => { :checked => true }, :required => true, label: "Agree to receive email notifications.", :hint => "Email notifications are required to ensure Advisors are notified immediately when a new Advisee message has been send." %>
+	<%= f.input :agree_emails, label: "Agree to receive email notifications.", :hint => "Email notifications are required for Advisor's to be notified of new messages." %>
+	
+	<%= f.input :agree_paypal, label: "Agree to use PayPal for Payments.", :hint => "This is required to receive payments from PathAdvisor." %>
 
+
+By clicking Continue, you agree to our Terms of Use and Privacy Policy. 
 
   </div>
 
   <div class="form-actions">
-	<%= link_to 'Back', :back, :class => 'btn' %>
-    <%= f.button :submit, "Create", class: "btn btn-success" %>
+
+    <%= f.button :submit, "Continue", class: "btn btn-success" %>
   </div>
 <% end %>
 

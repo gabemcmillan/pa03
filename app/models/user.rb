@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
   #for devise
   #validates_presence_of :email, :password
+  attr_accessible :agree_emails
+  
+  validates_acceptance_of :agree_emails, :accept => true, :message => "Agree to email notifications must be accepted"
   
   
   has_many :messages
