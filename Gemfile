@@ -44,7 +44,7 @@ gem "letter_opener", :group => :development
 #scheduling - cron jobs
 gem 'whenever', require: false
 
-#background processes
+#background processes - delayed_job
 gem 'daemons'
 gem 'delayed_job_active_record'
 
