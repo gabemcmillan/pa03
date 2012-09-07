@@ -17,7 +17,7 @@ class GetadvicesController < ApplicationController
     #active advice messages
     @messages = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ?", 'New')
     #past advice messages
-    @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ? OR status= ?", 'Responded',  'Cancelled',"Rated")
+    @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ? OR status= ? OR status= ?", 'Responded',  'Canceled','Rated','New' )
 
     if current_user && current_user.has_payment_info?
       respond_to do |format|
@@ -45,7 +45,7 @@ class GetadvicesController < ApplicationController
       #active advice messages
       @messages = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ?", 'New')
       #past advice messages
-      @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ? OR status= ?", 'Responded',  'Cancelled',"Rated")
+      @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ? OR status= ?", 'Responded',  'Canceled',"Rated")
 
     if current_user && current_user.has_payment_info?
       current_user.with_braintree_data!

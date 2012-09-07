@@ -8,6 +8,11 @@
 		
 		<%= link_to image_tag("pathadvisor-logo230px.jpg"), getadvices_path, id: "logo" %>
 		<nav>
+			<ul class="nav">
+			<li><%= link_to "How it Works",    '#' %></li>
+			</ul>
+		</nav>
+		<nav>
 			<ul class="nav pull-right">
 			<li>Logged in as <strong><%= current_user.email %></strong></li>
 			<li><%= link_to 'Dashboard', getadvices_path %></li>	

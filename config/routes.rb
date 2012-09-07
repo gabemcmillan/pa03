@@ -8,13 +8,16 @@ Pa02::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   
+  
   #Advisee authentication
-  devise_for :users do
+  devise_for :users
+  devise_scope :users do
    get 'getadvices', :to => 'getadvices#index', :as => :user_root # Rails 3
   end
   
   #Advisor authentication
-  devise_for :advisors do
+  devise_for :advisors
+  devise_scope :advisors do
    get 'giveadvices', :to => 'giveadvices#index', :as => :advisor_root # Rails 3
   end
   

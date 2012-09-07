@@ -47,11 +47,7 @@ class UserMailer < ActionMailer::Base
   end
   
     
-  #send to advisor when he has not responded to advisee message after period of time
-  def message_reminder_advisor(advisor)
-    @advisor = advisor
-    mail to: @advisor.email, subject: "PathAdvisor - You haven't responded to your Advisee yet"
-  end
+
 
   #send to advisor when he has submitted a new Advice Listing
   def new_advicepost_advisor(advisor)
@@ -69,6 +65,8 @@ class UserMailer < ActionMailer::Base
     @advisor = advisor
     mail to: @advisor.email, subject: "PathAdvisor - New advice listing accepted"
   end
+  
+
   
   #send to advisor when he has sent a new message to an advisor
   def reminder_message_advisor(advisor, message)

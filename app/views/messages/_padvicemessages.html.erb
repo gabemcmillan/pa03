@@ -1,6 +1,6 @@
 
 
-<h2>Responded To Advice Messages</h2>
+<h3>Advice Messages</h3><br />
 
 
 <table class="table table-striped">
@@ -10,6 +10,7 @@
     <th>Category Name</th>
 	<th>Advisor Name</th>
 	<th>Status</th>
+	<th>Rated?</th>
     <th>Created On</th>
     <th>Message Advisor Again</th>
   </tr>
@@ -20,10 +21,14 @@
 	<td><%= link_to "View", showadvisee_path(message) %></td>
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name %></td>
-    <% if message.status != "Rated" %>
+    <td><%= message.status %></td>
+    
+    <% if message.status == "Responded" %>
 	<td><%= link_to "Rate this Message!", rating_path(message.advicepost.id,:m_id=>message.id), :class => 'btn', class: "btn btn-success"  %></td>
+	<% elsif message.status == "New" %>
+		<td></td>
 	<% else %>
-		<td><%= message.status %></td>
+	    <td>Yes</td>
 	<% end %>
 	
 	<td><%= message.created_at.strftime("%m-%d-%Y %H:%M") %></td>

@@ -5,7 +5,21 @@
 
 
 
-	
+
+<% if @messages.blank? %>
+
+
+<% else %>
+
+
+<% end %>
+
+
+
+
+<% if @messagesp.blank? %>
+
+
 <h1>Get Advice</h1>
 
 <p>
@@ -14,21 +28,21 @@
 <h4>-Learn from experts in your field of interest</h4><br />
 <h4>-Privately message advisors</h4><br />
 </p>
+	
 
 <%= render 'adviceposts/advicepostssearch' %>
 
-<% if @messages.blank? %>
-
-<h2>Active Advice Messages</h2>
-<strong>Currently no active messages</strong><br /><br /><br />
 
 <% else %>
-<%= render 'messages/advicemessages' %>
-<% end %>
 
+<p>
+<h2>Get Advice from Experts</h2>
+<h4>-Gain advice, expertise and inspiration from somebody who has been where you want to go</h4><br />
+<h4>-Learn from experts in your field of interest</h4><br />
+<h4>-Privately message advisors</h4><br />
+</p>
 
-<% if @messagesp.blank? %>
+    <%= render 'adviceposts/advicepostssearch' %>
 
-<% else %>
 	<%= render 'messages/padvicemessages' %>
 <% end %>

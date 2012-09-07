@@ -13,11 +13,17 @@
 #   rake "some:great:rake:task"
 # end
 #
+#every 15.minutes do
+#  command "rm '#{path}/tmp/cache/foo.txt'"
+#  script "generate_report"
+#end
+#
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
 
 # Learn more: http://github.com/javan/whenever
+
 
 set :output, "#{path}/log/cron.log"
 
@@ -28,10 +34,10 @@ set :output, "#{path}/log/cron.log"
            rake "ts:rebuild"
         end
         #tasks to execute every 1 hour
-        every 1.hours do 
+        every 2.minutes do 
             rake "ts:index"
-            runner "Message.reminder1"
-            runner "Message.cancel" 
+            rake "send_reminder1"
+            rake "cancel_messages" 
             
         end
       
