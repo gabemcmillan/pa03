@@ -16,7 +16,8 @@
 <% @messages.each do |message| %>
   <tr>
 	<%= @space = " " %>
-	<td><%= link_to "View", showadvisee_path(message) %></td>
+    <td><%= link_to "View", showadvisee_path(message) %></td>
+	
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name %></td>
     <td><%= message.status %></td>

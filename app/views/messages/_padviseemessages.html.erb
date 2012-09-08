@@ -15,7 +15,12 @@
 <% @messagesp.each do |message| %>
   <tr>
 	<%= @space = " " %>
-    <td><%= link_to "View", message %></td>
+   	<% if message.status == "New" %>
+			<td><%= link_to 'Respond!', messager_path(message), class: "btn btn-success" %></td>
+	<% else %>
+	    	<td><%= link_to 'View', message %></td>
+	<% end %>
+	
     <td><%= message.advicepost.categoryname %></td>
     <td><%= message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name %></td>
     <td><%= message.status %></td>
