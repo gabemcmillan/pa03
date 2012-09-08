@@ -1,6 +1,12 @@
 
 
-<h3>Your Advice Listings</h3><br />	
+
+
+<% if @adviceposts.count >= 1 %>
+
+
+<h3>Advice Listing</h3><br />	
+
 
 <table class="table table-striped">
   <tr>
@@ -20,10 +26,15 @@
   </tr>
 <% end %>
 </table>
-
-
-
-
-
 <br />
+
+<% else %>
+
+<%= link_to 'Submit an Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
+
+<% end %>
+
+
+
+
 
