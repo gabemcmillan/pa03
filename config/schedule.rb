@@ -31,10 +31,10 @@ set :output, "#{path}/log/cron.log"
       when 'development'
         every :reboot do
            command "script/delayed_job start"
-           rake "ts:rebuild"
+           rake "ts:index"
         end
         #tasks to execute every 1 hour
-        every 2.minutes do 
+        every 10.minutes do 
             rake "ts:index"
             rake "send_reminder1"
             rake "cancel_messages" 
