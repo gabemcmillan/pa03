@@ -42,6 +42,18 @@ class AdvicepostsController < ApplicationController
     end
   end
   
+  # GET /adviceposts/alistings
+  # GET /adviceposts/alistings.json
+  def alistings
+    #limits to show only current users adviceposts! - works - does it work if its null?  -it should return a nil 
+    @adviceposts = current_advisor.adviceposts
+    
+
+    respond_to do |format|
+      format.html # apnew.html.erb
+      format.json { render json: @advicepost }
+    end
+  end
   
   # GET /adviceposts/1
   # GET /adviceposts/1.json

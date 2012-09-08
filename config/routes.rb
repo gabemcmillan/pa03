@@ -65,6 +65,10 @@ Pa02::Application.routes.draw do
   
   #congrats page for new advice listing
   match 'adviceposts/:id/apnew', :controller => 'adviceposts', :action => 'apnew', :as => :apnew
+  
+  #separate page to show advisors advice listings 
+  match 'adviceposts/alistings', :controller => 'adviceposts', :action => 'alistings', :as => :alistings
+  
   #ratings page for advisor message after adviceposts 
   match 'adviceposts/:id/rating', to: 'adviceposts#rating', :as => :rating
   
@@ -72,6 +76,7 @@ Pa02::Application.routes.draw do
   resources :adviceposts do
     member do  
       get 'apnew'
+      get 'alistings'
     end
   end
   
