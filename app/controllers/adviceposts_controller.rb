@@ -6,7 +6,6 @@ class AdvicepostsController < ApplicationController
   def index
     #@adviceposts = Advicepost.all
 
-
     #limits to show only current users adviceposts! - works
     @adviceposts = current_advisor.adviceposts
     
@@ -22,7 +21,7 @@ class AdvicepostsController < ApplicationController
     #@adviceposts = Advicepost.all
 
     #thinking_sphinx conditions - 
-    @adviceposts = Advicepost.search(params[:search], conditions:{status: "E"}, page: 1, per_page: 15)
+    @adviceposts = Advicepost.search(params[:search], conditions:{status: "Enabled"}, page: 1, per_page: 25)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -75,7 +74,7 @@ class AdvicepostsController < ApplicationController
     @advicepost = Advicepost.new
     #set user id attribute
     @advicepost.advisor_id = current_advisor.id
-    @advicepost.status = "D"
+    @advicepost.status = "Submitted"
     
     @rating = Rating.new
     @rating.score = 0
@@ -102,7 +101,6 @@ class AdvicepostsController < ApplicationController
    
    @rating = Rating.find(:first, :conditions => {:advicepost_id=> @advicepost.id})
    @rating.rating_select = ""
-
    
    respond_to do |format|
      format.html # rating.html.erb
@@ -151,12 +149,10 @@ class AdvicepostsController < ApplicationController
         
     #Send email to advisee they have sent a new message to advisor
     UserMailer.delay(queue: "email_new_advicepost_advisor").new_advicepost_advisor(current_advisor)
-
+    #Send email to pa admin to notify them new advicepost has been created to review
     UserMailer.delay(queue: "email_new_advicepost_admin").new_advicepost_admin
     
-    
     respond_to do |format|
-
       if @advicepost.save
         format.html { redirect_to apnew_path(@advicepost), notice: 'Your Advice Listing has been submitted! You should hear back soon after we review your listing.' }
         format.json { render json: @advicepost, status: :created, location: @advicepost }

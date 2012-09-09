@@ -17,7 +17,8 @@ class GiveadvicesController < ApplicationController
 
     
     #show past messages with current user where status is Responded or Cancelled
-    @messagesp = current_advisor.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ? OR status = ?", 'Responded', 'Cancelled', 'New')
+    @messagesp = current_advisor.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status 
+      = ? OR status = ? OR status = ?", 'Responded', 'Canceled', 'New', 'Rated')
         
 
 

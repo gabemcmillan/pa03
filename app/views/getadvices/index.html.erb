@@ -8,9 +8,7 @@
 
 <% if @messages.blank? %>
 
-
 <% else %>
-
 
 <% end %>
 
@@ -18,7 +16,6 @@
 
 
 <% if @messagesp.blank? %>
-
 
 <h1>Get Advice</h1>
 
@@ -29,9 +26,7 @@
 <h4>-Privately message advisors</h4><br />
 </p>
 	
-
 <%= render 'adviceposts/advicepostssearch' %>
-
 
 <% else %>
 
@@ -42,7 +37,7 @@
 <h4>-Privately message advisors</h4><br />
 </p>
 
-    <%= render 'adviceposts/advicepostssearch' %>
+<%= render 'adviceposts/advicepostssearch' %>
 
-	<%= render 'messages/padvicemessages' %>
+<%= render 'messages/padvicemessages' %>
 <% end %>

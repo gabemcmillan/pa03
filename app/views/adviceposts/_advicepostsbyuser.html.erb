@@ -2,12 +2,13 @@
 
 
 
-<h3>Your Advice Listings</h3><br />	
+<h3>Advice Listing</h3><br />	
 
 <table class="table table-striped">
   <tr>
     <th>Category</th>
     <th>Mini-Resume</th>
+	<th>Status</th>
     <th>Price</th>
     <th>Edit</th>
   </tr>
@@ -16,18 +17,13 @@
   <tr>
   	<td><%= link_to advicepost.category.try(:categoryname), advicepost %></td>
     <td><%= truncate(advicepost.miniresume,:length=>100,:omission=>"...") %></td>
-    <td>$<%= advicepost.price %></td>
-
+    <td><%= advicepost.status %></td>
+	<td>$<%= advicepost.price %></td>
     <td><%= link_to 'Edit', edit_advicepost_path(advicepost) %></td>
   </tr>
 <% end %>
 </table>
-
-<%= will_paginate @messages %>
-
-
-
-<br />
+<%= will_paginate @messages %><br />
 
 
    

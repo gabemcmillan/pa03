@@ -3,45 +3,32 @@
 
 <% if @adviceposts.count >= 1 %>
 
-<p>
-<strong>Are you an Expert in something? Give Advice!</strong>
-<h4>-Make money by sharing your expertise and advice privately with others<h4><br />
-<h4>-Privately message advisee's on a per message basis</h4> 	<br />
-<h4>-Share your knowledge to let others make better decisions</h4><br />
-</p>
 
+<%= render 'adviceposts/advicepostsbyuser' %>
 
 
 <% else %>
+
+<h3>Are you an Expert in something? Give Advice!<h3><br />
+<h4>-Make money by sharing your expertise and advice privately with others</h4><br />
+<h4>-Privately message advisee's on a per message basis</h4> 	<br />
+<h4>-Share your knowledge to let others make better decisions</h4><br />
+</p>
 
 <%= link_to 'Submit an Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
 <% end %>
 
 
-
 <% if @messages.blank? %>
-
 <% else %>
-
 <% end %>
 
 
-
 <% if @messagesp.blank? %>
-
-<h1>Give Advice</h1>
-
-<p>
-<strong>Are you an Expert in something? Give Advice!</strong><br />
-<h4>-Make money by sharing your expertise and advice privately with others<h4><br />
-<h4>-Privately message advisee's on a per message basis</h4> 	<br />
-<h4>-Share your knowledge to let others make better decisions</h4><br />
-</p>
-
-
+     <h3>Advice Messages</h3><br />	
+	 <h4>No advice messages yet.</h4><br />	 
+		
 <% else %>
-
-
      <%= render 'messages/padviseemessages' %>
 <% end %>
 
