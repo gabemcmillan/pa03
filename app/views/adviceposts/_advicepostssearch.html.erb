@@ -7,7 +7,7 @@
 <%= form_tag apsearch_path, :method => :get do %>
 <p>
 
-<%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Please select a category...' %>
+<%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Select a category...' %>
 
 
 <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
