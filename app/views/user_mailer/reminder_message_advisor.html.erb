@@ -2,7 +2,7 @@
 
 <p>Hi <%= @advisor.first_name %>, </p>
 
-<p>This is just a friendly reminder you have not responded to a new advisee message yet.  Once you have responded you will be credited with a payment for the response.  If the message isn't responded to within seven days it is canceled and you don't get paid for it.</p>
+<p>This is just a friendly reminder you have not responded to a new advisee message yet.  You only have 7 days from the creation of the advisee message to respond.  Once you have responded you will be credited with a payment for the response.  If the message isn't responded to within seven days it is canceled and you don't get paid for it.</p>
 
 <p><%= link_to 'Respond to their message here', messager_url(@message.id) %></p><br />
 
