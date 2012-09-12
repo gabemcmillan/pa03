@@ -108,7 +108,7 @@ class MessagesController < ApplicationController
   # GET /messages/1/messagec
   def messagec
     @message = Message.find(params[:id])
-    @message.status = "Cancelled"
+    @message.status = "Canceled"
   end
   
   # PUT /messages/1

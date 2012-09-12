@@ -19,7 +19,7 @@ class Message < ActiveRecord::Base
       #get advisor object from message association
       @advisor = Advisor.find(:first, :conditions => { :id => message.advisor_id})
           #if message was created more than 72 hours ago, cancel message
-          if (message.created_at < 15.minutes.ago )
+          if (message.created_at < 1.minutes.ago )
             #edit message.status to "Cancelled", void Braintree payment by transaction_id, send cancelled 
             #email to advisor and advisee that its been over the 3 day (72 hour) time limit.    
             #void braintree payment by transaction_id
@@ -29,9 +29,10 @@ class Message < ActiveRecord::Base
               message.status = "Canceled"
               message.save
               #send cancelled email to advisor
-              UserMailer.delay(queue: "email_canceled_message").canceled_message_advisor(@advisor, @message)
+              UserMailer.delay(queue: "email_canceled_message").canceled_message_advisor(@advisor, message)
               #send cancelled email to advisee that their payment has been voided
-              #UserMailer.delay(queue: "email_canceled_message").canceled_message_advisee(@user, @message)
+              @user = User.find(:first, :conditions => { :id => message.user_id})
+              UserMailer.delay(queue: "email_canceled_message").canceled_message_advisee(@user, message)
               
             else
               p result.errors
