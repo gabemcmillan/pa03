@@ -37,6 +37,8 @@
 	<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
 	<% elsif message.status == "Rated" %>
 			<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
+			
+
 	<% else message.status == "Responded" %>
 	<% end %>
 

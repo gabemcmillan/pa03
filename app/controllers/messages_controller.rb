@@ -41,18 +41,20 @@ class MessagesController < ApplicationController
     end
   end
   
+  
+  
   # GET /messages/new
   # GET /messages/new.json
   def new
     @message = Message.new
     
-    #braintree transaction_id 
-    @message.transaction_id = params[:transaction_id]
+    #set transaction_id 
+    @message.transaction_id = params[:requestId]
     
     #set user id attribute
     @message.user_id = current_user.id
     @message.status = "New"
-    @advicepost = Advicepost.find(params[:advicepost])
+    @advicepost = Advicepost.find(params[:referenceId])
     @message.advicepost_id = @advicepost.id
     @message.advisor_id = @advicepost.advisor_id
     @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
