@@ -49,7 +49,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     
     #set transaction_id 
-    @message.transaction_id = params[:requestId]
+    @message.transaction_id = params[:transactionId]
     
     #set user id attribute
     @message.user_id = current_user.id

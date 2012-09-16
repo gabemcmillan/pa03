@@ -1,5 +1,8 @@
 Pa02::Application.routes.draw do
 
+
+  
+  
   get "ratings/index"
 
   #Authentication Routes - 
@@ -42,8 +45,15 @@ Pa02::Application.routes.draw do
   
   get "welcome/index"
   
+  
+  
+  resources :payments
+      match 'confirm_payment' => 'payments#confirm'
+      
+  
   match 'getadvices/payments' => 'getadvices#payments', :as => :payments
-    
+  
+  
 
   resources :messages
   resources :ratings
