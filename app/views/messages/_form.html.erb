@@ -1,5 +1,17 @@
 
 
+<script type="text/javascript">
+<!--
+ 
+$('#message_messageq').live('keyup keydown', function(e) {
+  var maxLen = 500;
+  var left = maxLen - $(this).val().length;
+  $('#char-count').html(left);
+}); 
+//-->
+</script>
+
+
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -12,9 +24,7 @@
     </div>
   <% end %>
 
-
 <br /><br />
-
 
   <div class="field">
     <%= f.hidden_field :user_id %>
@@ -34,12 +44,13 @@
 
   <div class="field">
     <strong><%= f.label 'Message' %></strong>
-    <span class="help-block">Enter your message to this advisor.  Ask any detailed questions you want them to answer or if you just want their opinion that is great also.</span>
-    <%= f.text_area :messageq %>
+    <span class="help-block">Enter your message to this advisor.  Ask any detailed questions you want them to answer or if you just want their opinion that is great also. <br />(500 character limit)</span>
+    <%= f.text_area :messageq, :maxlength =>500 %>
   </div>
-
+	<div>Characters left: <span id="char-count">500</span></div>
+	<br />
+	
   <div class="actions">
-
     <%= f.submit 'Send Your Message!', :class => 'btn btn-success' %>
   </div>
 

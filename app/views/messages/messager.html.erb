@@ -1,5 +1,19 @@
-<h1>Respond to Message</h1><br />
 
+
+<script type="text/javascript">
+<!--
+ 
+$('#message_messager').live('keyup keydown', function(e) {
+  var maxLen = 1000;
+  var left = maxLen - $(this).val().length;
+  $('#char-count').html(left);
+}); 
+//-->
+</script>
+
+
+
+<h1>Respond to Message</h1><br />
 
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
@@ -38,13 +52,13 @@
 
 <p>
 <b>Please write your response message. </b>
-	    <span class="help-block">Enter your message to this advisee.  Please answer their questions fully to the best of your ability.  Giving an excellent response will boost your rating and profile!</span> 
+	    <span class="help-block">Enter your message to this advisee.  Please answer their questions fully to the best of your ability.  Giving an excellent response will boost your rating and profile! <br />(500 character limit)</span> 
 
   <div class="field">
-    <%= f.text_area :messager %>
+    <%= f.text_area :messager, :maxlength => 1000 %>
   </div>
+	<div>Characters left: <span id="char-count">1000</span></div>
 </p>
-
 
   <div class="actions">
     <%= link_to 'Back', giveadvices_path, :class => 'btn' %>

@@ -43,27 +43,29 @@ class MessagesController < ApplicationController
   
   
   
-  # GET /messages/new
-  # GET /messages/new.json
-  def new
-    @message = Message.new
-    
-    #set transaction_id 
-    @message.transaction_id = params[:transactionId]
-    
-    #set user id attribute
-    @message.user_id = current_user.id
-    @message.status = "New"
-    @advicepost = Advicepost.find(params[:referenceId])
-    @message.advicepost_id = @advicepost.id
-    @message.advisor_id = @advicepost.advisor_id
-    @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @message }
+  #new version with amazon payments - 
+    # GET /messages/new
+    # GET /messages/new.json
+    def new
+      @message = Message.new
+
+      #amazon transaction_id 
+      @message.transaction_id = params[:transactionId]
+
+      #set user id attribute
+      @message.user_id = current_user.id
+      @message.status = "New"
+      @advicepost = Advicepost.find(params[:referenceId])
+      @message.advicepost_id = @advicepost.id
+      @message.advisor_id = @advicepost.advisor_id
+      @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
+
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @message }
+      end
     end
-  end
+  
   
   # POST /messages
   # POST /messages.json
