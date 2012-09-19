@@ -80,7 +80,12 @@ class AdvicepostsController < ApplicationController
     @rating.score = 0
     @rating.advisor_id = current_advisor.id
     @rating.rating_select = nil
-
+    
+    @advisor = current_advisor.find(params[:id])
+    @advisor.status = params[:status]
+    @advisor.tokenID = params[:tokenID]
+    @advisor.refundTokenID = params[:refundTokenID]
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @advicepost }

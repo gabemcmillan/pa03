@@ -1,7 +1,7 @@
 class Advicepost < ActiveRecord::Base
   attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price, :advisor_id, :website, :status,
       :twitter, :linkedin, :score, :rating_select, :messages_attributes, :rating_attributes, 
-      :ratings_attributes
+      :ratings_attributes, :advisor_attributes, :advisors_attributes
   
   
   belongs_to :advisor
@@ -17,6 +17,7 @@ class Advicepost < ActiveRecord::Base
   has_one :rating
   
   accepts_nested_attributes_for :rating
+  accepts_nested_attributes_for :advisor
   
   
   #Sphinx - thinking_sphinx - indexing setup

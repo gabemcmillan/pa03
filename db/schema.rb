@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915205930) do
+ActiveRecord::Schema.define(:version => 20120919005550) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,6 +105,9 @@ ActiveRecord::Schema.define(:version => 20120915205930) do
     t.integer  "score"
     t.boolean  "agree_paypal",           :default => false
     t.boolean  "agree_emails",           :default => false
+    t.string   "status"
+    t.string   "tokenID"
+    t.string   "refundTokenID"
   end
 
   add_index "advisors", ["email"], :name => "index_advisors_on_email", :unique => true
