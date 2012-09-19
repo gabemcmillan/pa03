@@ -31,13 +31,14 @@
 			<div id="user_nav">
 			  <% if user_signed_in? %>
 			    Signed in as <%= current_user.email %>
-			  <% else %>
+			  <% elsif advisor_signed_in? %>
 				Signed in as <%= current_advisor.email %>
+			  <% else %>
+			  
 			  <% end %>
 			</div>
+			
 			</br></br>
-
-
 			<%= yield %>
 			
 			
