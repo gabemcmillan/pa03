@@ -81,7 +81,7 @@ class AdvicepostsController < ApplicationController
     @rating.advisor_id = current_advisor.id
     @rating.rating_select = nil
     
-    @advisor = Advicepost.find(:first, :conditions => {:id=>current_advisor.id})
+    @advisor = Advisor.find(:first, :conditions => {:id=>current_advisor.id})
     @advisor.status = params[:status]
     @advisor.tokenID = params[:tokenID]
     @advisor.refundTokenID = params[:refundTokenID]
