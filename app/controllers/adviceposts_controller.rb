@@ -156,7 +156,7 @@ class AdvicepostsController < ApplicationController
     #Send email to advisee they have sent a new message to advisor
     UserMailer.delay(queue: "email_new_advicepost_advisor").new_advicepost_advisor(current_advisor)
     #Send email to pa admin to notify them new advicepost has been created to review
-    UserMailer.delay(queue: "email_new_advicepost_admin").new_advicepost_admin
+    UserMailer.delay(queue: "email_new_advicepost_admin").new_advicepost_admin(@advicepost)
     
     respond_to do |format|
       if @advicepost.save
