@@ -85,6 +85,7 @@ class AdvicepostsController < ApplicationController
     @advisor.status = params[:status]
     @advisor.tokenID = params[:tokenID]
     @advisor.refundTokenID = params[:refundTokenID]
+    @advisor.save
     
     respond_to do |format|
       format.html # new.html.erb
