@@ -81,10 +81,10 @@ class AdvicepostsController < ApplicationController
     @rating.advisor_id = current_advisor.id
     @rating.rating_select = nil
     
-    @advisor = Advisor.current_advisor.find(params[:id])
-    @advisor.status = params[:status]
-    @advisor.tokenID = params[:tokenID]
-    @advisor.refundTokenID = params[:refundTokenID]
+    
+    current_advisor.astatus = params[:status]
+    current_advisor.tokenID = params[:tokenID]
+    current_advisor.refundTokenID = params[:refundTokenID]
     
     respond_to do |format|
       format.html # new.html.erb
