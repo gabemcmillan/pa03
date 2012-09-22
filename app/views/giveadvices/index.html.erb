@@ -9,14 +9,6 @@
 </p>
 
 
-<% if current_advisor.status != "SR" %>
-
-	PathAdvisor uses Amazon Payments to pay Advisors. After accepting the marketplace <br />
-	fee you will be able to submit an advice listing.  Click the button below.<br />
-	<%= render :partial => 'adviceposts/amazonacceptfeebtn' %>
-
-<% else %>
-
 
 
 <% if @adviceposts.count >= 1 %>
@@ -39,9 +31,6 @@
 	<% end %>
 
 
-
-
-<% end %>
 
 
 

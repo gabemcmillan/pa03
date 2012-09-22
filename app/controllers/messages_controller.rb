@@ -53,13 +53,13 @@ class MessagesController < ApplicationController
     def new
       @message = Message.new
 
-      #amazon transaction_id 
-      @message.transaction_id = params[:transactionId]
+      #transaction_id 
+      @message.transaction_id = params[:transaction_id]
 
       #set user id attribute
       @message.user_id = current_user.id
       @message.status = "New"
-      @advicepost = Advicepost.find(params[:referenceId])
+      @advicepost = Advicepost.find(params[:advicepost])
       @message.advicepost_id = @advicepost.id
       @message.advisor_id = @advicepost.advisor_id
       @advisor = Advisor.find(:first, :conditions => { :id => @message.advisor_id})
@@ -131,26 +131,17 @@ class MessagesController < ApplicationController
         if @message.messager.blank?
         else
         #Braintree Submit for settlement - should charge advisee price they payed for message since Advisor responded.  
-        #result = Braintree::Transaction.submit_for_settlement(@message.transaction_id)
-        
-        uri = URI('https://fps.sandbox.amazonaws.com?Action=Settle&AWSAccessKeyId=11SEM03K88SD016FS1G2&ReserveTransactionId=177LNTUQI4LR9ELZZ4R97TKU74URTLZFQP1&SignatureMethod=HmacSHA256&SignatureVersion=2&Signature=95HqPq3+bQipsDvhc8wtwvc/IvzdRKki1YcML3Qkifk=&Timestamp=2009-10-06T07%3A53%3A11.750Z&TransactionAmount.CurrencyCode=USD&TransactionAmount.Value=10&Version=2008-09-17')
-
-        res = Net::HTTP.get(uri)
-        
-        #res = Net::HTTP.get_response(uri)
-        puts res.body if res.is_a?(Net::HTTPSuccess)
-                
-        #if result.success?
+        result = Braintree::Transaction.submit_for_settlement(@message.transaction_id)
+          
+        if result.success?
           # transaction successfully submitted for settlement
             #Send email to advisor they have responded - not working somehow
-            #UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
+            UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
             #Send email to advisee their advisor has responded - works
-            #UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
-        #else
+            UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
+        else
           p result.errors
-        #end
-              
-        
+        end
       end
         
         format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. Your account has been credited with the message payment. They are on their way to a smarter path thanks to you!' }
