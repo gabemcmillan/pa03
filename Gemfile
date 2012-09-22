@@ -19,6 +19,9 @@ gem 'braintree'
 #authentication
 gem 'devise'
 
+#webservices
+gem 'httparty'
+
 
 #full text search - 
 gem 'thinking-sphinx', '2.0.10'

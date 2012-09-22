@@ -1,6 +1,14 @@
 
 
 
+<p>
+<h2>Are you an Expert in something? Give Advice!<h2><br />
+<h4>-Make money by sharing your expertise and advice privately with others</h4><br />
+<h4>-Privately message advisee's on a per message basis</h4> 	<br />
+<h4>-Share your knowledge to let others make better decisions</h4><br />
+</p>
+
+
 <% if current_advisor.status != "SR" %>
 
 	PathAdvisor uses Amazon Payments to pay Advisors. After accepting the marketplace <br />
@@ -15,11 +23,7 @@
 	<%= render 'adviceposts/advicepostsbyuser' %>
 <% else %>
 
-	<h3>Are you an Expert in something? Give Advice!<h3><br />
-	<h4>-Make money by sharing your expertise and advice privately with others</h4><br />
-	<h4>-Privately message advisee's on a per message basis</h4> 	<br />
-	<h4>-Share your knowledge to let others make better decisions</h4><br />
-	</p>
+
 	<%= link_to 'Submit an Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
 	<% end %>
 
