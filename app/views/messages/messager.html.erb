@@ -13,7 +13,7 @@ $('#message_messager').live('keyup keydown', function(e) {
 
 
 
-<h1>Respond to Message</h1><br />
+<h2>Respond to Message</h2><br />
 
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
@@ -52,7 +52,7 @@ $('#message_messager').live('keyup keydown', function(e) {
 
 <p>
 <b>Please write your response message. </b>
-	    <span class="help-block">Enter your message to this advisee.  Please answer their questions fully to the best of your ability.  Giving an excellent response will boost your rating and profile! <br />(500 character limit)</span> 
+	    <span class="help-block">Enter your message to this advisee.  Please answer their questions fully to the best of your ability.  Giving an excellent response will boost your rating and profile! <br />(1000 character limit)</span> 
 
   <div class="field">
     <%= f.text_area :messager, :maxlength => 1000 %>
