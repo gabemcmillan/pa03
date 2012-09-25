@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
   def new_message_sent_advisor(advisor, message)
     @advisor = advisor
     @message = message
-    mail to: @advisor.email, subject: "You have a new message from an Advisee"
+    mail to: @advisor.email, subject: "New message from an Advisee"
   end
   
   #send to advisee when advisor responds to message
