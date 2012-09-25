@@ -20,18 +20,7 @@
 </dl>
 
 
-<% if @transactions %>
-  <h1>Paid Messages</h1>
-  <table id="transactions">
-    <%= @transactions.each do |t| -%>
-      <tr>
-        <td><%= t.id %></td>
-        <td><%= t.amount %></td>
-        <td><%= t.status.capitalize %></td>
-      </tr>
-    <% end -%>
-  </table>
-<% end %>
+
 
 
 
