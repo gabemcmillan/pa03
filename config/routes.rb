@@ -27,10 +27,10 @@ Pa02::Application.routes.draw do
   #Homepage routes - 
   root :to=> "home#index"
   get "home/index"
-
+  get "home/howitworks"
   
   get "dashboard/index"
-  
+  get "welcome/index"
   
   #braintree credit card payments for user devise
   resources :customer, :only => [:new, :edit]
@@ -38,14 +38,9 @@ Pa02::Application.routes.draw do
   match 'customer/confirm' => 'customer#confirm', :as => :confirm_customer
   match 'credit_card_info/confirm' => 'credit_card_info#confirm', :as => :confirm_credit_card_info
 
-
   match 'transactions/:advicepost_id/new' => 'transactions#new', :as => :new_transaction
   match 'transactions/confirm/:advicepost_id' => 'transactions#confirm', :as => :confirm_transaction
 
-  
-  get "welcome/index"
-  
-  
   
   resources :payments
       match 'confirm_payment' => 'payments#confirm'
