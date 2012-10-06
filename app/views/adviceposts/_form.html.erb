@@ -11,6 +11,13 @@
   </div>
 
   <div class="field">
+	<strong><%= f.label "Headline" %></strong>
+	    <span class="help-block">Enter a quick summary Advisee's can find you with.  Enter years experience and a descriptive title.</span>
+    <%= f.text_field :headline %>
+  </div>
+
+
+  <div class="field">
     <strong><%= f.label :category_id %></strong>
     <%= f.select :category_id, Category.order("categoryname").all.collect {|category| [category.categoryname,category.id]}, :include_blank => 'Please select a category...' %>
   </div>
@@ -60,21 +67,7 @@
 <% end %>
 </div>
 
-<div class="field">
-<%= f.fields_for :advisor, current_advisor do |builder| %>
-	<fieldset>
-  <div class="field">
-    <%= builder.hidden_field :status %>
-  </div>
-  <div class="field">
-    <%= builder.hidden_field :tokenID %>
-  </div>
-  <div class="field">
-    <%= builder.hidden_field :refundTokenID %>
-  </div>
-	<fieldset>
-<% end %>
-</div>
+
 
 
 
@@ -90,9 +83,7 @@ By clicking Continue you verify all the information you have entered for this Ad
 <% end %>
 
 
-<br /><br />
-<%= debug @advisor %>
-<%= debug @advicepost %>
+
 
 
 

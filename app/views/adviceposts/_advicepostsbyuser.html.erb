@@ -7,6 +7,7 @@
 <table class="table table-striped">
   <tr>
     <th>Category</th>
+	<th>Headline</th>
     <th>Mini-Resume</th>
 	<th>Status</th>
     <th>Price</th>
@@ -16,6 +17,7 @@
 <% @adviceposts.each do |advicepost| %>
   <tr>
   	<td><%= link_to advicepost.category.try(:categoryname), advicepost %></td>
+	<td><%= advicepost.headline %></td>
     <td><%= truncate(advicepost.miniresume,:length=>100,:omission=>"...") %></td>
     <td><%= advicepost.status %></td>
 	<td>$<%= advicepost.price %></td>

@@ -1,6 +1,6 @@
 class Advicepost < ActiveRecord::Base
-  attr_accessible :category_id, :categoryname, :miniresume, :user_id, :price, :advisor_id, :website, :status,
-      :twitter, :linkedin, :score, :rating_select, :messages_attributes, :rating_attributes, 
+  attr_accessible :category_id, :categoryname, :headline, :miniresume, :user_id, :price, :advisor_id, :website, :status,
+      :twitter, :linkedin, :score, :rating_select, :tokenID, :refundTokenID, :messages_attributes, :rating_attributes, 
       :ratings_attributes, :advisor_attributes, :advisors_attributes
   
   

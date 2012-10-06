@@ -9,7 +9,7 @@
 		<%= link_to image_tag("pathadvisor-logo230px.jpg"), getadvices_path, id: "logo" %>
 		<nav>
 			<ul class="nav">
-		    <li><%= link_to 'Dashboard', giveadvices_path %></li>
+		    <li><%= link_to 'Dashboard', getadvices_path %></li>
 			</ul>
 		</nav>
 		<nav>
@@ -24,34 +24,34 @@
 		
 		<% elsif current_advisor %>
 
-		<%= link_to image_tag("pathadvisor-logo230px.jpg"), giveadvices_path, id: "logo" %>
-		<nav>
-			<ul class="nav">
-		    <li><%= link_to 'Dashboard', giveadvices_path %></li>
+			<%= link_to image_tag("pathadvisor-logo230px.jpg"), giveadvices_path, id: "logo" %>
+			<nav>
+				<ul class="nav">
+			    <li><%= link_to 'Dashboard', giveadvices_path %></li>
+				</ul>
+			</nav>
+	        <nav>
+	    	<ul class="nav pull-right">
+		    <li><%= link_to "How it Works",    '#' %></li>
+	        <li><%= link_to 'Profile', edit_advisor_registration_path %></li>
+			<li><%= link_to "Logout", destroy_advisor_session_path, method: :delete %></li>
 			</ul>
-		</nav>
-        <nav>
-    	<ul class="nav pull-right">
-	    <li><%= link_to "How it Works",    '#' %></li>
-        <li><%= link_to 'Profile', edit_advisor_registration_path %></li>
-		<li><%= link_to "Logout", destroy_advisor_session_path, method: :delete %></li>
-		</ul>
-		</nav>
+			</nav>
         
         <% else %>
             
-		<%= link_to image_tag("pathadvisor-logo230px.jpg"), home_index_path, id: "logo" %>
-		<nav>
-			<ul class="nav">
-			<li><%= link_to "How it Works",    '#' %></li>
+			<%= link_to image_tag("pathadvisor-logo230px.jpg"), home_index_path, id: "logo" %>
+			<nav>
+				<ul class="nav">
+				<li><%= link_to "How it Works",    '#' %></li>
+				</ul>
+			</nav>
+	        <nav>
+	    	<ul class="nav pull-right">
+				<li><%= link_to "Advisee Login", new_user_session_path %></li> 
+				<li><%= link_to "Advisor Login", new_advisor_session_path %></li>
 			</ul>
-		</nav>
-        <nav>
-    	<ul class="nav pull-right">
-			<li><%= link_to "Advisee Login", new_user_session_path %></li> 
-			<li><%= link_to "Advisor Login", new_advisor_session_path %></li>
-		</ul>
-		</nav>
+			</nav>
 		
 		<% end %>
 

@@ -120,11 +120,10 @@ class AdvicepostsController < ApplicationController
     @advicepost = Advicepost.find(params[:id])
     
     respond_to do |format|
+        #logic for user giving the advisor response a rating - will add the score.  
         if current_user
-          
           #@message = Message.find(params[:m_id])
           if @advicepost.update_attributes(params[:advicepost])
-
             format.html { redirect_to getadvices_path, notice: 'Thanks for rating your advisors message!' }
             format.json { head :no_content }
           else

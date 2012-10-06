@@ -7,6 +7,7 @@
 
 <table class="table table-striped">
   <tr>
+	<th>Headline</th>
     <th>Advisor</th>  
     <th>Category</th>
     <th>Mini-resume</th>
@@ -17,7 +18,8 @@
 <% @adviceposts.each do |advicepost| %>
   <tr>
 	<%= @space = " " %>
-	<td><%= link_to advicepost.advisor.first_name + @space + advicepost.advisor.last_name, advicepost %></td> 
+    <td><%= link_to advicepost.headline, advicepost %></td>
+	<td><%= advicepost.advisor.first_name + @space + advicepost.advisor.last_name %></td> 
     <td><%= advicepost.category.categoryname %></td>  
     <td><%= truncate(advicepost.miniresume,:length=>230,:omission=>"...") %></td>
 	<td><%= advicepost.rating.score %>

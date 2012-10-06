@@ -3,6 +3,12 @@
 
 <%= form_for(@advicepost) do |f| %>
 
+
+<p>
+  <b>Headline:</b><br />
+  <%= @advicepost.headline %>
+</p>
+
 <p>
   <b>Category:</b><br />
   <%= @advicepost.category.categoryname %>
@@ -58,7 +64,9 @@
 <br /><br />
 <%= link_to 'Back', :back, :class => 'btn' %>
 
-<%= link_to "Buy Advice Message!", new_transaction_path(:advicepost_id => @advicepost.id), :class => 'btn', class: "btn btn-success" %>
+<% if current_user %>
+	<%= link_to "Buy Advice Message!", new_transaction_path(:advicepost_id => @advicepost.id), :class => 'btn', class: "btn 								  btn-success" %>
+<% end %>
 
 
 <% end %>
