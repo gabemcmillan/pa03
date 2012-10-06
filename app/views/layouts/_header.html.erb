@@ -6,21 +6,20 @@
 			
 		<% if current_user %>
 		
-		<%= link_to image_tag("pathadvisor-logo230px.jpg"), getadvices_path, id: "logo" %>
-		<nav>
-			<ul class="nav">
-		    <li><%= link_to 'Dashboard', getadvices_path %></li>
-			</ul>
-		</nav>
-		<nav>
-			<ul class="nav pull-right">
-			<li>Logged in as <strong><%= current_user.email %></strong></li>
-		    <li><%= link_to "How it Works", home_howitworks_path %></li>
-			<li><%= link_to 'Account', payments_path %></li>	
-			<li><%= link_to 'Profile', edit_user_registration_path %></li>	
-	        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-			</ul>
-		</nav>
+			<%= link_to image_tag("pathadvisor-logo230px.jpg"), getadvices_path, id: "logo" %>
+			<nav>
+				<ul class="nav">
+			    <li><%= link_to 'Dashboard', getadvices_path %></li>
+				</ul>
+			</nav>
+			<nav>
+				<ul class="nav pull-right">
+			    <li><%= link_to "How it Works", home_howitworks_path %></li>
+				<li><%= link_to 'Billing', payments_path %></li>	
+				<li><%= link_to 'Profile', edit_user_registration_path %></li>	
+		        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+				</ul>
+			</nav>
 		
 		<% elsif current_advisor %>
 
