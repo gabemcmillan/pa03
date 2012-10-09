@@ -28,6 +28,10 @@ Pa02::Application.routes.draw do
   root :to=> "home#index"
   get "home/index"
   get "home/howitworks"
+  get "home/about"
+  get "home/privacy"
+  get "home/terms"
+  
   
   get "dashboard/index"
   get "welcome/index"
