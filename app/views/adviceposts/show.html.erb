@@ -1,4 +1,7 @@
 
+
+
+
 <h2>Advice Listing Details</h2>
 
 <%= form_for(@advicepost) do |f| %>
@@ -25,11 +28,17 @@
   <%= @advicepost.miniresume %>
 </p>
 
+
+
+<p>
+	<b>Location</b><br />
+	<%= @advicepost.advisor.city + ", " + @advicepost.advisor.state %>
+</p>
+
 <p>
   <b>Score:</b><br />
   <%= @advicepost.rating.score %>
 </p>
-
 
 <% if @advicepost.website.blank? %>
 <% else %>
