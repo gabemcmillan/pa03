@@ -25,6 +25,7 @@ class Advicepost < ActiveRecord::Base
     indexes miniresume
     indexes status
     indexes category.categoryname, :as => :category_name
+    indexes [advisor.city,advisor.state], as: :advisor_citystate
   end
   
   

@@ -18,10 +18,16 @@ class AdvicepostsController < ApplicationController
   # GET /adviceposts/search
   # GET /adviceposts/search.json
   def search
-    #@adviceposts = Advicepost.all
+    
+    search = params[:search]
+    miniresume = params[:miniresume]
+    
 
     #thinking_sphinx conditions - 
-    @adviceposts = Advicepost.search(params[:search], conditions:{status: "Enabled"}, page: 1, per_page: 25)
+    #@adviceposts = Advicepost.search :conditions=>{:search=>params[:search]},{:miniresume=>params[:miniresume]}
+    #@adviceposts = Advicepost.search :conditions=>["search=? and miniresume=?",search,miniresume]
+    #@adviceposts = Advicepost.search(:conditions=>{:search=>search,:miniresume=>miniresume})
+    @adviceposts = Advicepost.search(search,miniresume)
     
     respond_to do |format|
       format.html # index.html.erb

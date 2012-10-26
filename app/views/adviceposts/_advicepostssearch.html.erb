@@ -9,10 +9,12 @@
 
 <%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Select a category...' %>
 
+<%= text_field_tag :miniresume, nil, :placeholder => 'Optional: Enter keyword or Location' %>
+
+
 <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
 
 </p>
-
 
 <% end %>
 
