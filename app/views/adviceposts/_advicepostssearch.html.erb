@@ -7,10 +7,11 @@
 <%= form_tag apsearch_path, :method => :get do %>
 <p>
 
-<%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Select a category...' %>
+<%= select :search, params[:search], Category.joins(:adviceposts).select('distinct categories.*').collect {|category| [ category.categoryname,category.categoryname ]}, :include_blank => 'Optional: Select a category...' %>
 
-<%= text_field_tag :miniresume, nil, :placeholder => 'Optional: Enter keyword or Location' %>
+<%= text_field_tag :miniresume, nil, :placeholder => 'Optional: Enter keyword' %>
 
+<%= text_field_tag :location, nil, :placeholder => 'Optional: Location - City, State' %>
 
 <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
 

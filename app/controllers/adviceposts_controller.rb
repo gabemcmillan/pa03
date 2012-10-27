@@ -21,13 +21,10 @@ class AdvicepostsController < ApplicationController
     
     search = params[:search]
     miniresume = params[:miniresume]
-    
+    location = params[:location]
 
     #thinking_sphinx conditions - 
-    #@adviceposts = Advicepost.search :conditions=>{:search=>params[:search]},{:miniresume=>params[:miniresume]}
-    #@adviceposts = Advicepost.search :conditions=>["search=? and miniresume=?",search,miniresume]
-    #@adviceposts = Advicepost.search(:conditions=>{:search=>search,:miniresume=>miniresume})
-    @adviceposts = Advicepost.search(search,miniresume)
+    @adviceposts = Advicepost.search(search,miniresume,location,page: 1, per_page: 25)
     
     respond_to do |format|
       format.html # index.html.erb
