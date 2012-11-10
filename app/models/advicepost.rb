@@ -42,6 +42,8 @@ class Advicepost < ActiveRecord::Base
 
   
   #validates :advisor_id, presence: true
+  validates_presence_of :category_id
+  
   
   #order by most recent
   default_scope order: 'adviceposts.created_at DESC'

@@ -1,4 +1,13 @@
 
+<script type="text/javascript">
+<!--
+$('#advicepost_miniresume').live('keyup keydown', function(e) {
+  var maxLen = 2000;
+  var left = maxLen - $(this).val().length;
+  $('#char-count').html(left);
+}); 
+//-->
+</script>
 
 <%= form_for(@advicepost) do |f| %>
   	
@@ -11,25 +20,26 @@
   </div>
 
   <div class="field">
-	<strong><%= f.label "Headline" %></strong>
-	    <span class="help-block">Enter a quick summary Advisee's can find you with.</span>
-    <%= f.text_field :headline %>
+	<strong><%= f.label "Headline *" %></strong>
+	    <span class="help-block">Enter a headline of your expertise.</span>
+    <%= f.text_field :headline, :required => true %>
   </div>
 
 
   <div class="field">
-    <strong><%= f.label :category_id %></strong>
-    <%= f.select :category_id, Category.order("categoryname").all.collect {|category| [category.categoryname,category.id]}, :include_blank => 'Please select a category...' %>
+    <strong><%= f.label "Category *" %></strong>
+    <%= f.select :category_id, Category.order("categoryname").all.collect {|category| [category.categoryname,category.id]}, :include_blank => 'Please select a category...', :required => true %>
   </div>
 
   <div class="field">
-    <strong><%= f.label 'Mini-Resume' %></strong>
+    <strong><%= f.label 'Mini-Resume *' %></strong>
     <span class="help-block">(2000 character max.) Summarize your experience and accomplishments. Be specific. Show off. Add any relevant links as well.  Enter years experience and a descriptive title.</span>
-    <%= f.text_area :miniresume %>
+    <%= f.text_area :miniresume, :required => true %>
   </div>
-
+  <div>Characters left: <span id="char-count">2000</span></div>
+  </br>
   <div class="field">
-    <strong><%= f.label :price %></strong> 
+    <strong><%= f.label "Price *", :required => true %></strong> 
 	<span class="help-block">This is the price per response from someone seeking your advice.</span>
 <%= f.select :price, AdvicepostPrice.all.collect {|advicepost_price| [ advicepost_price.pricelabel,advicepost_price.price ]} %>
   </div>
