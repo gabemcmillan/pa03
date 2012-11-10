@@ -31,7 +31,7 @@
   <div class="field">
     <strong><%= f.label :price %></strong> 
 	<span class="help-block">This is the price per response from someone seeking your advice.</span>
-<%= f.select :price, AdvicepostPrice.all.collect {|advicepost_price| [ advicepost_price.pricelabel,advicepost_price.price ]}, :include_blank => 'Please select a price…' %>
+<%= f.select :price, AdvicepostPrice.all.collect {|advicepost_price| [ advicepost_price.pricelabel,advicepost_price.price ]} %>
   </div>
 
   <div class="field">
