@@ -56,7 +56,8 @@ class UserMailer < ActionMailer::Base
   #send to PathAdvisor Admin to review the Submitted AdvicePost
   def new_advicepost_admin(advicepost)
     @advicepost = advicepost
-    mail to: "gabe@pathadvisor.com", subject: "New advice listing submitted - please check"
+    @admin_email = "gabe@pathadvisor.com"
+    mail to: @admin_email, subject: "Check new advice listing submitted"
   end
   
   #send to advisor when he has not responded to advisee message after period of time

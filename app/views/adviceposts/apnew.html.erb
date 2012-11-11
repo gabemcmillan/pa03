@@ -8,23 +8,35 @@
 
 
 <p>
+  <b>Headline:</b><br />
+  <%= @advicepost.headline %>
+</p>
+
+<p>
   <b>Category:</b><br />
   <%= @advicepost.category.categoryname %>
 </p>
 
 <%= @space = " " %>
 <p>
-  <b>Advisor:</b><br />
+  <b>Advisor Name:</b><br />
   <%= @advicepost.advisor.first_name + @space + @advicepost.advisor.last_name %>
 </p>
-
 
 <p>
   <b>Mini-Resume:</b><br />
   <%= @advicepost.miniresume %>
 </p>
 
+<p>
+	<b>Location</b><br />
+	<%= @advicepost.advisor.city + ", " + @advicepost.advisor.state %>
+</p>
 
+<p>
+  <b>Score:</b><br />
+  <%= @advicepost.rating.score %>
+</p>
 
 <% if @advicepost.website.blank? %>
 <% else %>
@@ -49,6 +61,7 @@
   <%= @advicepost.linkedin %>
 </p>	
 <% end %>
+
 
 <p>
   <b>Price per message:</b>

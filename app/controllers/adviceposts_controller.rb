@@ -156,12 +156,14 @@ class AdvicepostsController < ApplicationController
     @rating = Rating.new(params[:rating])
         
     #Send email to advisee they have sent a new message to advisor
-    UserMailer.delay(queue: "email_new_advicepost_advisor").new_advicepost_advisor(current_advisor)
-    #Send email to pa admin to notify them new advicepost has been created to review
-    UserMailer.delay(queue: "email_new_advicepost_admin").new_advicepost_admin(@advicepost)
+    UserMailer.delay(queue: "email_new_advicepost").new_advicepost_advisor(current_advisor)
+
     
     respond_to do |format|
       if @advicepost.save
+        #After save send email to pa admin to notify them new advicepost has been created to review
+        UserMailer.delay(queue: "email_new_advicepost").new_advicepost_admin(@advicepost)
+        
         format.html { redirect_to apnew_path(@advicepost), notice: 'Your Advice Listing has been submitted! You should hear back soon after we review your listing.' }
         format.json { render json: @advicepost, status: :created, location: @advicepost }
       else
