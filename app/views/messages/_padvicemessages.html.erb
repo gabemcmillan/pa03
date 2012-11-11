@@ -20,7 +20,7 @@
 	<%= @space = " " %>
 	<td><%= link_to "View", showadvisee_path(message) %></td>
     <td><%= message.advicepost.categoryname %></td>
-    <td><%= message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name %></td>
+    <td><%= link_to message.advicepost.advisor.first_name + @space + message.advicepost.advisor.last_name,  advicepost_path(message.advicepost.id) %></td>
     <td><%= message.status %></td>
     <td><%= message.created_at.strftime("%m-%d-%Y %H:%M") %></td>
 
@@ -31,7 +31,6 @@
 	<% else %>
 	    <td></td>
 	<% end %>
-		
 	
 	<% if message.status == "Responded" %>
 	<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
