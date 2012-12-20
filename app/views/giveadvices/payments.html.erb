@@ -1,0 +1,31 @@
+
+
+
+
+
+<dl>
+<h1>Payment Details</h1>	<br /><br />
+	<span class="help-block">You must have a Paypal small business account to receive payment. -%>
+     
+
+		<% if @transactions %>
+		  <h1>Transactions</h1>
+		  <table id="transactions">
+		    <%= @transactions.each do |t| -%>
+		      <tr>
+		        <td><%= t.id %></td>
+		        <td><%= t.amount %></td>
+		        <td><%= t.status.capitalize %></td>
+		      </tr>
+		    <% end -%>
+		  </table>
+		<% end %>
+		
+		
+
+
+
+<%= link_to 'Back', getadvices_path, class: "btn" %>
+
+
+

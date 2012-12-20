@@ -31,6 +31,7 @@ Pa02::Application.routes.draw do
   get "home/about"
   get "home/privacy"
   get "home/terms"
+  get "home/howitworks_signedin"
   
   
   get "dashboard/index"
@@ -50,7 +51,8 @@ Pa02::Application.routes.draw do
       match 'confirm_payment' => 'payments#confirm'
       
   
-  match 'getadvices/payments' => 'getadvices#payments', :as => :payments
+  match 'getadvices/payments' => 'getadvices#payments', :as => :getadvice_payments
+  match 'giveadvices/payments' => 'giveadvices#payments', :as => :giveadvice_payments
   
   
 

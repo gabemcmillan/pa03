@@ -21,12 +21,24 @@ class GiveadvicesController < ApplicationController
       = ? OR status = ? OR status = ?", 'Responded', 'Canceled', 'New', 'Rated')
         
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @giveadvices }
     end
   end
-  
 
+  
+  
+  def payments
+    if current_advisor && current_advisor.has_payment_info?
+      current_advisor.with_braintree_data!
+      @transactions = Braintree::Transaction.search do |search|
+        search.customer_id.is current_advisor.braintree_customer_id
+      end
+    end
+  
+    
+  end
+  
+  
 end
