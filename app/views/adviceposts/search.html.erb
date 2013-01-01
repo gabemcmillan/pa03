@@ -1,4 +1,6 @@
 
+<%= @space = " " %>
+
 
 
 <% if @adviceposts.count >= 1 %>
@@ -18,14 +20,13 @@
 
 <% @adviceposts.each do |advicepost| %>
   <tr>
-	<%= @space = " " %>
-	<%= @comma = ", "%>
+
     <td><%= link_to advicepost.headline, advicepost %></td>
 	<td><%= advicepost.advisor.first_name + @space + advicepost.advisor.last_name %></td> 
     <td><%= advicepost.category.categoryname %></td>  
     <td><%= truncate(advicepost.miniresume,:length=>230,:omission=>"...") %></td>
 	<td><%= advicepost.rating.score %>
-	<td><%= advicepost.advisor.city + @comma + advicepost.advisor.state %>	
+	<td><%= advicepost.advisor.city + ", " + advicepost.advisor.state %>	
     <td>$<%= advicepost.price %></td>
   </tr>
 <% end %>
