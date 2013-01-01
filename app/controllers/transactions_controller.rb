@@ -11,7 +11,10 @@ class TransactionsController < ApplicationController
                                                                       :transaction => {
                                                                         :amount => @advicepost.price,
                                                                         :type => "sale",
-                                                                        :customer_id => current_user.braintree_customer_id
+                                                                        :customer_id => current_user.braintree_customer_id,
+                                                                        :custom_fields => {
+                                                                          :advisor_email => @advicepost.advisor.email
+                                                                        }
                                                                        })
                                                                        
     else

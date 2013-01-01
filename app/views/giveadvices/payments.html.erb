@@ -5,27 +5,15 @@
 
 <dl>
 <h1>Payment Details</h1>	<br /><br />
-	<span class="help-block">You must have a Paypal small business account to receive payment. -%>
+	<span class="help-block">You must have a Paypal small business account to receive payment. We send payments to advisors via email at the beginning of each month. <span>
      
 
-		<% if @transactions %>
-		  <h1>Transactions</h1>
-		  <table id="transactions">
-		    <%= @transactions.each do |t| -%>
-		      <tr>
-		        <td><%= t.id %></td>
-		        <td><%= t.amount %></td>
-		        <td><%= t.status.capitalize %></td>
-		      </tr>
-		    <% end -%>
-		  </table>
-		<% end %>
-		
+
 		
 
+</br></br></br>
 
-
-<%= link_to 'Back', getadvices_path, class: "btn" %>
+<%= link_to 'Back', giveadvices_path, class: "btn" %>
 
 
 
