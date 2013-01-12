@@ -1,9 +1,8 @@
 
 
 
-Braintree::Configuration.environment = :sandbox
-Braintree::Configuration.merchant_id = "v423bgch2m4bt7g9"
-Braintree::Configuration.public_key = "834sb85rbfrv9w5k"
-Braintree::Configuration.private_key = "n94pgpdxp7p4yprz"
-
+Braintree::Configuration.environment = :production
+Braintree::Configuration.merchant_id = "np55rwwd35txp87v"
+Braintree::Configuration.public_key = "x6ddryffhkthtbqm"
+Braintree::Configuration.private_key = "12702347e9c97981ef32f4017d138158"
 
