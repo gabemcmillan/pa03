@@ -28,7 +28,7 @@ Pa02::Application.configure do
 
   
   #specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => 'serene-bayou-1827.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.pathadvisor.com' }
   
   #config.action_mailer.delivery_method = :letter_opener
   
