@@ -8,12 +8,20 @@ gem 'rails', '3.2.11'
 #database
 gem 'mysql2'
 
-#prod webserver 
+#webserver 
 gem 'thin'
+
+#cloud hosting
+gem 'rubber'
+gem 'therubyracer', :group => :assets
 
 
 #credit card payments
 gem 'braintree'
+
+
+# rack ssl 
+gem 'rack-ssl'
 
 
 #authentication

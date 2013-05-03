@@ -17,6 +17,10 @@ Pa02::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
 
+  #force ssl on all environments
+  #config.force_ssl = false
+  
+  
 
   
   #specify what domain to use for mailer URLs

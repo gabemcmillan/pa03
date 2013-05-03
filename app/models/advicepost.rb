@@ -20,6 +20,9 @@ class Advicepost < ActiveRecord::Base
   accepts_nested_attributes_for :advisor
   
   
+  STATUS_TYPES = ["Enabled", "DISABLED"]
+  
+  
   #Sphinx - thinking_sphinx - indexing setup
   define_index do
     indexes miniresume

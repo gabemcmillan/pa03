@@ -10,7 +10,7 @@
 	<th>Headline</th>
     <th>Mini-Resume</th>
 	<th>Status</th>
-    <th>Price</th>
+    <th>Score</th>
     <th>Edit</th>
   </tr>
 
@@ -20,7 +20,7 @@
 	<td><%= advicepost.headline %></td>
     <td><%= truncate(advicepost.miniresume,:length=>100,:omission=>"...") %></td>
     <td><%= advicepost.status %></td>
-	<td>$<%= advicepost.price %></td>
+    <td><%= advicepost.rating.score %></td>
     <td><%= link_to 'Edit', edit_advicepost_path(advicepost) %></td>
   </tr>
 <% end %>

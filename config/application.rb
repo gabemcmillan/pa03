@@ -12,9 +12,8 @@ end
 module Pa02
   class Application < Rails::Application
     
-    #force ssl on all environments
-    config.force_ssl = true
-    
+    #disable SSL for all environments
+    #config.force_ssl = false
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

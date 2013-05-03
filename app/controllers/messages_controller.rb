@@ -44,17 +44,16 @@ class MessagesController < ApplicationController
       format.json { render json: @message }
     end
   end
+    
   
-  
-  
-  #new version with amazon payments - 
+  #new version 
     # GET /messages/new
     # GET /messages/new.json
     def new
       @message = Message.new
 
       #transaction_id 
-      @message.transaction_id = params[:transaction_id]
+      #@message.transaction_id = params[:transaction_id]
 
       #set user id attribute
       @message.user_id = current_user.id
@@ -131,20 +130,20 @@ class MessagesController < ApplicationController
         if @message.messager.blank?
         else
         #Braintree Submit for settlement - should charge advisee price they payed for message since Advisor responded.  
-        result = Braintree::Transaction.submit_for_settlement(@message.transaction_id)
+        #result = Braintree::Transaction.submit_for_settlement(@message.transaction_id)
           
-        if result.success?
+        #if result.success?
           # transaction successfully submitted for settlement
             #Send email to advisor they have responded - not working somehow
             UserMailer.delay(queue: "email_message_response").response_sent_advisor(current_advisor)
             #Send email to advisee their advisor has responded - works
             UserMailer.delay(queue: "email_message_response").response_sent_advisee(@user, @message)
-        else
-          p result.errors
-        end
+        #else
+        #  p result.errors
+        #end
       end
         
-        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. Your account has been credited with the message payment. They are on their way to a smarter path thanks to you!' }
+        format.html { redirect_to @message, notice: 'You have successfully responded to your advisee. They are on their way to a smarter path thanks to you!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

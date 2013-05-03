@@ -1,14 +1,10 @@
 
-
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			
-		
-				
-			
 		<% if current_user %>
-		
+
 			<%= link_to image_tag("pathadvisor-logo230px.jpg"), getadvices_path, id: "logo" %>
 			<nav>
 				<ul class="nav">
@@ -18,7 +14,6 @@
 			<nav>
 				<ul class="nav pull-right">
 			    <li><%= link_to "How it Works", home_howitworks_signedin_path %></li>
-				<li><%= link_to 'Billing', getadvice_payments_path %></li>	
 				<li><%= link_to 'Profile', edit_user_registration_path %></li>	
 		        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				</ul>
@@ -35,7 +30,6 @@
 	        <nav>
 	    	<ul class="nav pull-right">
 		    <li><%= link_to "How it Works", home_howitworks_signedin_path %></li>
-     		<li><%= link_to 'Payouts', giveadvice_payments_path %></li>
 	        <li><%= link_to 'Profile', edit_advisor_registration_path %></li>
 			<li><%= link_to "Logout", destroy_advisor_session_path, method: :delete %></li>
 			</ul>
