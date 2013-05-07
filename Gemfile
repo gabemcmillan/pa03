@@ -16,8 +16,14 @@ gem 'rubber'
 gem 'therubyracer', :group => :assets
 
 
+#capistrano
+gem 'capistrano'
+gem 'capistrano-recipes'
+
+
+
 #credit card payments
-gem 'braintree'
+#gem 'braintree'
 
 
 # rack ssl 
