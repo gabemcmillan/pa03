@@ -20,6 +20,8 @@ gem 'therubyracer', :group => :assets
 gem 'capistrano'
 gem 'capistrano-recipes'
 
+gem 'unicorn'
+
 
 
 #credit card payments
