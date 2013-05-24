@@ -23,9 +23,10 @@ gem 'capistrano-recipes'
 gem 'unicorn'
 
 
+gem 'nokogiri', '1.5.6'
 
-#credit card payments
-#gem 'braintree'
+
+
 
 
 # rack ssl 
