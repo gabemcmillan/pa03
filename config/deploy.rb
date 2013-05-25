@@ -3,8 +3,8 @@ require "bundler/capistrano"
 server "96.126.113.242", :web, :app, :db, primary: true
 
 set :application, "pa03"
-set :user, "deploy"
-set :deploy_to, "/home/#{user}/rails32/#{application}"
+set :user, "root"
+set :deploy_to, "/home/deploy/rails32/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, true
 
