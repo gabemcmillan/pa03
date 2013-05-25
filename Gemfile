@@ -11,6 +11,7 @@ gem 'mysql2'
 #webserver 
 gem 'thin'
 
+
 #cloud hosting
 gem 'rubber'
 gem 'therubyracer', :group => :assets
@@ -20,12 +21,11 @@ gem 'therubyracer', :group => :assets
 gem 'capistrano'
 gem 'capistrano-recipes'
 
+#http server
 gem 'unicorn'
 
 
 gem 'nokogiri', '1.5.6'
-
-
 
 
 
