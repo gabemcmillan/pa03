@@ -1,4 +1,4 @@
-root = "/home/deploy/rails32/pa03"
+root = "/home/deploy/rails32/pa03/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
