@@ -21,3 +21,5 @@ doc/
 .project
 .DS_Store
 
+#Ignore database.yml file - make changes on db
+/config/database.yml

@@ -22,11 +22,13 @@ development:
 
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  host: friedman
-  database: pa03_production
-  username: root
-  password: copley66
+    adapter: mysql2
+    encoding: utf8
+    database: pa03_production
+    username: root
+    password: copley66
+    host: 96.126.113.242
+    port: 3306
+
     
     
