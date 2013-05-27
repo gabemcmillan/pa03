@@ -4,6 +4,6 @@ pid "/home/deploy/rails32/pa03/shared/pids/unicorn.pid"
 stderr_path "/home/deploy/rails32/pa03/shared/log/unicorn.stderr.log"
 stdout_path "/home/deploy/rails32/pa03/shared/log/unicorn.stdout.log"
 
-listen "/tmp/unicorn.blog.sock"
+listen "/tmp/unicorn.pa03.sock"
 worker_processes 2
 timeout 30
