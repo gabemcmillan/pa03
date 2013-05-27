@@ -9,12 +9,14 @@ gem 'rails', '3.2.11'
 gem 'mysql2'
 
 
-gem :development do
+group :development do
  #development webserver 
  gem 'thin'
+ #email testing
+ gem 'letter_opener'
 end
 
-gem :production do
+group :production do
  #http server
  gem 'unicorn'
 end
@@ -63,8 +65,6 @@ gem 'simple_form'
 gem 'nifty-generators'
 
 
-#email testing
-gem "letter_opener", :group => :development
 
 #scheduling - cron jobs
 gem 'whenever', require: false
