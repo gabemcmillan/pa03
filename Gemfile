@@ -9,17 +9,16 @@ gem 'rails', '3.2.11'
 gem 'mysql2'
 
 
-group :development do
- #development webserver 
- gem 'thin'
- #email testing
- gem 'letter_opener'
-end
 
-group :production do
- #http server
- gem 'unicorn'
-end
+#development webserver 
+gem 'thin'
+
+#email testing
+gem 'letter_opener'
+
+
+#production webserver
+gem 'unicorn'
 
 
 
