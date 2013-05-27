@@ -8,8 +8,17 @@ gem 'rails', '3.2.11'
 #database
 gem 'mysql2'
 
-#webserver 
-gem 'thin'
+
+gem :development do
+ #development webserver 
+ gem 'thin'
+end
+
+gem :production do
+ #http server
+ gem 'unicorn'
+end
+
 
 
 #cloud hosting
@@ -21,12 +30,8 @@ gem 'therubyracer', :group => :assets
 gem 'capistrano'
 gem 'capistrano-recipes'
 
-#http server
-gem 'unicorn'
-
 
 gem 'nokogiri', '1.5.6'
-
 
 
 # rack ssl 
