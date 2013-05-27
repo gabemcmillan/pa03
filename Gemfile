@@ -18,7 +18,7 @@ gem 'letter_opener'
 
 
 #production webserver
-gem 'unicorn'
+#gem 'unicorn'
 
 
 
