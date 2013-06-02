@@ -2,6 +2,6 @@
 
 
 production:
-  version: '1.10-beta'
+  configuration_file: /home/deploy/rails32/pa03/current/config/production.sphinx.conf    
   pid_file: var/run/searchd.pid
   indices_location: /home/deploy/rails32/pa03/current/db/sphinx
