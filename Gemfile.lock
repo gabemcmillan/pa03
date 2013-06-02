@@ -165,6 +165,7 @@ GEM
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    sphinx (2.1.1.3712)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -221,6 +222,7 @@ DEPENDENCIES
   rubber
   sass-rails (~> 3.2.3)
   simple_form
+  sphinx
   therubyracer
   thin
   thinking-sphinx (= 2.0.10)
