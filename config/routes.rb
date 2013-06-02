@@ -8,8 +8,8 @@ Pa02::Application.routes.draw do
   #Authentication Routes - 
   
   #Admin authentication
-  ActiveAdmin.routes(self)
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  #ActiveAdmin.routes(self)
+  #devise_for :admin_users, ActiveAdmin::Devise.config
   
   
   #Advisee authentication

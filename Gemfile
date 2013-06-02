@@ -49,9 +49,6 @@ gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx',   '0.8.0'
 
 
-
-
-
 #pagination
 gem 'will_paginate', '> 3.0'
 
