@@ -38,9 +38,23 @@ set :output, "#{path}/log/cron.log"
             rake "ts:index"
             rake "send_reminder1"
             rake "cancel_messages" 
-            
         end
-      
-      end   
+    end   
+    
+    case @environment
+      when 'production'
+        every :reboot do
+           command "script/delayed_job start"
+           rake "ts:index"
+        end
+        #tasks to execute every 1 hour
+        every 1.hour do 
+            rake "ts:index"
+            rake "send_reminder1"
+            rake "cancel_messages" 
+        end
+    end
+    
+    
       
       
