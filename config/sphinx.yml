@@ -5,3 +5,6 @@ production:
   configuration_file: /home/deploy/rails32/pa03/current/config/production.sphinx.conf    
   pid_file: var/run/searchd.pid
   indices_location: /home/deploy/rails32/pa03/current/db/sphinx
+  bin_path: "/usr/local/bin"
+  searchd_binary_name: searchd
+  indexer_binary_name: indexer
