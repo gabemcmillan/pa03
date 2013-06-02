@@ -43,7 +43,8 @@ gem 'devise'
 gem 'httparty'
 
 
-#full text search - 
+#full text search -
+gem 'sphinx' 
 gem 'thinking-sphinx', '2.0.10'
 
 
