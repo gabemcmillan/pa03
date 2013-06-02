@@ -2,9 +2,13 @@
 
 
 production:
-  configuration_file: /home/deploy/rails32/pa03/current/config/production.sphinx.conf    
-  pid_file: var/run/searchd.pid
-  indices_location: /home/deploy/rails32/pa03/current/db/sphinx
-  bin_path: "/usr/local/bin"
-  searchd_binary_name: searchd
-  indexer_binary_name: indexer
+  port: 9312
+  address: 127.0.0.1
+  mem_limit: 512M
+  max_children: 300
+  max_matches: 100000
+  seamless_rotate: 1
+  preopen_indexes: 1
+  configuration_file: "/home/deploy/rails32/pa03/current/config/production.sphinx.conf"    
+  pid_file: "/home/deploy/rails32/pa03/shared/pids/production.searchd.pid"
+  indices_location: "/home/deploy/rails32/pa03/current/db/sphinx"
