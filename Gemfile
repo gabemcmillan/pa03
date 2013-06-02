@@ -20,9 +20,6 @@ gem 'thin'
 gem 'letter_opener'
 
 
-#production webserver
-#gem 'unicorn'
-
 
 
 #cloud hosting
@@ -55,8 +52,7 @@ gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx',   '0.8.0'
 
 
-#removed not using anymore administration
-#gem 'activeadmin'
+
 
 
 #pagination
