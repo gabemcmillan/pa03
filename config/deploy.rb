@@ -1,5 +1,7 @@
 require "bundler/capistrano"
 
+# If you're using Thinking Sphinx as a gem (Rails 3 way):
+require 'thinking_sphinx/deploy/capistrano'
 
 
 server "96.126.113.242", :web, :app, :db, primary: true
@@ -13,6 +15,20 @@ set :use_sudo, true
 set :scm, "git"
 set :repository, "git@github.com:gabemcmillan/#{application}.git"
 set :branch, "master"
+
+
+#thinking sphinx code for version 2 
+before 'deploy:update_code', 'thinking_sphinx:stop'
+after  'deploy:update_code', 'thinking_sphinx:start'
+
+namespace :sphinx do
+  desc "Symlink Sphinx indexes"
+  task :symlink_indexes, :roles => [:app] do
+    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
+  end
+end
+
+after 'deploy:finalize_update', 'sphinx:symlink_indexes'
 
 
 
