@@ -55,8 +55,8 @@ gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx',   '0.8.0'
 
 
-#administration
-gem 'activeadmin'
+#removed not using anymore administration
+#gem 'activeadmin'
 
 
 #pagination
