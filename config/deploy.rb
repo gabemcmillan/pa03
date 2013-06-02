@@ -1,6 +1,5 @@
 require "bundler/capistrano"
-# If you're using Thinking Sphinx 3.0.0 or newer
-require 'thinking_sphinx/capistrano'
+
 
 
 server "96.126.113.242", :web, :app, :db, primary: true
