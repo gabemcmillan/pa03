@@ -44,7 +44,7 @@ gem 'httparty'
 
 
 #full text search -
-gem 'sphinx' 
+gem 'sphinx', '2.1.1.3712' 
 gem 'thinking-sphinx', '2.0.10'
 
 

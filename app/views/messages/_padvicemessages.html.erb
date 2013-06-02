@@ -25,7 +25,7 @@
     <td><%= message.created_at.strftime("%m-%d-%Y %H:%M") %></td>
 
     <% if message.status == "Responded" %>
-	<td><%= link_to "Rate this Message!", rating_path(message.advicepost.id,:m_id=>message.id), :class => 'btn', class: "btn btn-success"  %></td>
+	<td><%= link_to "Rate Message", rating_path(message.advicepost.id,:m_id=>message.id), :class => 'btn', class: "btn btn-success"  %></td>
 	<% elsif message.status == "New" %>
 		<td></td>
 	<% else %>
@@ -33,9 +33,9 @@
 	<% end %>
 	
 	<% if message.status == "Responded" %>
-	<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
+	<td><%= link_to "Send New Message", new_message_path(:advicepost => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
 	<% elsif message.status == "Rated" %>
-			<td><%= link_to "Buy New Advice Message!", new_transaction_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
+			<td><%= link_to "Send New Message", new_message_path(:advicepost_id => message.advicepost.id), :class => 'btn', class: "btn btn-success" %></td>
 			
 
 	<% else message.status == "Responded" %>
