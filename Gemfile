@@ -12,14 +12,11 @@ gem 'rails', '3.2.11'
 gem 'mysql2'
 
 
-
 #development webserver 
 gem 'thin'
 
 #email testing
 gem 'letter_opener'
-
-
 
 
 #cloud hosting
@@ -57,6 +54,8 @@ gem 'flying-sphinx',   '0.8.0'
 
 #pagination
 gem 'will_paginate', '> 3.0'
+
+
 
 #forms
 gem 'simple_form'
