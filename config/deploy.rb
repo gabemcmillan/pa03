@@ -1,4 +1,7 @@
 require "bundler/capistrano"
+# If you're using Thinking Sphinx 3.0.0 or newer
+require 'thinking_sphinx/capistrano'
+
 
 server "96.126.113.242", :web, :app, :db, primary: true
 
@@ -11,6 +14,8 @@ set :use_sudo, true
 set :scm, "git"
 set :repository, "git@github.com:gabemcmillan/#{application}.git"
 set :branch, "master"
+
+
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
