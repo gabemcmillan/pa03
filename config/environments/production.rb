@@ -6,7 +6,7 @@ Pa02::Application.configure do
 
   
   #force SSL only on production environment
-  config.force_ssl = true
+  config.force_ssl = false
 
 
   # Full error reports are disabled and caching is turned on
