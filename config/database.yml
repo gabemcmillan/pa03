@@ -24,7 +24,7 @@ development:
 production:
     adapter: mysql2
     encoding: utf8
-    database: pa03_production
+    database: pa02_production
     username: root
     password: copley66
     host: 96.126.113.242
