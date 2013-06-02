@@ -68,9 +68,7 @@
 <br /><br />
 <%= link_to 'Back', :back, :class => 'btn' %>
 
-<% if current_user %>
-	<%= link_to "Buy Advice Message!", new_transaction_path(:advicepost_id => @advicepost.id), :class => 'btn', class: "btn btn-success" %>
-<% end %>
+
 
 
 <%= link_to 'Message This Advisor!', new_message_path(:advicepost => @advicepost.id), :class => 'btn', class: "btn btn-success"  %>
