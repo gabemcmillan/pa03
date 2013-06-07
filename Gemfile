@@ -59,6 +59,9 @@ gem 'simple_form'
 gem 'nifty-generators'
 
 
+#background processes
+gem 'foreman', '~> 0.63.0'
+
 
 #scheduling - cron jobs
 gem 'whenever', require: false
