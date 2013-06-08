@@ -6,7 +6,7 @@ Pa02::Application.configure do
 
   
   #force SSL only on production environment
-  config.force_ssl = false
+  config.force_ssl = true
 
 
   # Full error reports are disabled and caching is turned on
@@ -30,7 +30,8 @@ Pa02::Application.configure do
 
   
   #specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => 'www.pathadvisor.org' }
+  config.action_mailer.default_url_options = { :host => 'www.pathadvisor.org', :protocol => 'https'}
+  
   
   #config.action_mailer.delivery_method = :letter_opener
   

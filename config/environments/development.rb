@@ -20,13 +20,12 @@ Pa02::Application.configure do
   #force ssl on all environments
   #config.force_ssl = false
   
-  
 
   
   #specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
-  #enable email to open in browser windows instead of sending it.
+  #enable email to open in browser windows instead of sending it. really nice
   #config.action_mailer.delivery_method = :letter_opener
   
   
