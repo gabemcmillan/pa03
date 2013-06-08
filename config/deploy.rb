@@ -31,12 +31,9 @@ set :branch, "master"
 #after 'deploy:finalize_update', 'sphinx:symlink_indexes'
 
 
-# in RAILS_ROOT/config/deploy.rb:
-after 'deploy:update_code', 'deploy:symlink_db'
-
+#create symlink for databse.yml from shared directory
 before "deploy:assets:precompile" do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-  end 
 end
 
 
