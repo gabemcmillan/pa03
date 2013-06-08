@@ -9,6 +9,8 @@ server "96.126.113.242", :web, :app, :db, primary: true
 set :application, "pa03"
 set :user, "root"
 set :deploy_to, "/home/deploy/rails32/#{application}"
+set :shared_path, "/home/deploy/rails32/#{application}/shared"
+
 set :deploy_via, :remote_cache
 set :use_sudo, true
 
@@ -27,6 +29,15 @@ set :branch, "master"
 #  end
 #end
 #after 'deploy:finalize_update', 'sphinx:symlink_indexes'
+
+
+# in RAILS_ROOT/config/deploy.rb:
+after 'deploy:update_code', 'deploy:symlink_db'
+
+before "deploy:assets:precompile" do
+  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end 
+end
 
 
 
