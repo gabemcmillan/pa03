@@ -25,6 +25,7 @@ class GiveadvicesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @giveadvices }
     end
+    
   end
 
   

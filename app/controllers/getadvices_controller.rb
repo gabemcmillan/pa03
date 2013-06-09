@@ -19,14 +19,20 @@ class GetadvicesController < ApplicationController
     #past advice messages
     @messagesp = current_user.messages.page(params[:page]).order('created_at DESC').where("status = ? OR status = ? OR status= ? OR status= ?", 'Responded',  'Canceled','Rated','New' )
 
-    if current_user && current_user.has_payment_info?
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @getadvices }
-      end
-    elsif
-      redirect_to new_customer_path
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @getadvices }
     end
+    
+    #old braintree code which checks if has payment info otherwise get it
+    #if current_user && current_user.has_payment_info?
+    #  respond_to do |format|
+    #    format.html # index.html.erb
+    #    format.json { render json: @getadvices }
+    #  end
+    #elsif
+    #  redirect_to new_customer_path
+    #end
     
     #@products = Product.all
     
