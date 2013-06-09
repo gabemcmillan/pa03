@@ -18,12 +18,11 @@ Pa02::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   #force ssl on all environments
-  #config.force_ssl = false
+  config.force_ssl = true
   
-
   
   #specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000', :protocol => 'https' }
   
   #enable email to open in browser windows instead of sending it. really nice
   #config.action_mailer.delivery_method = :letter_opener
