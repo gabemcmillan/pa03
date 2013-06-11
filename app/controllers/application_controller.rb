@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   	elsif current_advisor
   	      #giveadvices_path   
           (session[:advisor_return_to].nil?) ? "/giveadvices" : session[:advisor_return_to].to_s 
-    elsif current_admin_user
-        admin_dashboard_path
+    elsif current_admin
+        rails_admin_path
   	end
   end
   

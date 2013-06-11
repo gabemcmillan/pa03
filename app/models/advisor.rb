@@ -14,7 +14,7 @@ class Advisor < ActiveRecord::Base
   
   has_many :messages
   
-  has_one :ratings
+  #has_one :ratings
     
   after_create :send_welcome_email_advisor 
   

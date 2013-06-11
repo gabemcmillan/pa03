@@ -12,7 +12,12 @@ gem 'rails', '3.2.11'
 gem 'mysql2'
 
 
-#development webserver 
+#rails_admin gem 
+gem 'fastercsv' # Only required on Ruby 1.8 and below
+gem 'rails_admin'
+
+
+#webserver 
 gem 'thin'
 
 #email testing
