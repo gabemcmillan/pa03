@@ -23,7 +23,7 @@ class Advisor < ActiveRecord::Base
   
   validates_acceptance_of :agree_emails, :accept => true, :message => "Agree to email notifications must be accepted"
   
-  validates_acceptance_of :agree_paypal, :agree_email, :accept => true, :message => "Agree to PayPal payments must be accepted"
+  #validates_acceptance_of :agree_paypal, :agree_email, :accept => true, :message => "Agree to PayPal payments must be accepted"
 
   
   

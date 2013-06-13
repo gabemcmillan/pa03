@@ -2,10 +2,10 @@
 
 
 <p>
-<h2>Are you an Expert in something? Give Advice!<h2>
-<h4>-Make money by sharing your expertise and advice privately with others</h4><br />
-<h4>-Privately message advisee's on a per message basis</h4> 	<br />
-<h4>-Share your knowledge to let others make better decisions</h4><br />
+	<h2>Advisor Dashboard</h2>
+	<h4>-Share your knowledge and experience with others to help them make better decisions<h4><br />
+	<h4>-Mentor those who want to better themselves </h4><br />
+	<h4>-Help the world be a smarter, more engaged society</h4><br />
 </p>
 
 
@@ -14,8 +14,6 @@
 <% if @adviceposts.count >= 1 %>
 	<%= render 'adviceposts/advicepostsbyuser' %>
 <% else %>
-
-
 	<%= link_to 'Submit an Advice Listing', new_advicepost_path, class: "btn btn-success" %><br /><br />
 	<% end %>
 
@@ -28,7 +26,7 @@
 		 <h4>No advice messages yet.</h4><br />	 
 	<% else %>
 	     <%= render 'messages/padviseemessages' %>
-	<% end %>
+<% end %>
 
 
 

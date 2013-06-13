@@ -13,7 +13,7 @@
 	
 
 	
-	<%= f.input :birthday, :required => true, :autofocus => true, :as => :date, :start_year => Date.today.year - 90, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
+	<%= f.input :birthday, :required => true, :autofocus => true, :as => :date, :start_year => Date.today.year - 70, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
 	<%= f.input :gender, :required => true, :autofocus => true, collection: ['Male', 'Female'] %>	
 
     <%= f.input :email, :required => true, :autofocus => true %>
@@ -22,7 +22,6 @@
 
 	<%= f.input :agree_emails, label: "Agree to receive email notifications.", :hint => "Email notifications are required for Advisor's to be notified of new messages." %>
 	
-	<%= f.input :agree_paypal, label: "Agree to use PayPal for Payments.", :hint => "We currently make payments through PayPal.  When you receive a payment you will be able to withdraw from your PayPal account.  If you don't have an account no problem, it only takes a few minutes to sign up." %>
 
 
 By clicking Continue, you agree to our <%= link_to 'Terms of Service', home_terms_path %> and <%= link_to 'Privacy Policy', home_privacy_path %>. 

@@ -43,14 +43,11 @@ Pa02::Application.routes.draw do
   resources :credit_card_info, :only => [:edit]
   match 'customer/confirm' => 'customer#confirm', :as => :confirm_customer
   match 'credit_card_info/confirm' => 'credit_card_info#confirm', :as => :confirm_credit_card_info
-
   match 'transactions/:advicepost_id/new' => 'transactions#new', :as => :new_transaction
   match 'transactions/confirm/:advicepost_id' => 'transactions#confirm', :as => :confirm_transaction
-
   
   resources :payments
       match 'confirm_payment' => 'payments#confirm'
-      
   
   match 'getadvices/payments' => 'getadvices#payments', :as => :getadvice_payments
   match 'giveadvices/payments' => 'giveadvices#payments', :as => :giveadvice_payments
