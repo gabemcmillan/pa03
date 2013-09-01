@@ -14,6 +14,7 @@ class CustomerController < ApplicationController
                                      :customer_id => current_user.braintree_customer_id)
   end
 
+
   def confirm
     @result = Braintree::TransparentRedirect.confirm(request.query_string)
 
